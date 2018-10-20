@@ -12,7 +12,7 @@ import Alamofire
 class APIManager {
     
     static let shared = APIManager()
-    static let baseURL = "http://localhost:8080"
+    static let baseURL = "http://35.229.117.21:8080"
     var sManager = Alamofire.SessionManager.default
 
     var user: User?
@@ -23,6 +23,7 @@ class APIManager {
         }
     }
     
+    // MARK: Authentication
     func register(username: String, password: String, onSuccess: @escaping(Bool) -> Void, onFailure: @escaping(Error) -> Void) {
         if token != nil {
             return
@@ -63,6 +64,7 @@ class APIManager {
         }
     }
     
+    // MARK: Profile
     func getCurrentUser(onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
         guard let token = token else { onFailure(NoTokenError()); return; }
         sManager.request(APIManager.baseURL + "/profile/" ,
@@ -85,6 +87,7 @@ class APIManager {
     }
 
     
+    // MARK: Util
     func updateTokenHeader() {
         guard let token = token else { return }
         var headers = Alamofire.SessionManager.defaultHTTPHeaders
