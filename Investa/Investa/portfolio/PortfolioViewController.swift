@@ -11,8 +11,8 @@ import Charts
 
 class PortfolioViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var user: User! {
-        return APIManager.shared.currentUser!
+    var profile: Profile! {
+        return APIManager.shared.profile!
     }
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
             return 1
         }
         
-        return user.stocks.count
+        return profile.ownedStocks.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -56,8 +56,8 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PortfolioStockCell", for: indexPath) as! PortfolioStockCell
             
-            cell.stock = user.stocks[indexPath.row]
-            cell.user = user
+            cell.stock = profile.ownedStocks[indexPath.row]
+            cell.profile = profile 
             
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 20
@@ -84,7 +84,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         
         headerView.frame.size.height = 50
         headerView.label.text = indexPath.section == 0 ? "Revenue" : "Your Stocks"
-        headerView.rightLabel.text = indexPath.section == 0 ? "$\(APIManager.shared.currentUser?.totalFunds ?? 500)" : nil
+        headerView.rightLabel.text = indexPath.section == 0 ? "$\(APIManager.shared.profile?.fundsToTrade ?? 500)" : nil
         
         return headerView
     }

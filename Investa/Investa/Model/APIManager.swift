@@ -16,8 +16,8 @@ class APIManager {
     
     var token: String?
     
-    // user who is using the app, created in google login
-    var currentUser: User?
+    // profile of who is using the app, created in google login
+    var profile: Profile?
 
     func register(username: String, password: String) {
         

@@ -20,7 +20,6 @@
 		43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF7217AE66600700164 /* GraphHeaderView.swift */; };
 		43622FFA217AF5FB00700164 /* UIColor+extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF9217AF5FB00700164 /* UIColor+extra.swift */; };
 		43622FFC217AF7F400700164 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FFB217AF7F400700164 /* Stock.swift */; };
-		43622FFE217AF80200700164 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FFD217AF80200700164 /* User.swift */; };
 		438918C1217B70D000F8AE54 /* StockOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438918C0217B70D000F8AE54 /* StockOptionButton.swift */; };
 		439D0454217B7E74002CB86C /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D0453217B7E74002CB86C /* StockViewController.swift */; };
 		439D0456217B7FCA002CB86C /* StockLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D0455217B7FCA002CB86C /* StockLineGraphView.swift */; };
@@ -52,7 +51,6 @@
 		43622FF7217AE66600700164 /* GraphHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphHeaderView.swift; sourceTree = "<group>"; };
 		43622FF9217AF5FB00700164 /* UIColor+extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extra.swift"; sourceTree = "<group>"; };
 		43622FFB217AF7F400700164 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		43622FFD217AF80200700164 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		438918C0217B70D000F8AE54 /* StockOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOptionButton.swift; sourceTree = "<group>"; };
 		439D0453217B7E74002CB86C /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		439D0455217B7FCA002CB86C /* StockLineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLineGraphView.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				D86C1301217BA9C7004B53F6 /* APIManager.swift */,
-				43622FFD217AF80200700164 /* User.swift */,
 				43622FFB217AF7F400700164 /* Stock.swift */,
 				D86C12FF217BA813004B53F6 /* Profile.swift */,
 			);
@@ -312,7 +309,6 @@
 				434ED701217AC50200A8B197 /* AppDelegate.swift in Sources */,
 				43622FFA217AF5FB00700164 /* UIColor+extra.swift in Sources */,
 				43622FFC217AF7F400700164 /* Stock.swift in Sources */,
-				43622FFE217AF80200700164 /* User.swift in Sources */,
 				439D0460217B8AA9002CB86C /* SearchResultsTableViewController.swift in Sources */,
 				43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */,
 				439D045E217B8AA9002CB86C /* SearchTableViewController.swift in Sources */,
@@ -475,7 +471,10 @@
 				DEVELOPMENT_TEAM = VG8HJ8DZBZ;
 				INFOPLIST_FILE = Investa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = investa.Investa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -492,7 +491,10 @@
 				DEVELOPMENT_TEAM = VG8HJ8DZBZ;
 				INFOPLIST_FILE = Investa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = investa.Investa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

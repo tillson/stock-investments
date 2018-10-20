@@ -26,9 +26,9 @@ class PortfolioStockCell: UICollectionViewCell {
         }
     }
     
-    var user: User! {
+    var profile: Profile! {
         didSet {
-            let sameStocks = user.stocks.filter { $0 == stock }
+            let sameStocks = profile.ownedStocks.filter { $0 == stock }
             ownedStockCount.text = "\(sameStocks.count) stock\(sameStocks.count > 1 ? "s" : "")"
         }
     }
