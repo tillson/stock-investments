@@ -15,6 +15,9 @@ func (r Stocks) InitializeHandlers() {
 		HandleFunc("/", r.getStocks).
 		Methods("POST")
 	r.Router.
+		HandleFunc("/:ticker", r.getStockPrice).
+		Methods("GET")
+	r.Router.
 		HandleFunc("/buy", r.buyStocks).
 		Methods("POST")
 	r.Router.

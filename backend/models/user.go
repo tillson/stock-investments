@@ -168,9 +168,18 @@ func (user *User) SellStock(ticker string, quantity uint) error {
 		Ticker: ticker,
 		PriceAtTime: price,
 		UserID: user.ID,
-		Type: Buy,
+		Type: Sell,
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (user *User) GetBalance() error {
+	var txs []Transaction
+	if err := user.db.Related(&txs).Error; err != nil {
 		return err
 	}
 

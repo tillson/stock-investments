@@ -36,7 +36,6 @@ func (g GetStocksOutput) JSON() (string, error)  {
 	return string(data), nil
 }
 
-// Accept: application/json GET "https://www.blackrock.com/tools/hackathon/security-data?identifiers=IXN"
 func (r Stocks) getStocks(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -65,3 +64,5 @@ func (r Stocks) getStocks(w http.ResponseWriter, req *http.Request) {
 
 	fmt.Fprint(w, out)
 }
+
+func (r Stocks) getStockPrice(w http.ResponseWriter, req *http.Request) { }
