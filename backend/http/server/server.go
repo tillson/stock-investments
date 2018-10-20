@@ -6,6 +6,7 @@ import (
 	"github.com/tillson/stock-investments/http/middleware"
 	"github.com/tillson/stock-investments/http/server/authentication"
 	"github.com/tillson/stock-investments/http/server/profile"
+	stockD "github.com/tillson/stock-investments/http/server/stocks"
 	"net/http"
 )
 
@@ -32,6 +33,10 @@ func (s *Server) InitializeHandlers() {
 	profileRouter.Use(m.GetUserMiddleware)
 	profileHdlr := profile.Profile{Router: profileRouter, DB: db}
 	profileHdlr.InitializeHandlers()
+
+	stocksRouter := s.router.PathPrefix("/stocks").Subrouter()
+	stocksF := stockD.Stocks{Router: stocksRouter, DB: db}
+	stocksF.InitializeHandlers()
 
 
 	s.router.Use(m.LoggingMiddleware)

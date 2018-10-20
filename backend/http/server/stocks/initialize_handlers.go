@@ -13,7 +13,7 @@ type Stocks struct {
 func (r Stocks) InitializeHandlers() {
 	r.Router.
 		HandleFunc("/", r.getStocks).
-		Methods("GET")
+		Methods("POST")
 	r.Router.
 		HandleFunc("/buy", r.buyStocks).
 		Methods("POST")

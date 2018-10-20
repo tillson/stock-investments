@@ -7,17 +7,13 @@ var (
 	secret     = "DoYouBelieveInLifeAfterLove123!!!%!*%%"
 	debug      = false
 	jwtSigning = jwt.SigningMethodHS256
-	gsToken = ""
+	alphaToken = "O4RU88TU9W6P79TF"
 )
 
 var DB = "postgres://postgres:thisisabadpassword@35.185.44.193/stocks?sslmode=disable"
 
-func GetGSToken() string {
-	return gsToken
-}
-
-func SetGSToken(gs string) {
-	gsToken = gs
+func GetAlphaToken() string {
+	return alphaToken
 }
 
 func GetDebug() bool {

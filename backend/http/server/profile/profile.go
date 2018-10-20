@@ -10,9 +10,9 @@ import (
 )
 
 type Return struct {
-	Name        string
-	Username    string
-	Email string
+	Name        string `json:"name"`
+	Username    string `json:"username"`
+	Email string `json:"email"`
 }
 
 func (r Return) JSON() (string, error) {
