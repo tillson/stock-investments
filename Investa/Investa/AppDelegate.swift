@@ -7,54 +7,35 @@
 //
 
 import UIKit
-import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print("\(error.localizedDescription)")
-        } else {
-            // Perform any operations on signed in user here.
-            let userId = user.userID
-            let idToken = user.authentication.idToken 
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Portfolio")
-            if let presented = self.window?.rootViewController?.presentedViewController {
-                presented.dismiss(animated: false, completion: {
-                    self.window?.rootViewController?.present(viewController, animated: false, completion: nil)
-                })
-            } else {
-                window?.rootViewController?.present(viewController, animated: false, completion: nil)
-            }
-            
-            
-        }
-    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // google sign in stuff
-        GIDSignIn.sharedInstance().clientID = "1022808015987-jih90fgd9gjs6isaouqv77gvha5910h7.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = self
-
+        let user = User(name: "User", email: "email@email.com", startingFunds: 10000, portfolioValue: 5000000)
+        let apple = Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 500)
+        let stocks = [apple, apple, apple, apple]
+        
+        user.ownedStocks = stocks
+        APIManager.shared.user = user
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Portfolio")
+        if let presented = self.window?.rootViewController?.presentedViewController {
+            presented.dismiss(animated: false, completion: {
+                self.window?.rootViewController?.present(viewController, animated: false, completion: nil)
+            })
+        } else {
+            window?.rootViewController?.present(viewController, animated: false, completion: nil)
+        }
+        
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url as URL?,
-                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-    }
-
 
 }
 

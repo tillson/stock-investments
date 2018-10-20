@@ -20,7 +20,6 @@
 		43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF7217AE66600700164 /* GraphHeaderView.swift */; };
 		43622FFA217AF5FB00700164 /* UIColor+extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF9217AF5FB00700164 /* UIColor+extra.swift */; };
 		43622FFC217AF7F400700164 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FFB217AF7F400700164 /* Stock.swift */; };
-		43622FFE217AF80200700164 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FFD217AF80200700164 /* User.swift */; };
 		438918C1217B70D000F8AE54 /* StockOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438918C0217B70D000F8AE54 /* StockOptionButton.swift */; };
 		439D0454217B7E74002CB86C /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D0453217B7E74002CB86C /* StockViewController.swift */; };
 		439D0456217B7FCA002CB86C /* StockLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D0455217B7FCA002CB86C /* StockLineGraphView.swift */; };
@@ -29,10 +28,13 @@
 		439D045F217B8AA9002CB86C /* SearchStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D045B217B8AA9002CB86C /* SearchStockTableViewController.swift */; };
 		439D0460217B8AA9002CB86C /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D045C217B8AA9002CB86C /* SearchResultsTableViewController.swift */; };
 		439D0461217B8AA9002CB86C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D045D217B8AA9002CB86C /* UserTableViewCell.swift */; };
-		439D0463217B8AAE002CB86C /* 1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 439D0462217B8AAE002CB86C /* 1.storyboard */; };
 		43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3EDEB217AFCE80088D963 /* SignInViewController.swift */; };
 		AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */; };
-		D86C12FB217B6DEB004B53F6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C12FA217B6DEB004B53F6 /* APIManager.swift */; };
+		D86C1300217BA813004B53F6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C12FF217BA813004B53F6 /* Profile.swift */; };
+		D86C1302217BA9C7004B53F6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1301217BA9C7004B53F6 /* APIManager.swift */; };
+		D86C1305217BB029004B53F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1304217BB029004B53F6 /* LoginViewController.swift */; };
+		D86C1307217BB031004B53F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1306217BB031004B53F6 /* RegisterViewController.swift */; };
+		D86C1309217BB0CB004B53F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1308217BB0CB004B53F6 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +54,6 @@
 		43622FF7217AE66600700164 /* GraphHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphHeaderView.swift; sourceTree = "<group>"; };
 		43622FF9217AF5FB00700164 /* UIColor+extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extra.swift"; sourceTree = "<group>"; };
 		43622FFB217AF7F400700164 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		43622FFD217AF80200700164 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		438918C0217B70D000F8AE54 /* StockOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOptionButton.swift; sourceTree = "<group>"; };
 		439D0453217B7E74002CB86C /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		439D0455217B7FCA002CB86C /* StockLineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLineGraphView.swift; sourceTree = "<group>"; };
@@ -61,11 +62,14 @@
 		439D045B217B8AA9002CB86C /* SearchStockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewController.swift; sourceTree = "<group>"; };
 		439D045C217B8AA9002CB86C /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		439D045D217B8AA9002CB86C /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		439D0462217B8AAE002CB86C /* 1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 1.storyboard; sourceTree = "<group>"; };
 		43C3EDEB217AFCE80088D963 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.debug.xcconfig"; sourceTree = "<group>"; };
-		D86C12FA217B6DEB004B53F6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D86C12FF217BA813004B53F6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		D86C1301217BA9C7004B53F6 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D86C1304217BB029004B53F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D86C1306217BB031004B53F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D86C1308217BB0CB004B53F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,14 +122,15 @@
 		434ED6FF217AC50200A8B197 /* Investa */ = {
 			isa = PBXGroup;
 			children = (
+				D86C1303217BB012004B53F6 /* Authentication Flow */,
 				434ED700217AC50200A8B197 /* AppDelegate.swift */,
 				434ED704217AC50200A8B197 /* Main.storyboard */,
 				434ED707217AC50300A8B197 /* Assets.xcassets */,
 				434ED709217AC50300A8B197 /* LaunchScreen.storyboard */,
 				434ED70C217AC50300A8B197 /* Info.plist */,
 				43622FF0217ACFB300700164 /* portfolio */,
-				439D0457217B835F002CB86C /* models */,
 				43622FF9217AF5FB00700164 /* UIColor+extra.swift */,
+				D86C12FC217BA749004B53F6 /* Model */,
 				43C3EDEB217AFCE80088D963 /* SignInViewController.swift */,
 				438918C0217B70D000F8AE54 /* StockOptionButton.swift */,
 				439D0453217B7E74002CB86C /* StockViewController.swift */,
@@ -135,7 +140,6 @@
 				439D045B217B8AA9002CB86C /* SearchStockTableViewController.swift */,
 				439D045A217B8AA9002CB86C /* SearchTableViewController.swift */,
 				439D045D217B8AA9002CB86C /* UserTableViewCell.swift */,
-				439D0462217B8AAE002CB86C /* 1.storyboard */,
 			);
 			path = Investa;
 			sourceTree = "<group>";
@@ -154,14 +158,24 @@
 			path = portfolio;
 			sourceTree = "<group>";
 		};
-		439D0457217B835F002CB86C /* models */ = {
+		D86C12FC217BA749004B53F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D86C1301217BA9C7004B53F6 /* APIManager.swift */,
 				43622FFB217AF7F400700164 /* Stock.swift */,
-				43622FFD217AF80200700164 /* User.swift */,
-				D86C12FA217B6DEB004B53F6 /* APIManager.swift */,
+				D86C12FF217BA813004B53F6 /* Profile.swift */,
+				D86C1308217BB0CB004B53F6 /* User.swift */,
 			);
-			path = models;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D86C1303217BB012004B53F6 /* Authentication Flow */ = {
+			isa = PBXGroup;
+			children = (
+				D86C1304217BB029004B53F6 /* LoginViewController.swift */,
+				D86C1306217BB031004B53F6 /* RegisterViewController.swift */,
+			);
+			path = "Authentication Flow";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +190,6 @@
 				434ED6FA217AC50200A8B197 /* Frameworks */,
 				434ED6FB217AC50200A8B197 /* Resources */,
 				50A1DB15F94349294B78D96A /* [CP] Embed Pods Frameworks */,
-				E4A500A682F210A9CF210E66 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,7 +239,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				434ED70B217AC50300A8B197 /* LaunchScreen.storyboard in Resources */,
-				439D0463217B8AAE002CB86C /* 1.storyboard in Resources */,
 				434ED708217AC50300A8B197 /* Assets.xcassets in Resources */,
 				434ED706217AC50200A8B197 /* Main.storyboard in Resources */,
 				434D5E36217ACB5C00FF5FA3 /* PortfolioGraphCell.xib in Resources */,
@@ -263,39 +275,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E4A500A682F210A9CF210E66 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -307,15 +297,18 @@
 			files = (
 				439D045F217B8AA9002CB86C /* SearchStockTableViewController.swift in Sources */,
 				43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */,
+				D86C1300217BA813004B53F6 /* Profile.swift in Sources */,
 				434ED701217AC50200A8B197 /* AppDelegate.swift in Sources */,
-				D86C12FB217B6DEB004B53F6 /* APIManager.swift in Sources */,
 				43622FFA217AF5FB00700164 /* UIColor+extra.swift in Sources */,
 				43622FFC217AF7F400700164 /* Stock.swift in Sources */,
-				43622FFE217AF80200700164 /* User.swift in Sources */,
 				439D0460217B8AA9002CB86C /* SearchResultsTableViewController.swift in Sources */,
+				D86C1309217BB0CB004B53F6 /* User.swift in Sources */,
+				D86C1305217BB029004B53F6 /* LoginViewController.swift in Sources */,
+				D86C1307217BB031004B53F6 /* RegisterViewController.swift in Sources */,
 				43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */,
 				439D045E217B8AA9002CB86C /* SearchTableViewController.swift in Sources */,
 				439D0461217B8AA9002CB86C /* UserTableViewCell.swift in Sources */,
+				D86C1302217BA9C7004B53F6 /* APIManager.swift in Sources */,
 				439D0454217B7E74002CB86C /* StockViewController.swift in Sources */,
 				43622FF4217AD85B00700164 /* PortfolioStockCell.swift in Sources */,
 				43622FEF217ACC6D00700164 /* PortfolioViewController.swift in Sources */,

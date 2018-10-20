@@ -7,28 +7,27 @@
 //
 
 import UIKit
-import GoogleSignIn
 
-class SignInViewController: UIViewController, GIDSignInUIDelegate {
+class SignInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GIDSignIn.sharedInstance().uiDelegate = self
+//        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let shared = GIDSignIn.sharedInstance() {
-            if shared.hasAuthInKeychain() {
-                GIDSignIn.sharedInstance()?.signInSilently()
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Login")
-                present(viewController, animated: false, completion: nil)
-            }
-        }
+//        if let shared = GIDSignIn.sharedInstance() {
+//            if shared.hasAuthInKeychain() {
+//                GIDSignIn.sharedInstance()?.signInSilently()
+//            } else {
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "Login")
+//                present(viewController, animated: false, completion: nil)
+//            }
+//        }
     }
     
 }
