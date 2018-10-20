@@ -12,9 +12,11 @@
 		434ED706217AC50200A8B197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434ED704217AC50200A8B197 /* Main.storyboard */; };
 		434ED708217AC50300A8B197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434ED707217AC50300A8B197 /* Assets.xcassets */; };
 		434ED70B217AC50300A8B197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434ED709217AC50300A8B197 /* LaunchScreen.storyboard */; };
+		AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0332E6CD50001B1AEF081B9A /* Pods-Investa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.release.xcconfig"; sourceTree = "<group>"; };
 		434ED6FD217AC50200A8B197 /* Investa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Investa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434ED700217AC50200A8B197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434ED702217AC50200A8B197 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		434ED707217AC50300A8B197 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		434ED70A217AC50300A8B197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		434ED70C217AC50300A8B197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EAD6A2DDF630E470ECA6C31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */,
+				0332E6CD50001B1AEF081B9A /* Pods-Investa.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		149B5158D4AC533A44656630 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		434ED6F4217AC50200A8B197 = {
 			isa = PBXGroup;
 			children = (
 				434ED6FF217AC50200A8B197 /* Investa */,
 				434ED6FE217AC50200A8B197 /* Products */,
+				0EAD6A2DDF630E470ECA6C31 /* Pods */,
+				149B5158D4AC533A44656630 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 434ED70F217AC50300A8B197 /* Build configuration list for PBXNativeTarget "Investa" */;
 			buildPhases = (
+				0BCF49D88E6B10C5850E2858 /* [CP] Check Pods Manifest.lock */,
 				434ED6F9217AC50200A8B197 /* Sources */,
 				434ED6FA217AC50200A8B197 /* Frameworks */,
 				434ED6FB217AC50200A8B197 /* Resources */,
+				50A1DB15F94349294B78D96A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BCF49D88E6B10C5850E2858 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Investa-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50A1DB15F94349294B78D96A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		434ED6F9217AC50200A8B197 /* Sources */ = {
@@ -280,6 +345,7 @@
 		};
 		434ED710217AC50300A8B197 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +364,7 @@
 		};
 		434ED711217AC50300A8B197 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0332E6CD50001B1AEF081B9A /* Pods-Investa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
