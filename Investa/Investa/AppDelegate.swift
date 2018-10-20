@@ -26,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let familyName = user.profile.familyName
             let email = user.profile.email
             
+            var user = User(name: fullName ?? "User", totalFunds: 10000, percentIncrease: 0)
+            let stocks = [Stock(name: "APPL", price: 1000), Stock(name: "TESLA", price: 5), Stock(name: "GOOG", price: 0), Stock(name: "AMAZON", price: 700), Stock(name: "Samsung", price: 0)]
+            user.stocks = stocks
+            APIManager.shared.currentUser = user
+
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Portfolio")
             if let presented = self.window?.rootViewController?.presentedViewController {

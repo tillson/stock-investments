@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Stock: Codable {
+struct Stock: Codable, Equatable {
     
     var name: String
     var price: Double
@@ -16,6 +16,12 @@ struct Stock: Codable {
     init(name: String, price: Double) {
         self.name = name
         self.price = price 
+    }
+    
+    // percent success or not success
+    // pull from begining of today and compare to now 
+    var percent: Int {
+        return 570
     }
     
 }

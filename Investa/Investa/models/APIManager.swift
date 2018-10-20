@@ -15,4 +15,7 @@ class APIManager {
     
     var token: String?
     
+    // user who is using the app, created in google login
+    var currentUser: User?
+    
 }

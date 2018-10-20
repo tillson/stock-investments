@@ -51,6 +51,8 @@
             <viewLayoutGuide key="safeArea" id="9Ka-IF-bg7"/>
             <size key="customSize" width="683" height="63"/>
             <connections>
+                <outlet property="ownedStockCount" destination="Ayf-tN-H2S" id="4Fc-Ds-mwK"/>
+                <outlet property="percent" destination="XCh-XK-Rt5" id="DJ3-BL-t4v"/>
                 <outlet property="stockName" destination="YOM-9N-5gh" id="XNn-2i-T35"/>
             </connections>
             <point key="canvasLocation" x="546.39999999999998" y="51.724137931034484"/>

@@ -29,7 +29,6 @@
 		439D045F217B8AA9002CB86C /* SearchStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D045B217B8AA9002CB86C /* SearchStockTableViewController.swift */; };
 		439D0460217B8AA9002CB86C /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D045C217B8AA9002CB86C /* SearchResultsTableViewController.swift */; };
 		439D0461217B8AA9002CB86C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D045D217B8AA9002CB86C /* UserTableViewCell.swift */; };
-		439D0463217B8AAE002CB86C /* 1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 439D0462217B8AAE002CB86C /* 1.storyboard */; };
 		43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3EDEB217AFCE80088D963 /* SignInViewController.swift */; };
 		AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */; };
 		D86C12FB217B6DEB004B53F6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C12FA217B6DEB004B53F6 /* APIManager.swift */; };
@@ -61,7 +60,6 @@
 		439D045B217B8AA9002CB86C /* SearchStockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewController.swift; sourceTree = "<group>"; };
 		439D045C217B8AA9002CB86C /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		439D045D217B8AA9002CB86C /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		439D0462217B8AAE002CB86C /* 1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 1.storyboard; sourceTree = "<group>"; };
 		43C3EDEB217AFCE80088D963 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				439D045B217B8AA9002CB86C /* SearchStockTableViewController.swift */,
 				439D045A217B8AA9002CB86C /* SearchTableViewController.swift */,
 				439D045D217B8AA9002CB86C /* UserTableViewCell.swift */,
-				439D0462217B8AAE002CB86C /* 1.storyboard */,
 			);
 			path = Investa;
 			sourceTree = "<group>";
@@ -226,7 +223,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				434ED70B217AC50300A8B197 /* LaunchScreen.storyboard in Resources */,
-				439D0463217B8AAE002CB86C /* 1.storyboard in Resources */,
 				434ED708217AC50300A8B197 /* Assets.xcassets in Resources */,
 				434ED706217AC50200A8B197 /* Main.storyboard in Resources */,
 				434D5E36217ACB5C00FF5FA3 /* PortfolioGraphCell.xib in Resources */,
