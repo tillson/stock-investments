@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fBX-3C-2pO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e1A-wv-BWA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ij-tY-Nz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7334" y="347"/>
+            <point key="canvasLocation" x="-7503" y="347"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Wyd-FC-mK8">
@@ -429,7 +429,7 @@
         <!--Register View Controller-->
         <scene sceneID="2hK-4c-PYv">
             <objects>
-                <viewController storyboardIdentifier="Login" id="Wn1-q3-Zob" customClass="RegisterViewController" customModule="Investa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" id="Wn1-q3-Zob" customClass="RegisterViewController" customModule="Investa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GRI-8F-ssR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,7 +479,7 @@
         <!--Login View Controller-->
         <scene sceneID="bSc-LC-Ww4">
             <objects>
-                <viewController storyboardIdentifier="Login" id="l7z-do-bak" customClass="LoginViewController" customModule="Investa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login1" id="l7z-do-bak" customClass="LoginViewController" customModule="Investa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qtf-zN-hHU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
