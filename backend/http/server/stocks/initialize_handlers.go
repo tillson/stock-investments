@@ -17,4 +17,7 @@ func (r Stocks) InitializeHandlers() {
 	r.Router.
 		HandleFunc("/buy", r.buyStocks).
 		Methods("POST")
+	r.Router.
+		HandleFunc("/sell", r.sellStocks).
+		Methods("POST")
 }

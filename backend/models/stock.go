@@ -18,7 +18,7 @@ type Transaction struct {
 	UserID uint
 	User User
 
-	BuyPrice float64
+	PriceAtTime float64
 	Type TxType
 }
 
