@@ -62,6 +62,7 @@ func CreateUser(username, password string, db *gorm.DB) (User, error) {
 	user := User{
 		Username:     username,
 		PasswordHash: passwordHash,
+		Funds: config.GetStartMoney(),
 	}
 
 	if err := db.Create(&user).Error; err != nil {

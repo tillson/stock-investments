@@ -16,6 +16,10 @@ func GetAlphaToken() string {
 	return alphaToken
 }
 
+func GetStartMoney() uint64 {
+	return 25000
+}
+
 func GetDebug() bool {
 	return debug
 }
