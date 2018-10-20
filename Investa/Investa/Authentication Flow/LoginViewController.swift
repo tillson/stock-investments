@@ -21,8 +21,12 @@ class LoginViewController: UIViewController {
 
     @IBAction func login(_ sender: Any) {
         if usernameField.text != "" && passwordField.text != "" {
-            APIManager.shared.login(username: usernameField.text!, password: passwordField.text!, onSuccess: { (user) in
-                //
+            APIManager.shared.login(username: usernameField.text!, password: passwordField.text!, onSuccess: { (success) in
+                APIManager.shared.getCurrentUser(onSuccess: { (user) in
+                    APIManager.shared.user = user
+                }, onFailure: { (error) in
+                    print(error)
+                })
             }) { (error) in
                 print(error)
             }

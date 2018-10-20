@@ -1,10 +1,10 @@
 package stocks
 
 import (
-	"fmt"
+	"time"
+
 	alpha "github.com/cmckee-dev/go-alpha-vantage"
 	"github.com/tillson/stock-investments/config"
-	"time"
 )
 
 func GetCurrentPrice(ticker string) (float64, time.Time, error) {
@@ -21,8 +21,8 @@ func GetCurrentPrice(ticker string) (float64, time.Time, error) {
 }
 
 type PriceHistory struct {
-	Price float64 `json:"price"`
-	Time time.Time `json:"time"`
+	Price float64   `json:"price"`
+	Time  time.Time `json:"time"`
 }
 
 func GetWeeklyHistory(ticker string) ([]PriceHistory, error) {

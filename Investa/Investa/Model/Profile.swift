@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Profile: Codable {
+class Profile: Decodable {
 
     let name: String
 
@@ -28,5 +28,11 @@ class Profile: Codable {
         self.ownedStocks = [Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0)]
     }
     
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKey.self)
+//        if let name = try container.decodeIfPresent(String.self, forKey: .name) {
+//            self.name = name
+//        }
+//    }
     
 }

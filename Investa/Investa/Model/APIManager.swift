@@ -13,28 +13,86 @@ class APIManager {
     
     static let shared = APIManager()
     static let baseURL = "http://localhost:8080"
-    
+    var sManager = Alamofire.SessionManager.default
+
     var user: User?
     
-    var token: String?
+    var token: String? {
+        didSet {
+            updateTokenHeader()
+        }
+    }
     
     func register(username: String, password: String, onSuccess: @escaping(Bool) -> Void, onFailure: @escaping(Error) -> Void) {
-        Alamofire.request(APIManager.baseURL + "/auth/register", method: .post, parameters: ["username": username, "password": password]).responseJSON { response in
-            //
+        sManager.request(APIManager.baseURL + "/auth/register",
+                          method: .post,
+                          parameters: ["username": username, "password": password],
+                          encoding: JSONEncoding.default)
+            .responseJSON { response in
+                if let error = response.error {
+                    onFailure(error)
+                    return
+                }
+                if let value = response.result.value! as? [String: String] {
+                    self.token = value["access_token"]
+                }
+                onSuccess(true)
         }
     }
     
     func login(username: String, password: String, onSuccess: @escaping(Bool) -> Void, onFailure: @escaping(Error) -> Void) {
-        Alamofire.request(APIManager.baseURL + "/auth/login", method: .post, parameters: ["username": username, "password": password]).responseJSON { response in
-            //
+        sManager.request(APIManager.baseURL + "/auth/login",
+                          method: .post,
+                          parameters: ["username": username, "password": password],
+                          encoding: JSONEncoding.default)
+            .responseJSON { response in
+                if let error = response.error {
+                    onFailure(error)
+                    return
+                }
+                if let value = response.result.value! as? [String: String] {
+                    self.token = value["access_token"]
+                }
+                onSuccess(true)
         }
     }
     
     func getCurrentUser(onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
-        Alamofire.request(APIManager.baseURL + "/profile" , method: .post).responseJSON { response in
-            //
+        guard let token = token else { onFailure(NoTokenError()); return; }
+        sManager.request(APIManager.baseURL + "/profile/" ,
+                          method: .get,
+                          encoding: JSONEncoding.default,
+                          headers: ["Authentication": "Bearer: \(token)"])
+            .responseJSON{ response in
+                if let error = response.error {
+                    onFailure(error)
+                    return
+                }
+                guard let data = response.data else { onFailure(NoTokenError()); return; }
+                do {
+                    let user = try JSONDecoder().decode(User.self, from: data)
+                    print(user)
+                    APIManager.shared.user = user
+                } catch let JSONError as Error {
+                    print(JSONError)
+                }
         }
     }
 
+    
+    func updateTokenHeader() {
+        guard let token = token else { return }
+        var headers = Alamofire.SessionManager.defaultHTTPHeaders
+        headers["Authorization"] = "Bearer: \(token)"
+        
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = headers
+        sManager = Alamofire.SessionManager(configuration: configuration)
+        print(headers)
+    }
+    
+}
+
+class NoTokenError: Error {
     
 }

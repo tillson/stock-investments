@@ -22,7 +22,11 @@ class RegisterViewController: UIViewController {
     @IBAction func register(_ sender: Any) {
         if usernameField.text != "" && passwordField.text != "" {
             APIManager.shared.register(username: usernameField.text!, password: passwordField.text!, onSuccess: { (user) in
-                //
+                APIManager.shared.getCurrentUser(onSuccess: { (user) in
+                    APIManager.shared.user = user
+                }, onFailure: { (error) in
+                    print(error)
+                })
             }) { (error) in
                 print(error)
             }
