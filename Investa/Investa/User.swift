@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User {
+struct User: Codable {
     
     var stocks = [Stock]()
     var score = 2
