@@ -10,7 +10,12 @@ import Foundation
 
 struct Stock: Codable {
     
-    var name: String
-    var price: Double
+    let name: String
+    let initialBuyPrice: Double
+    
+    var sharesOwned: Int
+    
+    let history: [Date: Double]
+    let currentPrice: Double
     
 }

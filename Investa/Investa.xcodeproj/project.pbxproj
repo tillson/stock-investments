@@ -25,6 +25,7 @@
 		43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3EDEB217AFCE80088D963 /* SignInViewController.swift */; };
 		AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */; };
 		D86C12FB217B6DEB004B53F6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C12FA217B6DEB004B53F6 /* APIManager.swift */; };
+		D86C1300217BA813004B53F6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C12FF217BA813004B53F6 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.debug.xcconfig"; sourceTree = "<group>"; };
 		D86C12FA217B6DEB004B53F6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D86C12FF217BA813004B53F6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +111,7 @@
 				434ED70C217AC50300A8B197 /* Info.plist */,
 				43622FF0217ACFB300700164 /* portfolio */,
 				43622FF9217AF5FB00700164 /* UIColor+extra.swift */,
-				43622FFB217AF7F400700164 /* Stock.swift */,
-				43622FFD217AF80200700164 /* User.swift */,
+				D86C12FC217BA749004B53F6 /* Model */,
 				D86C12FA217B6DEB004B53F6 /* APIManager.swift */,
 				43C3EDEB217AFCE80088D963 /* SignInViewController.swift */,
 				438918C0217B70D000F8AE54 /* StockOptionButton.swift */,
@@ -130,6 +131,16 @@
 				43622FF7217AE66600700164 /* GraphHeaderView.swift */,
 			);
 			path = portfolio;
+			sourceTree = "<group>";
+		};
+		D86C12FC217BA749004B53F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43622FFD217AF80200700164 /* User.swift */,
+				43622FFB217AF7F400700164 /* Stock.swift */,
+				D86C12FF217BA813004B53F6 /* Profile.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */,
+				D86C1300217BA813004B53F6 /* Profile.swift in Sources */,
 				434ED701217AC50200A8B197 /* AppDelegate.swift in Sources */,
 				D86C12FB217B6DEB004B53F6 /* APIManager.swift in Sources */,
 				43622FFA217AF5FB00700164 /* UIColor+extra.swift in Sources */,
