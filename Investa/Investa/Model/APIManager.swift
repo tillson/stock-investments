@@ -16,8 +16,17 @@ class APIManager {
     
     var token: String?
     
-    func register(username: String, password: String) {
-        
+    func register(username: String, password: String, onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
+        Alamofire.request(APIManager.baseURL + "/auth/register" , method: .post).responseJSON { response in
+            //
+        }
     }
+    
+    func login(username: String, password: String, onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
+        Alamofire.request(APIManager.baseURL + "/auth/login" , method: .post).responseJSON { response in
+            //
+        }
+    }
+
     
 }

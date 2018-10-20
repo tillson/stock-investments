@@ -5,6 +5,5 @@ target 'Investa' do
 
   pod 'Alamofire'
   pod 'Charts'
-  pod 'GoogleSignIn'
 
 end
