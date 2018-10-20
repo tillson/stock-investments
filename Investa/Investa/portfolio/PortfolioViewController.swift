@@ -84,7 +84,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         
         headerView.frame.size.height = 50
         headerView.label.text = indexPath.section == 0 ? "Funds" : "Your Stocks"
-        headerView.rightLabel.text = indexPath.section == 0 ? "$\(APIManager.shared.user!.funds.moneyFormat)" : nil
+        headerView.rightLabel.text = indexPath.section == 0 ? "\(APIManager.shared.user!.funds.moneyFormat)" : nil
         return headerView
     }
     
