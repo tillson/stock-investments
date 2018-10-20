@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class SearchTableViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
