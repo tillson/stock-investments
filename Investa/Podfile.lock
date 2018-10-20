@@ -28,7 +28,7 @@ DEPENDENCIES:
   - GoogleSignIn
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Charts
     - GoogleSignIn
     - GoogleToolboxForMac
@@ -44,4 +44,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: def11bb0401d7e3598944715490a9f46425c0805
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0
