@@ -83,8 +83,8 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "GraphHeaderView", for: indexPath) as! GraphHeaderView
         
         headerView.frame.size.height = 50
-        headerView.label.text = indexPath.section == 0 ? "Revenue" : "Your Stocks"
-        headerView.rightLabel.text = indexPath.section == 0 ? "$\(APIManager.shared.user!.fundsToTrade ?? 500)" : nil
+        headerView.label.text = indexPath.section == 0 ? "Funds" : "Your Stocks"
+        headerView.rightLabel.text = indexPath.section == 0 ? "\(APIManager.shared.user!.fundsToTrade.moneyFormat)" : nil
         
         return headerView
     }
