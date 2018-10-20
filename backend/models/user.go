@@ -2,6 +2,7 @@ package models
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/tillson/stock-investments/config"
 	"time"
 
@@ -17,6 +18,10 @@ type User struct {
 
 	Username     string `gorm:"unique"`
 	PasswordHash []byte
+
+	Transactions []Transaction
+
+	Money uint64
 
 	Name string
 }
@@ -45,19 +50,6 @@ func NewUserFromUsername(username string, db *gorm.DB) (User, error) {
 	user.db = db
 
 	return user, nil
-}
-
-func NewUserList(db *gorm.DB, usernames ...string) ([]User, error) {
-	users := make([]User, 0)
-	for _, username := range usernames {
-		var tmpU User
-		if err := db.Where("username = ?", username).First(&tmpU).Error; err != nil {
-			return users, err
-		}
-		tmpU.SetDB(db)
-		users = append(users, tmpU)
-	}
-	return users, nil
 }
 
 func CreateUser(username, password string, db *gorm.DB) (User, error) {
@@ -132,5 +124,23 @@ func (user *User) UpdatePassword(password string) error {
 		return err
 	}
 
+	return nil
+}
+
+var NotEnoughMoneyErr = errors.New("not enough money")
+
+func (user *User) BuyStock(ticker string, quantity uint) error {
+	// Check current price of stock
+	// Validate current_price * quantity <= user.Money
+	//    return NotEnoughMoneyErr
+
+	tx := Transaction{
+		Ticker: ticker,
+		UserID: user.ID,
+		Type: Buy,
+	}
+	if err := CreateTransaction(tx, user.db); err != nil {
+		return err
+	}
 	return nil
 }

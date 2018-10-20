@@ -30,6 +30,8 @@ func (r Authentication) registerHandler(w http.ResponseWriter, req *http.Request
 	// Get data from JSON
 	inp, err := NewRegisterInput(req.Body)
 	if err != nil {
+		log.Println("error parsing JSON")
+		log.Println(err)
 		response.ServerError.Write(w)
 		return
 	}

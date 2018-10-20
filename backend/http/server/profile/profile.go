@@ -12,8 +12,7 @@ import (
 type Return struct {
 	Name        string
 	Username    string
-	Balance     uint64
-	PhoneNumber string
+	Email string
 }
 
 func (r Return) JSON() (string, error) {

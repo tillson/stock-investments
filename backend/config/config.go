@@ -7,9 +7,18 @@ var (
 	secret     = "DoYouBelieveInLifeAfterLove123!!!%!*%%"
 	debug      = false
 	jwtSigning = jwt.SigningMethodHS256
+	gsToken = ""
 )
 
 var DB = "postgres://postgres:thisisabadpassword@35.185.44.193/stocks?sslmode=disable"
+
+func GetGSToken() string {
+	return gsToken
+}
+
+func SetGSToken(gs string) {
+	gsToken = gs
+}
 
 func GetDebug() bool {
 	return debug
