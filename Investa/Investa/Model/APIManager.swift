@@ -20,7 +20,6 @@ class APIManager {
         Alamofire.request(APIManager.baseURL + "/auth/register" , method: .post).responseJSON { response in
             //
         }
-    }
     
     func login(username: String, password: String, onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
         Alamofire.request(APIManager.baseURL + "/auth/login" , method: .post).responseJSON { response in

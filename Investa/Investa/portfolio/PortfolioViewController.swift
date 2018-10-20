@@ -10,7 +10,11 @@ import UIKit
 import Charts
 
 class PortfolioViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-        
+    
+    var profile: Profile! {
+        return APIManager.shared.profile!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +39,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
             return 1
         }
         
-        return 10
+        return profile.ownedStocks.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,6 +55,9 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         } else {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PortfolioStockCell", for: indexPath) as! PortfolioStockCell
+            
+            cell.stock = profile.ownedStocks[indexPath.row]
+            cell.profile = profile 
             
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 20
@@ -77,7 +84,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         
         headerView.frame.size.height = 50
         headerView.label.text = indexPath.section == 0 ? "Revenue" : "Your Stocks"
-        headerView.rightLabel.text = indexPath.section == 0 ? "$10,000" : nil
+        headerView.rightLabel.text = indexPath.section == 0 ? "$\(APIManager.shared.profile?.fundsToTrade ?? 500)" : nil
         
         return headerView
     }
@@ -87,12 +94,10 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
             viewController.stock = Stock(name: "Apple Inc.", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 100.0)
             navigationController?.pushViewController(viewController, animated: true)
-            // TODO: set stock
         }
     }
     
