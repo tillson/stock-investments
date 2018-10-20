@@ -21,6 +21,7 @@
 		43622FFA217AF5FB00700164 /* UIColor+extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF9217AF5FB00700164 /* UIColor+extra.swift */; };
 		43622FFC217AF7F400700164 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FFB217AF7F400700164 /* Stock.swift */; };
 		43622FFE217AF80200700164 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FFD217AF80200700164 /* User.swift */; };
+		438918C1217B70D000F8AE54 /* StockOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438918C0217B70D000F8AE54 /* StockOptionButton.swift */; };
 		43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3EDEB217AFCE80088D963 /* SignInViewController.swift */; };
 		AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */; };
 		D86C12FB217B6DEB004B53F6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C12FA217B6DEB004B53F6 /* APIManager.swift */; };
@@ -44,6 +45,7 @@
 		43622FF9217AF5FB00700164 /* UIColor+extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extra.swift"; sourceTree = "<group>"; };
 		43622FFB217AF7F400700164 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		43622FFD217AF80200700164 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		438918C0217B70D000F8AE54 /* StockOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOptionButton.swift; sourceTree = "<group>"; };
 		43C3EDEB217AFCE80088D963 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				43622FFD217AF80200700164 /* User.swift */,
 				D86C12FA217B6DEB004B53F6 /* APIManager.swift */,
 				43C3EDEB217AFCE80088D963 /* SignInViewController.swift */,
+				438918C0217B70D000F8AE54 /* StockOptionButton.swift */,
 			);
 			path = Investa;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				43622FF4217AD85B00700164 /* PortfolioStockCell.swift in Sources */,
 				43622FEF217ACC6D00700164 /* PortfolioViewController.swift in Sources */,
 				43622FF2217ACFC700700164 /* PortfolioGraphCell.swift in Sources */,
+				438918C1217B70D000F8AE54 /* StockOptionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
