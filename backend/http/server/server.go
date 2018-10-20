@@ -3,13 +3,9 @@ package server
 import (
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
-	"github.com/stripe/stripe-go"
-	"gitlab.com/t94j0/finance/config"
-	"gitlab.com/t94j0/finance/http/middleware"
-	"gitlab.com/t94j0/finance/http/server/authentication"
-	"gitlab.com/t94j0/finance/http/server/bank"
-	"gitlab.com/t94j0/finance/http/server/message"
-	"gitlab.com/t94j0/finance/http/server/profile"
+	"github.com/tillson/stock-investments/http/middleware"
+	"github.com/tillson/stock-investments/http/server/authentication"
+	"github.com/tillson/stock-investments/http/server/profile"
 	"net/http"
 )
 
@@ -22,7 +18,6 @@ var db *gorm.DB
 func NewServer(mDb *gorm.DB) *Server {
 	router := mux.NewRouter()
 	db = mDb
-	stripe.Key = config.GetStripeSecret()
 	return &Server{router: router}
 }
 
@@ -38,15 +33,6 @@ func (s *Server) InitializeHandlers() {
 	profileHdlr := profile.Profile{Router: profileRouter, DB: db}
 	profileHdlr.InitializeHandlers()
 
-	bankRouter := s.router.PathPrefix("/bank").Subrouter()
-	bankRouter.Use(m.GetUserMiddleware)
-	bankHdlr := bank.Bank{Router: bankRouter, DB: db}
-	bankHdlr.InitializeHandlers()
-
-	messageRouter := s.router.PathPrefix("/messages").Subrouter()
-	messageRouter.Use(m.GetUserMiddleware)
-	msg := message.Message{Router: messageRouter, DB: db}
-	msg.InitializeHandlers()
 
 	s.router.Use(m.LoggingMiddleware)
 }

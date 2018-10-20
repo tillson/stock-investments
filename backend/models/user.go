@@ -2,11 +2,11 @@ package models
 
 import (
 	"encoding/json"
+	"github.com/tillson/stock-investments/config"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/jinzhu/gorm"
-	"gitlab.com/t94j0/finance/config"
 	"golang.org/x/crypto/bcrypt"
 )
 

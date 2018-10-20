@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
-
-	"gitlab.com/t94j0/finance/db"
-	"gitlab.com/t94j0/finance/http/server"
+	"github.com/tillson/stock-investments/db"
+	"github.com/tillson/stock-investments/http/server"
 )
 
 func main() {

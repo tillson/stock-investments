@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/tillson/stock-investments/http/response"
+	"github.com/tillson/stock-investments/models"
 	"io"
 	"log"
 	"net/http"
