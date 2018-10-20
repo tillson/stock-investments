@@ -58,26 +58,26 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
     }
 
     func addToLeaderboard(){
-        let guy1 = User.init( name: "Gill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy1)
-        let guy2 = User.init(name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy2)
-        let guy3 = User.init(name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy3)
-        let guy4 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy4)
-        let guy5 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy5)
-        let guy6 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy6)
-        let guy7 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy7)
-        let guy8 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy8)
-        let guy9 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy9)
-        let guy10 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
-        leaderboard.append(guy10)
+//        let guy1 = User.init( name: "Gill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy1)
+//        let guy2 = User.init(name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy2)
+//        let guy3 = User.init(name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy3)
+//        let guy4 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy4)
+//        let guy5 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy5)
+//        let guy6 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy6)
+//        let guy7 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy7)
+//        let guy8 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy8)
+//        let guy9 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy9)
+//        let guy10 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy10)
         
     }
     
@@ -106,8 +106,8 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
             cell.rank.text = "\(indexPath.row + 1)" + "."
             cell.pic.image = UIImage(named: "sample")
             cell.name.text = user.name
-            cell.totalFunds.text = "\(user.totalFunds)"
-            cell.percentChange.text = "\(user.percentIncrease)"
+            cell.totalFunds.text = "\(user.fundsToTrade)"
+//            cell.percentChange.text = "\(user.percentIncrease)"
             cell.pic.layer.cornerRadius = 41
             cell.pic.layer.masksToBounds = true
             cell.pic.clipsToBounds = true
@@ -120,8 +120,8 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
         cell.rank.text = "\(indexPath.row + 1)" + "."
         cell.pic.image = UIImage(named: "sample")
         cell.name.text = user.name
-        cell.totalFunds.text = "\(user.totalFunds)"
-        cell.percentChange.text = "\(user.percentIncrease)"
+//        cell.totalFunds.text = "\(user.totalFunds)"
+//        cell.percentChange.text = "\(user.percentIncrease)"
         cell.pic.layer.cornerRadius = 41
         cell.pic.layer.masksToBounds = true
         cell.pic.clipsToBounds = true
