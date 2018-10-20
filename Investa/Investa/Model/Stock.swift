@@ -11,11 +11,22 @@ import Foundation
 struct Stock: Codable {
     
     let name: String
-    let initialBuyPrice: Double
+    let symbol: String
+    
+    let initialBuyPrice: Float
     
     var sharesOwned: Int
     
-    let history: [Date: Double]
-    let currentPrice: Double
+    let history: [Date: Float]
+    let currentPrice: Float
+    
+    init(name: String, symbol: String, currentPrice: Float, initialBuyPrice: Float) {
+        self.name = name
+        self.symbol = symbol
+        self.currentPrice = currentPrice
+        self.initialBuyPrice = initialBuyPrice
+        self.sharesOwned = 1
+        self.history = [Date(): 4]
+    }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class APIManager {
     
@@ -14,5 +15,9 @@ class APIManager {
     static let baseURL = ""
     
     var token: String?
+    
+    func register(username: String, password: String) {
+        
+    }
     
 }
