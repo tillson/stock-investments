@@ -10,9 +10,7 @@ import UIKit
 import Charts
 
 class PortfolioViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
-    var panGesture: UIPanGestureRecognizer!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +43,9 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         if indexPath.section == 0 {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PortfolioGraphCell", for: indexPath) as! PortfolioGraphCell
-            cell.setDataCount(20, range: 20)
+            cell.stockGraph.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.40)
+            cell.stockGraph.setDataCount(20, range: 20)
+
             return cell
             
         } else {
@@ -87,9 +87,13 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
         
-        // TODO: push stock view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
+            viewController.stock = Stock(name: "APPL", price: 100)
+            navigationController?.pushViewController(viewController, animated: true)
+            // TODO: set stock
+        }
     }
     
 }

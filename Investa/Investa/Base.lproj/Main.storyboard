@@ -187,6 +187,44 @@
             </objects>
             <point key="canvasLocation" x="478" y="208"/>
         </scene>
+        <!--Stock View Controller-->
+        <scene sceneID="3en-A4-Dg5">
+            <objects>
+                <viewController storyboardIdentifier="Stock" id="HyJ-aW-6iE" customClass="StockViewController" customModule="Investa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Esx-dQ-UeK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L72-Ng-6RD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKU-fv-RmD" customClass="StockLineGraphView" customModule="Investa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="67" width="375" height="215"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="L72-Ng-6RD" firstAttribute="centerY" secondItem="Esx-dQ-UeK" secondAttribute="centerY" id="039-4h-LaT"/>
+                            <constraint firstItem="L72-Ng-6RD" firstAttribute="trailing" secondItem="Qn7-5T-1Ko" secondAttribute="trailing" id="AdW-k9-v4J"/>
+                            <constraint firstItem="L72-Ng-6RD" firstAttribute="leading" secondItem="Qn7-5T-1Ko" secondAttribute="leading" id="pRJ-dz-d3e"/>
+                            <constraint firstItem="L72-Ng-6RD" firstAttribute="bottom" secondItem="Qn7-5T-1Ko" secondAttribute="bottom" id="sQZ-xY-Xp1"/>
+                            <constraint firstItem="L72-Ng-6RD" firstAttribute="top" secondItem="Esx-dQ-UeK" secondAttribute="top" id="vBS-uJ-rcA"/>
+                            <constraint firstItem="L72-Ng-6RD" firstAttribute="centerX" secondItem="Esx-dQ-UeK" secondAttribute="centerX" id="xrZ-9P-8I9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qn7-5T-1Ko"/>
+                    </view>
+                    <connections>
+                        <outlet property="stockLineGraphView" destination="YKU-fv-RmD" id="a2A-CN-WXf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1zb-fD-cGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1485.5999999999999" y="209.14542728635683"/>
+        </scene>
     </scenes>
     <resources>
         <image name="economic-investment" width="25.600000381469727" height="25.600000381469727"/>
