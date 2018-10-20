@@ -20,14 +20,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRG-89-lmE" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="0.0" y="0.0" width="517" height="253"/>
+                        <rect key="frame" x="0.0" y="0.0" width="517" height="243"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="DRG-89-lmE" firstAttribute="top" secondItem="u1n-ut-s4J" secondAttribute="top" id="PHy-xh-vcd"/>
-                <constraint firstAttribute="bottom" secondItem="DRG-89-lmE" secondAttribute="bottom" id="Qwh-UH-CCm"/>
+                <constraint firstAttribute="bottom" secondItem="DRG-89-lmE" secondAttribute="bottom" constant="10" id="Qwh-UH-CCm"/>
                 <constraint firstItem="DRG-89-lmE" firstAttribute="leading" secondItem="u1n-ut-s4J" secondAttribute="leading" id="m9Z-t0-lXS"/>
                 <constraint firstAttribute="trailing" secondItem="DRG-89-lmE" secondAttribute="trailing" id="uxx-kS-YsA"/>
             </constraints>

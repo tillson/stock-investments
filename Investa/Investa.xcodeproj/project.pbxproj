@@ -16,6 +16,12 @@
 		43622FEF217ACC6D00700164 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FEE217ACC6D00700164 /* PortfolioViewController.swift */; };
 		43622FF2217ACFC700700164 /* PortfolioGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF1217ACFC700700164 /* PortfolioGraphCell.swift */; };
 		43622FF4217AD85B00700164 /* PortfolioStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF3217AD85B00700164 /* PortfolioStockCell.swift */; };
+		43622FF6217AE44200700164 /* GraphHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43622FF5217AE44200700164 /* GraphHeaderView.xib */; };
+		43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF7217AE66600700164 /* GraphHeaderView.swift */; };
+		43622FFA217AF5FB00700164 /* UIColor+extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF9217AF5FB00700164 /* UIColor+extra.swift */; };
+		43622FFC217AF7F400700164 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FFB217AF7F400700164 /* Stock.swift */; };
+		43622FFE217AF80200700164 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FFD217AF80200700164 /* User.swift */; };
+		43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3EDEB217AFCE80088D963 /* SignInViewController.swift */; };
 		AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +38,12 @@
 		43622FEE217ACC6D00700164 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		43622FF1217ACFC700700164 /* PortfolioGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioGraphCell.swift; sourceTree = "<group>"; };
 		43622FF3217AD85B00700164 /* PortfolioStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioStockCell.swift; sourceTree = "<group>"; };
+		43622FF5217AE44200700164 /* GraphHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphHeaderView.xib; sourceTree = "<group>"; };
+		43622FF7217AE66600700164 /* GraphHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphHeaderView.swift; sourceTree = "<group>"; };
+		43622FF9217AF5FB00700164 /* UIColor+extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extra.swift"; sourceTree = "<group>"; };
+		43622FFB217AF7F400700164 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		43622FFD217AF80200700164 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		43C3EDEB217AFCE80088D963 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +104,10 @@
 				434ED709217AC50300A8B197 /* LaunchScreen.storyboard */,
 				434ED70C217AC50300A8B197 /* Info.plist */,
 				43622FF0217ACFB300700164 /* portfolio */,
+				43622FF9217AF5FB00700164 /* UIColor+extra.swift */,
+				43622FFB217AF7F400700164 /* Stock.swift */,
+				43622FFD217AF80200700164 /* User.swift */,
+				43C3EDEB217AFCE80088D963 /* SignInViewController.swift */,
 			);
 			path = Investa;
 			sourceTree = "<group>";
@@ -104,6 +120,8 @@
 				43622FEE217ACC6D00700164 /* PortfolioViewController.swift */,
 				43622FF1217ACFC700700164 /* PortfolioGraphCell.swift */,
 				43622FF3217AD85B00700164 /* PortfolioStockCell.swift */,
+				43622FF5217AE44200700164 /* GraphHeaderView.xib */,
+				43622FF7217AE66600700164 /* GraphHeaderView.swift */,
 			);
 			path = portfolio;
 			sourceTree = "<group>";
@@ -120,6 +138,7 @@
 				434ED6FA217AC50200A8B197 /* Frameworks */,
 				434ED6FB217AC50200A8B197 /* Resources */,
 				50A1DB15F94349294B78D96A /* [CP] Embed Pods Frameworks */,
+				E4A500A682F210A9CF210E66 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -172,6 +191,7 @@
 				434ED708217AC50300A8B197 /* Assets.xcassets in Resources */,
 				434ED706217AC50200A8B197 /* Main.storyboard in Resources */,
 				434D5E36217ACB5C00FF5FA3 /* PortfolioGraphCell.xib in Resources */,
+				43622FF6217AE44200700164 /* GraphHeaderView.xib in Resources */,
 				434D5E38217ACB6F00FF5FA3 /* PortfolioStockCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,14 +225,38 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4A500A682F210A9CF210E66 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Investa/Pods-Investa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -222,7 +266,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */,
 				434ED701217AC50200A8B197 /* AppDelegate.swift in Sources */,
+				43622FFA217AF5FB00700164 /* UIColor+extra.swift in Sources */,
+				43622FFC217AF7F400700164 /* Stock.swift in Sources */,
+				43622FFE217AF80200700164 /* User.swift in Sources */,
+				43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */,
 				43622FF4217AD85B00700164 /* PortfolioStockCell.swift in Sources */,
 				43622FEF217ACC6D00700164 /* PortfolioViewController.swift in Sources */,
 				43622FF2217ACFC700700164 /* PortfolioGraphCell.swift in Sources */,

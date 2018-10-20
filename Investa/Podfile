@@ -4,5 +4,6 @@ target 'Investa' do
   use_frameworks!
 
   pod 'Charts'
+  pod 'GoogleSignIn'
 
 end

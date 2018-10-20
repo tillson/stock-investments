@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e1A-wv-BWA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fBX-3C-2pO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,64 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Sign In View Controller-->
+        <scene sceneID="gzX-H7-5z6">
+            <objects>
+                <viewController id="fBX-3C-2pO" customClass="SignInViewController" customModule="Investa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uE8-GN-uBz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="CWo-Vc-H34"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ij-tY-Nz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6327" y="356"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Wyd-FC-mK8">
+            <objects>
+                <viewController storyboardIdentifier="Login" id="PZY-h6-eEf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t7A-Mn-KRI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Investa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8c-tf-FoE">
+                                <rect key="frame" x="119.5" y="220" width="136" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn how to use the Stock Market" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZM4-XZ-vZd">
+                                <rect key="frame" x="65.5" y="276" width="244" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lgs-tl-hhq" customClass="GIDSignInButton">
+                                <rect key="frame" x="20" y="328" width="335" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="V8c-tf-FoE" firstAttribute="top" secondItem="9WT-fB-7QC" secondAttribute="top" constant="200" id="11L-6L-3Bm"/>
+                            <constraint firstItem="Lgs-tl-hhq" firstAttribute="leading" secondItem="9WT-fB-7QC" secondAttribute="leading" constant="20" id="5k9-JQ-nw4"/>
+                            <constraint firstItem="Lgs-tl-hhq" firstAttribute="centerY" secondItem="t7A-Mn-KRI" secondAttribute="centerY" id="IFa-2I-Idu"/>
+                            <constraint firstItem="V8c-tf-FoE" firstAttribute="centerX" secondItem="t7A-Mn-KRI" secondAttribute="centerX" id="Jw7-ox-dug"/>
+                            <constraint firstItem="ZM4-XZ-vZd" firstAttribute="top" secondItem="V8c-tf-FoE" secondAttribute="bottom" constant="8" id="Vxs-kB-uUq"/>
+                            <constraint firstItem="9WT-fB-7QC" firstAttribute="trailing" secondItem="Lgs-tl-hhq" secondAttribute="trailing" constant="20" id="f2v-bd-jwA"/>
+                            <constraint firstItem="ZM4-XZ-vZd" firstAttribute="centerX" secondItem="t7A-Mn-KRI" secondAttribute="centerX" id="oSA-Sm-e1e"/>
+                            <constraint firstItem="Lgs-tl-hhq" firstAttribute="centerX" secondItem="t7A-Mn-KRI" secondAttribute="centerX" id="rLi-Ce-Ac4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9WT-fB-7QC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NXT-Ch-7UV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5344" y="356"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="hez-fZ-I0k">
             <objects>
@@ -29,12 +87,17 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yvb-l1-hmO">
             <objects>
-                <tabBarController id="e1A-wv-BWA" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Portfolio" id="e1A-wv-BWA" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Bsn-La-g9U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="o3c-2k-fon" kind="relationship" relationship="viewControllers" id="WtZ-yB-B3b"/>
                         <segue destination="ptm-jU-m6L" kind="relationship" relationship="viewControllers" id="EXF-Wq-a2m"/>
@@ -65,9 +128,9 @@
         <scene sceneID="lrS-TU-JDe">
             <objects>
                 <navigationController id="ptm-jU-m6L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" systemItem="featured" id="L3m-bL-zDt"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="toe-FN-xpF">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                    <tabBarItem key="tabBarItem" title="" image="economic-investment" selectedImage="economic-investment" id="L3m-bL-zDt"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="toe-FN-xpF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G7l-tG-eri">
@@ -125,4 +188,7 @@
             <point key="canvasLocation" x="478" y="208"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="economic-investment" width="25.600000381469727" height="25.600000381469727"/>
+    </resources>
 </document>

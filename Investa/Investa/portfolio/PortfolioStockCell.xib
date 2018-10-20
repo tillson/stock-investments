@@ -25,12 +25,20 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="+1000%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCh-XK-Rt5">
+                        <rect key="frame" x="569" y="28" width="94" height="30"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="1" alpha="0.15595569349315069" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.20000000000000001" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="YOM-9N-5gh" firstAttribute="leading" secondItem="7yZ-ER-7Bv" secondAttribute="leading" constant="16" id="E4H-cR-zgn"/>
+                <constraint firstItem="XCh-XK-Rt5" firstAttribute="centerY" secondItem="7yZ-ER-7Bv" secondAttribute="centerY" id="HGa-wF-FW9"/>
                 <constraint firstItem="YOM-9N-5gh" firstAttribute="centerY" secondItem="7yZ-ER-7Bv" secondAttribute="centerY" id="duv-vC-9DD"/>
+                <constraint firstAttribute="trailing" secondItem="XCh-XK-Rt5" secondAttribute="trailing" constant="20" id="fX9-dy-gzD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="9Ka-IF-bg7"/>
             <size key="customSize" width="683" height="93"/>
