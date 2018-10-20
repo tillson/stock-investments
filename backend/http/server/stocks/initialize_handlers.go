@@ -10,8 +10,14 @@ type Stocks struct {
 	DB     *gorm.DB
 }
 
-func (r Profile) InitializeHandlers() {
+func (r Stocks) InitializeHandlers() {
 	r.Router.
 		HandleFunc("/", r.getStocks).
-		Methods("GET")
+		Methods("POST")
+	r.Router.
+		HandleFunc("/buy", r.buyStocks).
+		Methods("POST")
+	r.Router.
+		HandleFunc("/sell", r.sellStocks).
+		Methods("POST")
 }

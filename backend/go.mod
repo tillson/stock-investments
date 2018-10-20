@@ -3,6 +3,7 @@ module github.com/tillson/stock-investments
 require (
 	github.com/auth0/go-jwt-middleware v0.0.0-20170425171159-5493cabe49f7
 	github.com/boyter/scc v1.11.0 // indirect
+	github.com/cmckee-dev/go-alpha-vantage v0.0.0-20180308134341-93e1d00e7e7c
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/mux v1.6.2

@@ -2,7 +2,9 @@ package models
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/tillson/stock-investments/config"
+	"github.com/tillson/stock-investments/stocks"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -17,6 +19,10 @@ type User struct {
 
 	Username     string `gorm:"unique"`
 	PasswordHash []byte
+
+	Transactions []Transaction
+
+	Funds uint64
 
 	Name string
 }
@@ -47,19 +53,6 @@ func NewUserFromUsername(username string, db *gorm.DB) (User, error) {
 	return user, nil
 }
 
-func NewUserList(db *gorm.DB, usernames ...string) ([]User, error) {
-	users := make([]User, 0)
-	for _, username := range usernames {
-		var tmpU User
-		if err := db.Where("username = ?", username).First(&tmpU).Error; err != nil {
-			return users, err
-		}
-		tmpU.SetDB(db)
-		users = append(users, tmpU)
-	}
-	return users, nil
-}
-
 func CreateUser(username, password string, db *gorm.DB) (User, error) {
 	passwordHash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
@@ -69,6 +62,7 @@ func CreateUser(username, password string, db *gorm.DB) (User, error) {
 	user := User{
 		Username:     username,
 		PasswordHash: passwordHash,
+		Funds: config.GetStartMoney(),
 	}
 
 	if err := db.Create(&user).Error; err != nil {
@@ -129,6 +123,54 @@ func (user *User) UpdatePassword(password string) error {
 	}
 
 	if err := user.db.Model(&user).Update("password_hash", passwordHash).Error; err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var NotEnoughMoneyErr = errors.New("not enough money")
+
+func (user *User) BuyStock(ticker string, quantity uint) error {
+	// Check current price of stock
+	price, _, err := stocks.GetCurrentPrice(ticker)
+	if err != nil {
+		return err
+	}
+	// Validate current_price * quantity <= user.Money
+	if price * float64(quantity) > float64(user.Funds) {
+		return NotEnoughMoneyErr
+	}
+
+	tx := Transaction{
+		Ticker: ticker,
+		PriceAtTime: price,
+		UserID: user.ID,
+		Type: Buy,
+	}
+	if err := CreateTransaction(tx, user.db); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (user *User) SellStock(ticker string, quantity uint) error {
+	// Check current price of stock
+	price, _, err := stocks.GetCurrentPrice(ticker)
+	if err != nil {
+		return err
+	}
+
+	// TODO: Validate user has number of stocks
+
+	tx := Transaction{
+		Ticker: ticker,
+		PriceAtTime: price,
+		UserID: user.ID,
+		Type: Buy,
+	}
+	if err := CreateTransaction(tx, user.db); err != nil {
 		return err
 	}
 

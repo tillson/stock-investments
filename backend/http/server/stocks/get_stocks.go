@@ -2,13 +2,16 @@ package profile
 
 import (
 	"encoding/json"
+	"fmt"
+	"github.com/tillson/stock-investments/http/response"
+	"github.com/tillson/stock-investments/stocks"
 	"io"
+	"log"
 	"net/http"
-	"time"
 )
 
 type GetStocksInput struct {
-	Identifiers []string `json:"identifiers"`
+	Identifier string `json:"identifier"`
 }
 
 func NewGetStocksInput(r io.Reader) (GetStocksInput, error){
@@ -19,14 +22,10 @@ func NewGetStocksInput(r io.Reader) (GetStocksInput, error){
 	return gsi, nil
 }
 
-type StockHistory struct {
-	Time time.Time
-	Price float64
-}
-
 type GetStocksOutput struct {
 	Ticker string `json:"ticker"`
-	Stocks []StockHistory `json:"stocks"`
+	Stocks []stocks.PriceHistory `json:"stocks"`
+	CurrentPrice float64 `json:"current_price"`
 }
 
 func (g GetStocksOutput) JSON() (string, error)  {
@@ -40,4 +39,29 @@ func (g GetStocksOutput) JSON() (string, error)  {
 // Accept: application/json GET "https://www.blackrock.com/tools/hackathon/security-data?identifiers=IXN"
 func (r Stocks) getStocks(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+
+	data, err := NewGetStocksInput(req.Body)
+	if err != nil {
+		log.Println(err)
+		response.ServerError.Write(w)
+		return
+	}
+
+	prices, err := stocks.GetWeeklyHistory(data.Identifier)
+	if err != nil {
+		log.Println(err)
+		response.ServerError.Write(w)
+		return
+	}
+	output := GetStocksOutput{
+		Ticker: data.Identifier,
+		Stocks: prices,
+	}
+	out, err := output.JSON()
+	if err != nil {
+		response.ServerError.Write(w)
+		return
+	}
+
+	fmt.Fprint(w, out)
 }

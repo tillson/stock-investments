@@ -10,10 +10,10 @@ import (
 )
 
 type Return struct {
-	Name        string
-	Username    string
-	Balance     uint64
-	PhoneNumber string
+	Name        string `json:"name"`
+	Username    string `json:"username"`
+	Email string `json:"email"`
+	Funds uint64 `json:"funds"`
 }
 
 func (r Return) JSON() (string, error) {
@@ -36,6 +36,7 @@ func (r Profile) profileHandler(w http.ResponseWriter, req *http.Request) {
 	userData := Return{
 		Username:    user.Username,
 		Name:        user.Name,
+		Funds: user.Funds,
 	}
 
 	out, err := userData.JSON()
