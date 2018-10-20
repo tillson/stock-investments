@@ -15,7 +15,4 @@ class APIManager {
     
     var token: String?
     
-    
-
-    
 }

@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="517" height="253"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRG-89-lmE" customClass="LineChartView" customModule="Charts">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRG-89-lmE" customClass="StockLineGraphView" customModule="Investa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="517" height="243"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -34,7 +34,7 @@
             <viewLayoutGuide key="safeArea" id="tTv-AV-baT"/>
             <size key="customSize" width="517" height="253"/>
             <connections>
-                <outlet property="lineChartView" destination="DRG-89-lmE" id="fJG-0C-cC4"/>
+                <outlet property="stockGraph" destination="DRG-89-lmE" id="0LI-Vx-npU"/>
             </connections>
             <point key="canvasLocation" x="-33" y="-23"/>
         </collectionViewCell>
