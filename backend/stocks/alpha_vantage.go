@@ -1,7 +1,6 @@
 package stocks
 
 import (
-	"fmt"
 	alpha "github.com/cmckee-dev/go-alpha-vantage"
 	"github.com/tillson/stock-investments/config"
 	"time"
@@ -30,7 +29,7 @@ func GetWeeklyHistory(ticker string) ([]PriceHistory, error) {
 
 	api := config.GetAlphaToken()
 	c := alpha.NewClient(api)
-	series, err := c.StockTimeSeriesIntraday(alpha.TimeIntervalFifteenMinute, ticker)
+	series, err := c.StockTimeSeriesIntraday(alpha.TimeIntervalThirtyMinute, ticker)
 	if err != nil {
 		return history, err
 	}

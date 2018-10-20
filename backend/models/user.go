@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/tillson/stock-investments/config"
+	"github.com/tillson/stock-investments/stocks"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -21,7 +22,7 @@ type User struct {
 
 	Transactions []Transaction
 
-	Money uint64
+	Funds uint64
 
 	Name string
 }
@@ -131,16 +132,46 @@ var NotEnoughMoneyErr = errors.New("not enough money")
 
 func (user *User) BuyStock(ticker string, quantity uint) error {
 	// Check current price of stock
+	price, _, err := stocks.GetCurrentPrice(ticker)
+	if err != nil {
+		return err
+	}
 	// Validate current_price * quantity <= user.Money
-	//    return NotEnoughMoneyErr
+	if price * float64(quantity) > float64(user.Funds) {
+		return NotEnoughMoneyErr
+	}
 
 	tx := Transaction{
 		Ticker: ticker,
+		PriceAtTime: price,
 		UserID: user.ID,
 		Type: Buy,
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
 		return err
 	}
+
+	return nil
+}
+
+func (user *User) SellStock(ticker string, quantity uint) error {
+	// Check current price of stock
+	price, _, err := stocks.GetCurrentPrice(ticker)
+	if err != nil {
+		return err
+	}
+
+	// TODO: Validate user has number of stocks
+
+	tx := Transaction{
+		Ticker: ticker,
+		PriceAtTime: price,
+		UserID: user.ID,
+		Type: Buy,
+	}
+	if err := CreateTransaction(tx, user.db); err != nil {
+		return err
+	}
+
 	return nil
 }

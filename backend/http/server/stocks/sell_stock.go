@@ -10,11 +10,11 @@ import (
 	"net/http"
 )
 
-type BuyStockInput struct {
+type SellStockInput struct {
 	Ticker string
 	Quantity uint
 }
-func NewBuyStockInput(r io.Reader) (BuyStockInput, error) {
+func NewSellStockInput(r io.Reader) (BuyStockInput, error) {
 	var b BuyStockInput
 	if err := json.NewDecoder(r).Decode(&b); err != nil {
 		return b, err
@@ -22,7 +22,7 @@ func NewBuyStockInput(r io.Reader) (BuyStockInput, error) {
 	return b, nil
 }
 
-func (r Stocks) buyStocks(w http.ResponseWriter, req *http.Request) {
+func (r Stocks) sellStocks(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	user, ok := context.Get(req, "user").(models.User)
