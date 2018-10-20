@@ -73,6 +73,10 @@ class StockViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         
         }))
+        alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -84,6 +88,8 @@ class StockViewController: UIViewController {
             field.keyboardType = .numberPad
             textField = field
         })
+        
+        alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Buy", style: .default, handler: { (action) in
             if let amountToBuy = Int(textField.text ?? "") {
@@ -103,7 +109,6 @@ class StockViewController: UIViewController {
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }

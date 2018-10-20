@@ -68,7 +68,6 @@ class StockLineGraphView: UIView {
             return ChartDataEntry(x: x, y: Double(y))
         }
         
-        
         let set1 = LineChartDataSet(values: values, label: "")
         set1.axisDependency = .left
         set1.setColor(.investaBlue)

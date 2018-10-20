@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        let user = User(name: "User", portfolioValue: 5000000)
+        let user = User(name: "User", portfolioValue: 25000)
 //        let apple = Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 500)
 //        let stocks = [apple, apple, apple, apple]
 //        
