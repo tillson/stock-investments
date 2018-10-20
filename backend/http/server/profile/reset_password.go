@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/gorilla/context"
-	"gitlab.com/t94j0/finance/http/response"
-	"gitlab.com/t94j0/finance/models"
+	"github.com/tillson/stock-investments/http/response"
+	"github.com/tillson/stock-investments/models"
 	"io"
 	"net/http"
 )
