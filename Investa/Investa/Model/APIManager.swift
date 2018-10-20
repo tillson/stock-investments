@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class APIManager {
     
@@ -15,7 +16,13 @@ class APIManager {
     
     var token: String?
     
+<<<<<<< HEAD:Investa/Investa/models/APIManager.swift
     // user who is using the app, created in google login
     var currentUser: User?
+=======
+    func register(username: String, password: String) {
+        
+    }
+>>>>>>> master:Investa/Investa/Model/APIManager.swift
     
 }
