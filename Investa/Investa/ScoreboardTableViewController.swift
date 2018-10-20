@@ -106,7 +106,7 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
             cell.rank.text = "\(indexPath.row + 1)" + "."
             cell.pic.image = UIImage(named: "sample")
             cell.name.text = user.name
-            cell.totalFunds.text = "\(user.fundsToTrade)"
+            cell.totalFunds.text = "\(user.funds)"
 //            cell.percentChange.text = "\(user.percentIncrease)"
             cell.pic.layer.cornerRadius = 41
             cell.pic.layer.masksToBounds = true

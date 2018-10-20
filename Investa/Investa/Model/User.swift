@@ -5,22 +5,31 @@
 //  Created by Tillson Galloway on 10/20/18.
 //  Copyright © 2018 hackgt. All rights reserved.
 //
+import Foundation
 
 class User: Profile {
     
     let username: String
-    let email: String
     var transactions = [Transaction]()
     
-    init(name: String, email: String, startingFunds: Float, portfolioValue: Float) {
-        self.email = email
-        self.username = ""
-        super.init(name: name, startingFunds: startingFunds, portfolioValue: portfolioValue)
+    override init(name: String, portfolioValue: Float) {
+        self.username = name
+        super.init(name: name, portfolioValue: portfolioValue)
     }
-    
+ 
+//    //won't get called
     required init(from decoder: Decoder) throws {
         self.username = ""
-        self.email = "asdf@gmail.com"
         try super.init(from: decoder)
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        if let username = aDecoder.decodeObject(forKey: "username") as? String {
+            self.username = username
+        } else {
+            self.username = ""
+        }
+        super.init(coder: aDecoder)
+    }
+    
 }

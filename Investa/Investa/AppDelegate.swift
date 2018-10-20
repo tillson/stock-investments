@@ -16,11 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let user = User(name: "User", email: "email@email.com", startingFunds: 10000, portfolioValue: 5000000)
-        let apple = Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 500)
-        let stocks = [apple, apple, apple, apple]
+        let username = UserDefaults.standard.string(forKey: "username")
+        let password = UserDefaults.standard.string(forKey: "password")
+        if username != nil && password != nil {
+            APIManager.shared.login(username: username!, password: password!, onSuccess: { (success) in
+                APIManager.shared.getCurrentUser(onSuccess: { (user) in
+                    APIManager.shared.user = user
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "Portfolio")
+                    self.window!.rootViewController = controller
+                }, onFailure: { (error) in
+                    print(error)
+                })
+            }) { (error) in
+                print(error)
+            }
+        }
         
-        user.ownedStocks = stocks
+        let user = User(name: "User", portfolioValue: 5000000)
+//        let apple = Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 500)
+//        let stocks = [apple, apple, apple, apple]
+//        
+//        user.ownedStocks = stocks
         APIManager.shared.user = user
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

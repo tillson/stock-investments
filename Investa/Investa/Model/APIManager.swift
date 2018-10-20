@@ -24,6 +24,9 @@ class APIManager {
     }
     
     func register(username: String, password: String, onSuccess: @escaping(Bool) -> Void, onFailure: @escaping(Error) -> Void) {
+        if token != nil {
+            return
+        }
         sManager.request(APIManager.baseURL + "/auth/register",
                           method: .post,
                           parameters: ["username": username, "password": password],
@@ -41,6 +44,9 @@ class APIManager {
     }
     
     func login(username: String, password: String, onSuccess: @escaping(Bool) -> Void, onFailure: @escaping(Error) -> Void) {
+        if token != nil {
+            return
+        }
         sManager.request(APIManager.baseURL + "/auth/login",
                           method: .post,
                           parameters: ["username": username, "password": password],
@@ -71,8 +77,7 @@ class APIManager {
                 guard let data = response.data else { onFailure(NoTokenError()); return; }
                 do {
                     let user = try JSONDecoder().decode(User.self, from: data)
-                    print(user)
-                    APIManager.shared.user = user
+                    onSuccess(user)
                 } catch let JSONError as Error {
                     print(JSONError)
                 }
@@ -90,6 +95,7 @@ class APIManager {
         sManager = Alamofire.SessionManager(configuration: configuration)
         print(headers)
     }
+
     
 }
 
