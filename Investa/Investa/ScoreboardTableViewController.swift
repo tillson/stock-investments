@@ -8,31 +8,77 @@
 
 import UIKit
 
-class ScoreboardTableViewController: UITableViewController {
+class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,UISearchResultsUpdating,UISearchControllerDelegate {
 
-    var leaderboard: [Profile] = []
+    var leaderboard: [User] = []
+    
+    var filtered = [User]()
+    
+    var isSearching = false
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchBar.placeholder = "Search"
+        searchController.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self 
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = true
+        self.navigationItem.searchController = searchController
+        
         addToLeaderboard()
         tableView.delegate = self
         tableView.dataSource = self
+        self.edgesForExtendedLayout = UIRectEdge.bottom
+        self.extendedLayoutIncludesOpaqueBars = false
+        self.automaticallyAdjustsScrollViewInsets = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text == nil || searchController.searchBar.text == ""{
+            isSearching = false
+            view.endEditing(true)
+            tableView.reloadData()
+        }else{
+            isSearching = true
+            filtered = leaderboard.filter { user in
+                return user.name.lowercased().contains(searchController.searchBar.text!.lowercased())
+            }
+            print(filtered)
+            tableView.reloadData()
+        }
+    }
 
     func addToLeaderboard(){
-        let guy1 = Profile(name: "Person 1", startingFunds: 100.0, portfolioValue: 150.0)
-        leaderboard.append(guy1)
-        let guy2 = Profile(name: "Person 2", startingFunds: 100.0, portfolioValue: 200.0)
-        leaderboard.append(guy2)
-        let guy3 = Profile(name: "Person 3", startingFunds: 100.0, portfolioValue: 250.0)
-        leaderboard.append(guy3)
-        let guy4 = Profile(name: "Person 4", startingFunds: 100.0, portfolioValue: 300.0)
-        leaderboard.append(guy4)
+//        let guy1 = User.init( name: "Gill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy1)
+//        let guy2 = User.init(name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy2)
+//        let guy3 = User.init(name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy3)
+//        let guy4 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy4)
+//        let guy5 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy5)
+//        let guy6 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy6)
+//        let guy7 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy7)
+//        let guy8 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy8)
+//        let guy9 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy9)
+//        let guy10 = User.init( name: "Bill", totalFunds: 1000, percentIncrease: 10000.00)
+//        leaderboard.append(guy10)
+        
     }
     
     // MARK: - Table view data source
@@ -43,22 +89,87 @@ class ScoreboardTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return leaderboard.count
+        if isSearching{
+            return filtered.count
+        }else{
+            return leaderboard.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if isSearching{
+            let user = filtered[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserTableViewCell
+            print(indexPath.row)
+            cell.rank.text = "\(indexPath.row + 1)" + "."
+            cell.pic.image = UIImage(named: "sample")
+            cell.name.text = user.name
+            cell.totalFunds.text = "\(user.fundsToTrade)"
+//            cell.percentChange.text = "\(user.percentIncrease)"
+            cell.pic.layer.cornerRadius = 41
+            cell.pic.layer.masksToBounds = true
+            cell.pic.clipsToBounds = true
+            return cell
+        }else{
+         
         let user = leaderboard[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserTableViewCell
+        print(indexPath.row)
+        cell.rank.text = "\(indexPath.row + 1)" + "."
         cell.pic.image = UIImage(named: "sample")
         cell.name.text = user.name
-        cell.totalFunds.text = "\(user.portfolioValue)"
-        cell.percentChange.text = "\(user.portfolioValue / user.startingFunds * 100)"
+//        cell.totalFunds.text = "\(user.totalFunds)"
+//        cell.percentChange.text = "\(user.percentIncrease)"
         cell.pic.layer.cornerRadius = 41
         cell.pic.layer.masksToBounds = true
         cell.pic.clipsToBounds = true
         return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        tableView.tableFooterView = customView
+        customView.backgroundColor = UIColor.green
+        let rank = UILabel(frame: CGRect(x: 5, y: customView.frame.height/2-15, width: 50, height: 50))
+        rank.font = UIFont(name: "Helvetica Neue", size: 30)
+        rank.text = "1."
+        customView.addSubview(rank)
+        let button = UILabel(frame: CGRect(x: customView.frame.width/2-75, y: customView.frame.height/2-25, width: 150, height: 75))
+        button.font = UIFont(name: "Helvetica Neue", size: 30)
+        button.text = "Your Name"
+        customView.addSubview(button)
+        let image = UIImageView(frame: CGRect(x: 35, y: customView.frame.height/2-25, width: 70, height: 70))
+        image.image = UIImage(named: "sample")
+        image.layer.cornerRadius = 40
+        image.layer.masksToBounds = true
+        image.clipsToBounds = true
+        customView.addSubview(image)
+        return customView
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchController.searchBar.text == nil || searchController.searchBar.text == ""{
+            isSearching = false
+            view.endEditing(true)
+            tableView.reloadData()
+        }else{
+            isSearching = true
+            filtered = leaderboard.filter({$0.name == searchController.searchBar.text})
+            tableView.reloadData()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            // to hide footer for section 0
+            return 75
+        } else {
+            
+            return 75
+        }
     }
     
     /*

@@ -15,9 +15,23 @@ class SearchResultsTableViewController: UITableViewController ,UISearchBarDelega
     
     var isSearching = false
     
+    override func viewWillAppear(_ animated: Bool) {
+        let searchController = UISearchController(searchResultsController: SearchResultsTableViewController())
+        searchController.searchBar.placeholder = "Search"
+        searchController.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        self.navigationItem.searchController = searchController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -25,14 +39,17 @@ class SearchResultsTableViewController: UITableViewController ,UISearchBarDelega
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
+     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text == nil || searchController.searchBar.text == ""{
             isSearching = false
             view.endEditing(true)
             tableView.reloadData()
         }else{
             isSearching = true
-            filtered = array1.filter({$0 == searchController.searchBar.text})
+            filtered = array1.filter { user in
+                return user.lowercased().contains(searchController.searchBar.text!.lowercased())
+            }
+            print(filtered)
             tableView.reloadData()
         }
     }
@@ -45,17 +62,28 @@ class SearchResultsTableViewController: UITableViewController ,UISearchBarDelega
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return array1.count
+        if isSearching{
+            return filtered.count
+        }else{
+            return array1.count
+        }
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        var text = array1[indexPath.row]
-        cell.textLabel?.text = text
+        if isSearching{
+            var text = filtered[indexPath.row]
+            cell.textLabel?.text = text
+            print(filtered)
+        }else{
+            var text = array1[indexPath.row]
+            cell.textLabel?.text = text
+        }
         return cell
     }
+    
+    
     
 
     /*

@@ -17,9 +17,7 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     override func viewWillAppear(_ animated: Bool) {
         let searchController = UISearchController(searchResultsController: SearchResultsTableViewController())
         searchController.searchBar.placeholder = "Search"
-        searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
         
@@ -68,7 +66,6 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         }else{
             return videos.count
         }
-        return 0
     }
 
     
@@ -99,12 +96,6 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
             return "Videos"
         }
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        
-    }
-    
     
     /*
     // Override to support conditional editing of the table view.

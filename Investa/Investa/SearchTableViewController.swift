@@ -18,8 +18,14 @@ class SearchTableViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+//        let database2 = YNSearchModel(key: "YNSearchData")
+//        let demoDatabase = database2
+//        
+////        YNSearch.setCategories(value: demoDatabase)
+//       
+////        self.ynSearchListView(tableView, cellForRowAt: nil)
+//        self.initData(database: demoDatabase)
+//        // Do any additional setup after loading the view.
     }
     
     

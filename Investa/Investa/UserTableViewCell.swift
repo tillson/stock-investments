@@ -10,6 +10,7 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var rank: UILabel!
     @IBOutlet weak var pic: UIImageView!
     @IBOutlet weak var totalFunds: UILabel!
     @IBOutlet weak var percentChange: UILabel!
