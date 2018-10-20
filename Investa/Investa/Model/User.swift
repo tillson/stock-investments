@@ -9,7 +9,7 @@
 import Foundation
 
 struct User: Codable {
-<<<<<<< HEAD:Investa/Investa/models/User.swift
+
     var name: String
     var totalFunds: Int
     var percentIncrease: Float
@@ -26,11 +26,5 @@ struct User: Codable {
         self.totalFunds = totalFunds
         self.percentIncrease = percentIncrease
     }
-    
-=======
-    
-    var stocks = [Stock]()
-    var score = 2
->>>>>>> master:Investa/Investa/Model/User.swift
     
 }

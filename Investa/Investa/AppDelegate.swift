@@ -27,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let email = user.profile.email
             
             var user = User(name: fullName ?? "User", totalFunds: 10000, percentIncrease: 0)
-            let stocks = [Stock(name: "APPL", price: 1000), Stock(name: "TESLA", price: 5), Stock(name: "GOOG", price: 0), Stock(name: "AMAZON", price: 700), Stock(name: "Samsung", price: 0)]
+            let apple = Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 500)
+            let stocks = [apple, apple, apple, apple]
+            
             user.stocks = stocks
             APIManager.shared.currentUser = user
 
