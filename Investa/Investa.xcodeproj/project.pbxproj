@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		434D5E36217ACB5C00FF5FA3 /* PortfolioGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434D5E35217ACB5C00FF5FA3 /* PortfolioGraphCell.xib */; };
+		434D5E38217ACB6F00FF5FA3 /* PortfolioStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 434D5E37217ACB6F00FF5FA3 /* PortfolioStockCell.xib */; };
 		434ED701217AC50200A8B197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434ED700217AC50200A8B197 /* AppDelegate.swift */; };
-		434ED703217AC50200A8B197 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434ED702217AC50200A8B197 /* ViewController.swift */; };
 		434ED706217AC50200A8B197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434ED704217AC50200A8B197 /* Main.storyboard */; };
 		434ED708217AC50300A8B197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434ED707217AC50300A8B197 /* Assets.xcassets */; };
 		434ED70B217AC50300A8B197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434ED709217AC50300A8B197 /* LaunchScreen.storyboard */; };
+		43622FEF217ACC6D00700164 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FEE217ACC6D00700164 /* PortfolioViewController.swift */; };
+		43622FF2217ACFC700700164 /* PortfolioGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF1217ACFC700700164 /* PortfolioGraphCell.swift */; };
+		43622FF4217AD85B00700164 /* PortfolioStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43622FF3217AD85B00700164 /* PortfolioStockCell.swift */; };
 		AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0332E6CD50001B1AEF081B9A /* Pods-Investa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.release.xcconfig"; sourceTree = "<group>"; };
+		434D5E35217ACB5C00FF5FA3 /* PortfolioGraphCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioGraphCell.xib; sourceTree = "<group>"; };
+		434D5E37217ACB6F00FF5FA3 /* PortfolioStockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioStockCell.xib; sourceTree = "<group>"; };
 		434ED6FD217AC50200A8B197 /* Investa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Investa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434ED700217AC50200A8B197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		434ED702217AC50200A8B197 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		434ED705217AC50200A8B197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		434ED707217AC50300A8B197 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		434ED70A217AC50300A8B197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		434ED70C217AC50300A8B197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43622FEE217ACC6D00700164 /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		43622FF1217ACFC700700164 /* PortfolioGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioGraphCell.swift; sourceTree = "<group>"; };
+		43622FF3217AD85B00700164 /* PortfolioStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioStockCell.swift; sourceTree = "<group>"; };
 		6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,13 +87,25 @@
 			isa = PBXGroup;
 			children = (
 				434ED700217AC50200A8B197 /* AppDelegate.swift */,
-				434ED702217AC50200A8B197 /* ViewController.swift */,
 				434ED704217AC50200A8B197 /* Main.storyboard */,
 				434ED707217AC50300A8B197 /* Assets.xcassets */,
 				434ED709217AC50300A8B197 /* LaunchScreen.storyboard */,
 				434ED70C217AC50300A8B197 /* Info.plist */,
+				43622FF0217ACFB300700164 /* portfolio */,
 			);
 			path = Investa;
+			sourceTree = "<group>";
+		};
+		43622FF0217ACFB300700164 /* portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				434D5E35217ACB5C00FF5FA3 /* PortfolioGraphCell.xib */,
+				434D5E37217ACB6F00FF5FA3 /* PortfolioStockCell.xib */,
+				43622FEE217ACC6D00700164 /* PortfolioViewController.swift */,
+				43622FF1217ACFC700700164 /* PortfolioGraphCell.swift */,
+				43622FF3217AD85B00700164 /* PortfolioStockCell.swift */,
+			);
+			path = portfolio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +171,8 @@
 				434ED70B217AC50300A8B197 /* LaunchScreen.storyboard in Resources */,
 				434ED708217AC50300A8B197 /* Assets.xcassets in Resources */,
 				434ED706217AC50200A8B197 /* Main.storyboard in Resources */,
+				434D5E36217ACB5C00FF5FA3 /* PortfolioGraphCell.xib in Resources */,
+				434D5E38217ACB6F00FF5FA3 /* PortfolioStockCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +222,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				434ED703217AC50200A8B197 /* ViewController.swift in Sources */,
 				434ED701217AC50200A8B197 /* AppDelegate.swift in Sources */,
+				43622FF4217AD85B00700164 /* PortfolioStockCell.swift in Sources */,
+				43622FEF217ACC6D00700164 /* PortfolioViewController.swift in Sources */,
+				43622FF2217ACFC700700164 /* PortfolioGraphCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
