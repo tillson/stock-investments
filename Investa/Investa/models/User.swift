@@ -8,9 +8,8 @@
 
 import Foundation
 
-struct User: Codable {
-    
-    var stocks = [Stock]()
-    var score = 2
-    
+struct User {
+    var name: String
+    var totalFunds: Int
+    var percentIncrease: Float 
 }
