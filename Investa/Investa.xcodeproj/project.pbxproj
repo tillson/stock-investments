@@ -31,6 +31,7 @@
 		D86C1305217BB029004B53F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1304217BB029004B53F6 /* LoginViewController.swift */; };
 		D86C1307217BB031004B53F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1306217BB031004B53F6 /* RegisterViewController.swift */; };
 		D86C1309217BB0CB004B53F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1308217BB0CB004B53F6 /* User.swift */; };
+		D86C130B217BBD8A004B53F6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C130A217BBD8A004B53F6 /* Transaction.swift */; };
 		F2CB4803217BB85B00714F83 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB4802217BB85B00714F83 /* SearchResultsTableViewController.swift */; };
 		F2CB4805217BB86E00714F83 /* ScoreboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB4804217BB86E00714F83 /* ScoreboardTableViewController.swift */; };
 		F2CB4807217BB89500714F83 /* 1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2CB4806217BB89500714F83 /* 1.storyboard */; };
@@ -67,6 +68,7 @@
 		D86C1304217BB029004B53F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D86C1306217BB031004B53F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D86C1308217BB0CB004B53F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D86C130A217BBD8A004B53F6 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		F2CB4802217BB85B00714F83 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsTableViewController.swift; path = ../../../Investa/Investa/SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		F2CB4804217BB86E00714F83 /* ScoreboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreboardTableViewController.swift; path = ../../../Investa/Investa/ScoreboardTableViewController.swift; sourceTree = "<group>"; };
 		F2CB4806217BB89500714F83 /* 1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = 1.storyboard; path = ../../../Investa/Investa/1.storyboard; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				43622FFB217AF7F400700164 /* Stock.swift */,
 				D86C12FF217BA813004B53F6 /* Profile.swift */,
 				D86C1308217BB0CB004B53F6 /* User.swift */,
+				D86C130A217BBD8A004B53F6 /* Transaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,6 +302,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86C130B217BBD8A004B53F6 /* Transaction.swift in Sources */,
+				439D045F217B8AA9002CB86C /* SearchStockTableViewController.swift in Sources */,
 				43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */,
 				D86C1300217BA813004B53F6 /* Profile.swift in Sources */,
 				434ED701217AC50200A8B197 /* AppDelegate.swift in Sources */,

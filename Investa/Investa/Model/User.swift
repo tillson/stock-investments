@@ -9,6 +9,7 @@
 class User: Profile {
     
     let email: String
+    var transactions = [Transaction]()
     
     init(name: String, email: String, startingFunds: Float, portfolioValue: Float) {
         self.email = email
