@@ -35,6 +35,7 @@
 		D86C1305217BB029004B53F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1304217BB029004B53F6 /* LoginViewController.swift */; };
 		D86C1307217BB031004B53F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1306217BB031004B53F6 /* RegisterViewController.swift */; };
 		D86C1309217BB0CB004B53F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1308217BB0CB004B53F6 /* User.swift */; };
+		D86C130B217BBD8A004B53F6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C130A217BBD8A004B53F6 /* Transaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		D86C1304217BB029004B53F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D86C1306217BB031004B53F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D86C1308217BB0CB004B53F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D86C130A217BBD8A004B53F6 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				43622FFB217AF7F400700164 /* Stock.swift */,
 				D86C12FF217BA813004B53F6 /* Profile.swift */,
 				D86C1308217BB0CB004B53F6 /* User.swift */,
+				D86C130A217BBD8A004B53F6 /* Transaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86C130B217BBD8A004B53F6 /* Transaction.swift in Sources */,
 				439D045F217B8AA9002CB86C /* SearchStockTableViewController.swift in Sources */,
 				43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */,
 				D86C1300217BA813004B53F6 /* Profile.swift in Sources */,

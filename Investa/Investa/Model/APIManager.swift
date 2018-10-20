@@ -12,20 +12,26 @@ import Alamofire
 class APIManager {
     
     static let shared = APIManager()
-    static let baseURL = ""
+    static let baseURL = "http://localhost:8080"
     
     var user: User?
     
     var token: String?
     
-    func register(username: String, password: String, onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
-        Alamofire.request(APIManager.baseURL + "/auth/register" , method: .post).responseJSON { response in
+    func register(username: String, password: String, onSuccess: @escaping(Bool) -> Void, onFailure: @escaping(Error) -> Void) {
+        Alamofire.request(APIManager.baseURL + "/auth/register", method: .post, parameters: ["username": username, "password": password]).responseJSON { response in
             //
         }
     }
     
-    func login(username: String, password: String, onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
-        Alamofire.request(APIManager.baseURL + "/auth/login" , method: .post).responseJSON { response in
+    func login(username: String, password: String, onSuccess: @escaping(Bool) -> Void, onFailure: @escaping(Error) -> Void) {
+        Alamofire.request(APIManager.baseURL + "/auth/login", method: .post, parameters: ["username": username, "password": password]).responseJSON { response in
+            //
+        }
+    }
+    
+    func getCurrentUser(onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
+        Alamofire.request(APIManager.baseURL + "/profile" , method: .post).responseJSON { response in
             //
         }
     }
