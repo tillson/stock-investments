@@ -10,7 +10,7 @@ import UIKit
 
 class SearchStockTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     
-    let allStocks = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
+    let allStocks = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -23,11 +23,11 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         searchController.dimsBackgroundDuringPresentation = false
     }
     
-    let trending = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
+    let trending = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
     
-    let recommended = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
+    let recommended = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
     
-    var filtered = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
+    var filtered = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
     
     var isSearching = false
     
@@ -112,7 +112,7 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         }else{
             isSearching = true
             filtered = allStocks.filter { user in
-                return user.name.lowercased().contains(searchController.searchBar.text!.lowercased())
+                return user.ticker.lowercased().contains(searchController.searchBar.text!.lowercased())
             }
             tableView.reloadData()
         }
