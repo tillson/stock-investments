@@ -2,7 +2,6 @@ package profile
 
 import (
 	"encoding/json"
-	"errors"
 	"github.com/gorilla/context"
 	"github.com/tillson/stock-investments/http/response"
 	"github.com/tillson/stock-investments/models"
@@ -31,15 +30,15 @@ func (r Stocks) sellStocks(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	stockReq, err := NewBuyStockInput(req.Body)
+	stockReq, err := NewSellStockInput(req.Body)
 	if err != nil {
 		response.ServerError.Write(w)
 		return
 	}
 
-	err = user.BuyStock(stockReq.Ticker, stockReq.Quantity)
-	if err == models.NotEnoughMoneyErr {
-		response.NewResponse(400, errors.New("not enough money"))
+	err = user.SellStock(stockReq.Ticker, stockReq.Quantity)
+	if err == models.NotEnoughStocksErr{
+		response.NewResponse(400, models.NotEnoughStocksErr).Write(w)
 		return
 	} else if err != nil {
 		response.ServerError.Write(w)
