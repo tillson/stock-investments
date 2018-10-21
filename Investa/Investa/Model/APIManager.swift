@@ -121,6 +121,37 @@ class APIManager {
         }
     }
     
+    // MARK: Stocks
+    func getStock(identifier: String, shares: Int=0, onSuccess: @escaping(Stock) -> Void, onFailure: @escaping(Error) -> Void) {
+        if token == nil { onFailure(InvestaError.NoToken); return; }
+        if stocks.filter({$0.ticker == identifier}).count > 0 {
+            var stock = stocks.filter({$0.ticker == identifier})[0]
+            stock.sharesOwned = shares
+            onSuccess(stock)
+            return
+        }
+        sManager.request(APIManager.baseURL + "/stocks/",
+                         method: .post,
+                         parameters: ["identifier": identifier],
+                         encoding: JSONEncoding.default)
+            .responseJSON{ response in
+                if let error = response.error {
+                    onFailure(error)
+                    return
+                }
+                print(response)
+                guard let data = response.data else { onFailure(InvestaError.NoToken); return; }
+                do {
+                    var stock = try JSONDecoder().decode(Stock.self, from: data)
+                    stock.sharesOwned = shares
+                    onSuccess(stock)
+                } catch let error {
+                    print("Error selling stock: \(error)")
+                }
+        }
+    }
+    
+    
     func buyStock(identifier: String, shares: Int, onSuccess: @escaping(Transaction) -> Void, onFailure: @escaping(Error) -> Void) {
         if token == nil { onFailure(InvestaError.NoToken); return; }
         sManager.request(APIManager.baseURL + "/stocks/buy" ,
