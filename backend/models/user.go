@@ -208,3 +208,13 @@ func (user *User) GetPortfolioValue() (float64, error) {
 
 	return value, nil
 }
+
+func (user *User) GetTransactions() ([]Transaction, error) {
+	var txs []Transaction
+
+	if err := user.db.Model(&user).Related(&txs).Error; err != nil {
+		return txs, err
+	}
+
+	return txs, nil
+}
