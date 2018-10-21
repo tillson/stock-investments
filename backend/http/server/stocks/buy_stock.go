@@ -2,7 +2,6 @@ package profile
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"github.com/gorilla/context"
 	"github.com/tillson/stock-investments/http/response"
@@ -40,7 +39,7 @@ func (r Stocks) buyStocks(w http.ResponseWriter, req *http.Request) {
 
 	tx, err := user.BuyStock(stockReq.Ticker, stockReq.Quantity)
 	if err == models.NotEnoughMoneyErr {
-		response.NewResponse(400, errors.New("not enough money"))
+		response.NewResponse(400, models.NotEnoughMoneyErr).Write(w)
 		return
 	} else if err != nil {
 		response.ServerError.Write(w)
