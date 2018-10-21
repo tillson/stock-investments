@@ -104,7 +104,7 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserTableViewCell
             print(indexPath.row)
             cell.rank.text = "\(indexPath.row + 1)" + "."
-            cell.pic.image = UIImage(named: "sample")
+            cell.pic.image = UIImage(named: "pic" + "\(indexPath.row + 1)")
             cell.name.text = user.name
             cell.totalFunds.text = "\(user.funds)"
 //            cell.percentChange.text = "\(user.percentIncrease)"
@@ -141,8 +141,8 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
         button.text = "Your Name"
         customView.addSubview(button)
         let image = UIImageView(frame: CGRect(x: 35, y: customView.frame.height/2-25, width: 70, height: 70))
-        image.image = UIImage(named: "sample")
-        image.layer.cornerRadius = 40
+        image.image = UIImage(named: "pic4")
+        image.layer.cornerRadius = 35
         image.layer.masksToBounds = true
         image.clipsToBounds = true
         customView.addSubview(image)

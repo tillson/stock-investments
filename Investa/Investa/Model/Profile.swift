@@ -9,7 +9,7 @@
 import Foundation
 
 class Profile: Decodable {
-
+    
     let name: String
 
     var funds: Float

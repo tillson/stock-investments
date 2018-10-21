@@ -39,6 +39,16 @@
 		D86C1307217BB031004B53F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1306217BB031004B53F6 /* RegisterViewController.swift */; };
 		D86C1309217BB0CB004B53F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1308217BB0CB004B53F6 /* User.swift */; };
 		D86C130B217BBD8A004B53F6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C130A217BBD8A004B53F6 /* Transaction.swift */; };
+		F2B44F60217C2CC80002D89B /* pic4.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F56217C2CC50002D89B /* pic4.png */; };
+		F2B44F61217C2CC80002D89B /* pic6.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F57217C2CC50002D89B /* pic6.png */; };
+		F2B44F62217C2CC80002D89B /* pic3.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F58217C2CC60002D89B /* pic3.png */; };
+		F2B44F63217C2CC80002D89B /* pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F59217C2CC60002D89B /* pic1.png */; };
+		F2B44F64217C2CC80002D89B /* pic8.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F5A217C2CC60002D89B /* pic8.png */; };
+		F2B44F65217C2CC80002D89B /* pic5.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F5B217C2CC60002D89B /* pic5.png */; };
+		F2B44F66217C2CC80002D89B /* pic9.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F5C217C2CC70002D89B /* pic9.png */; };
+		F2B44F67217C2CC80002D89B /* pic10.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F5D217C2CC70002D89B /* pic10.png */; };
+		F2B44F68217C2CC80002D89B /* pic7.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F5E217C2CC70002D89B /* pic7.png */; };
+		F2B44F69217C2CC80002D89B /* pic2.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B44F5F217C2CC70002D89B /* pic2.png */; };
 		F2CB4821217C146200714F83 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB4820217C146100714F83 /* search.png */; };
 		F2CB4823217C147300714F83 /* leaderboards.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB4822217C147300714F83 /* leaderboards.png */; };
 /* End PBXBuildFile section */
@@ -80,6 +90,16 @@
 		D86C1306217BB031004B53F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D86C1308217BB0CB004B53F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D86C130A217BBD8A004B53F6 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		F2B44F56217C2CC50002D89B /* pic4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic4.png; sourceTree = "<group>"; };
+		F2B44F57217C2CC50002D89B /* pic6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic6.png; sourceTree = "<group>"; };
+		F2B44F58217C2CC60002D89B /* pic3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic3.png; sourceTree = "<group>"; };
+		F2B44F59217C2CC60002D89B /* pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic1.png; sourceTree = "<group>"; };
+		F2B44F5A217C2CC60002D89B /* pic8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic8.png; sourceTree = "<group>"; };
+		F2B44F5B217C2CC60002D89B /* pic5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic5.png; sourceTree = "<group>"; };
+		F2B44F5C217C2CC70002D89B /* pic9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic9.png; sourceTree = "<group>"; };
+		F2B44F5D217C2CC70002D89B /* pic10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic10.png; sourceTree = "<group>"; };
+		F2B44F5E217C2CC70002D89B /* pic7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic7.png; sourceTree = "<group>"; };
+		F2B44F5F217C2CC70002D89B /* pic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic2.png; sourceTree = "<group>"; };
 		F2CB4820217C146100714F83 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		F2CB4822217C147300714F83 /* leaderboards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboards.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +176,16 @@
 				43383425217C1C41008A3AAC /* SearchStockCell.xib */,
 				F2CB4822217C147300714F83 /* leaderboards.png */,
 				F2CB4820217C146100714F83 /* search.png */,
+				F2B44F59217C2CC60002D89B /* pic1.png */,
+				F2B44F5F217C2CC70002D89B /* pic2.png */,
+				F2B44F58217C2CC60002D89B /* pic3.png */,
+				F2B44F56217C2CC50002D89B /* pic4.png */,
+				F2B44F5B217C2CC60002D89B /* pic5.png */,
+				F2B44F57217C2CC50002D89B /* pic6.png */,
+				F2B44F5E217C2CC70002D89B /* pic7.png */,
+				F2B44F5A217C2CC60002D89B /* pic8.png */,
+				F2B44F5C217C2CC70002D89B /* pic9.png */,
+				F2B44F5D217C2CC70002D89B /* pic10.png */,
 			);
 			path = Investa;
 			sourceTree = "<group>";
@@ -264,12 +294,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2B44F66217C2CC80002D89B /* pic9.png in Resources */,
 				434ED70B217AC50300A8B197 /* LaunchScreen.storyboard in Resources */,
+				F2B44F68217C2CC80002D89B /* pic7.png in Resources */,
+				F2B44F60217C2CC80002D89B /* pic4.png in Resources */,
+				F2B44F62217C2CC80002D89B /* pic3.png in Resources */,
 				43383426217C1C41008A3AAC /* SearchStockCell.xib in Resources */,
 				F2CB4821217C146200714F83 /* search.png in Resources */,
+				F2B44F64217C2CC80002D89B /* pic8.png in Resources */,
 				434ED708217AC50300A8B197 /* Assets.xcassets in Resources */,
+				F2B44F63217C2CC80002D89B /* pic1.png in Resources */,
 				434ED706217AC50200A8B197 /* Main.storyboard in Resources */,
+				F2B44F67217C2CC80002D89B /* pic10.png in Resources */,
+				F2B44F69217C2CC80002D89B /* pic2.png in Resources */,
+				F2B44F61217C2CC80002D89B /* pic6.png in Resources */,
 				434D5E36217ACB5C00FF5FA3 /* PortfolioGraphCell.xib in Resources */,
+				F2B44F65217C2CC80002D89B /* pic5.png in Resources */,
 				43622FF6217AE44200700164 /* GraphHeaderView.xib in Resources */,
 				F2CB4823217C147300714F83 /* leaderboards.png in Resources */,
 				434D5E38217ACB6F00FF5FA3 /* PortfolioStockCell.xib in Resources */,
