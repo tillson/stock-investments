@@ -1,5 +1,5 @@
 
-![Icon View](Screenshots/icon)
+![Icon View](Screenshots/icon.png)
 
 # Investa
 ## Learn how to work the Stock Market without actually losing all of your money
