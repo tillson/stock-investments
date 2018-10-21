@@ -10,11 +10,35 @@ import UIKit
 
 class SearchStockTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     
-    let allStocks = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
+    var allStocks = [Stock]()
     
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        var i = 0
+        
+        let _ = ["MU", "AMD", "TSLA", "AAPL", "GOOG", "ROPE", "AMZN", "MSFT"].map {
+            APIManager.shared.getStock(identifier: $0, onSuccess: { (stock) in
+                stock.currentPrice = stock.history.first!.price
+                self.allStocks.append(stock)
+                
+                if i % 2 == 0 {
+                    self.trending.append(stock)
+                } else {
+                    self.recommended.append(stock)
+                }
+                
+                i += 1
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            }, onFailure: { (error) in
+                
+            })
+        }
         
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -23,11 +47,11 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         searchController.dimsBackgroundDuringPresentation = false
     }
     
-    let trending = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
+    var trending = [Stock]()
     
-    let recommended = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
+    var recommended = [Stock]()
     
-    var filtered = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
+    var filtered = [Stock]()
     
     var isSearching = false
     
@@ -35,6 +59,8 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        filtered = allStocks
+        
         tableView.register(UINib(nibName: "SearchStockCell", bundle: nil), forCellReuseIdentifier: "SearchStockCell")
         
         
