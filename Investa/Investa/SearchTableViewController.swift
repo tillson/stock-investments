@@ -17,6 +17,7 @@ class SearchTableViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        let database2 = YNSearchModel(key: "YNSearchData")
 //        let demoDatabase = database2
 //        

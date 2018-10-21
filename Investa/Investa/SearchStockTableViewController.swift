@@ -37,12 +37,13 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
 
         tableView.register(UINib(nibName: "SearchStockCell", bundle: nil), forCellReuseIdentifier: "SearchStockCell")
         
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         self.navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.placeholder = "Search stocks"
         searchController.searchBar.delegate = self
         
         // Uncomment the following line to preserve selection between presentations
@@ -77,17 +78,17 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchStockCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchStockCell", for: indexPath) as! SearchStockCell
 
-//        if isSearching {
-//            cell.stock = filtered[indexPath.row]
-//        } else {
-//            if indexPath.section == 0   {
-//                cell.stock = trending[indexPath.row]
-//            } else {
-//                cell.stock = recommended[indexPath.row]
-//            }
-//        }
+        if isSearching {
+            cell.stock = filtered[indexPath.row]
+        } else {
+            if indexPath.section == 0   {
+                cell.stock = trending[indexPath.row]
+            } else {
+                cell.stock = recommended[indexPath.row]
+            }
+        }
 
         return cell
     }
