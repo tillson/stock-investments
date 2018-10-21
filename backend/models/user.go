@@ -53,13 +53,14 @@ func NewUserFromUsername(username string, db *gorm.DB) (User, error) {
 	return user, nil
 }
 
-func CreateUser(username, password string, db *gorm.DB) (User, error) {
+func CreateUser(username, password, name string, db *gorm.DB) (User, error) {
 	passwordHash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		return User{}, err
 	}
 
 	user := User{
+		Name: name,
 		Username:     username,
 		PasswordHash: passwordHash,
 		Funds: config.GetStartMoney(),
@@ -131,15 +132,15 @@ func (user *User) UpdatePassword(password string) error {
 
 var NotEnoughMoneyErr = errors.New("not enough money")
 
-func (user *User) BuyStock(ticker string, quantity uint) error {
+func (user *User) BuyStock(ticker string, quantity uint) (Transaction, error) {
 	// Check current price of stock
 	price, _, err := stocks.GetCurrentPrice(ticker)
 	if err != nil {
-		return err
+		return Transaction{}, err
 	}
 	// Validate current_price * quantity <= user.Money
 	if price * float64(quantity) > float64(user.Funds) {
-		return NotEnoughMoneyErr
+		return Transaction{}, NotEnoughMoneyErr
 	}
 
 	tx := Transaction{
@@ -149,30 +150,71 @@ func (user *User) BuyStock(ticker string, quantity uint) error {
 		Type: Buy,
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
-		return err
+		return tx, err
 	}
 
-	return nil
+	return tx, nil
 }
 
-func (user *User) SellStock(ticker string, quantity uint) error {
+var NotEnoughStocksErr = errors.New("you do not have enough stocks")
+func (user *User) SellStock(ticker string, quantity uint) (Transaction, error) {
 	// Check current price of stock
 	price, _, err := stocks.GetCurrentPrice(ticker)
 	if err != nil {
-		return err
+		return Transaction{}, err
 	}
 
-	// TODO: Validate user has number of stocks
+	stockMap, err := StockMap(user.ID, user.db)
+	if err != nil {
+		return Transaction{}, err
+	}
+	count := stockMap[ticker]
+
+	// Validate user has number of stocks
+	if count < quantity {
+		return Transaction{}, NotEnoughStocksErr
+	}
 
 	tx := Transaction{
 		Ticker: ticker,
 		PriceAtTime: price,
 		UserID: user.ID,
-		Type: Buy,
+		Type: Sell,
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
-		return err
+		return tx, err
 	}
 
-	return nil
+	return tx, nil
+}
+
+func (user *User) GetPortfolioValue() (float64, error) {
+	var value float64 = 0
+
+	stockMap, err := StockMap(user.ID, user.db)
+	if err != nil {
+		return 0, err
+	}
+
+	for ticker, quantity := range stockMap {
+		price, _, err := stocks.GetCurrentPrice(ticker)
+		if err != nil {
+			return 0, err
+		}
+		value += price * float64(quantity)
+	}
+
+	value += float64(user.Funds)
+
+	return value, nil
+}
+
+func (user *User) GetTransactions() ([]Transaction, error) {
+	var txs []Transaction
+
+	if err := user.db.Model(&user).Related(&txs).Error; err != nil {
+		return txs, err
+	}
+
+	return txs, nil
 }

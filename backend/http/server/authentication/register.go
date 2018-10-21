@@ -4,16 +4,18 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/tillson/stock-investments/http/response"
-	"github.com/tillson/stock-investments/models"
 	"io"
 	"log"
 	"net/http"
+
+	"github.com/tillson/stock-investments/http/response"
+	"github.com/tillson/stock-investments/models"
 )
 
 type RegisterInput struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
+	Name     string `json:"name"`
 }
 
 func NewRegisterInput(b io.Reader) (RegisterInput, error) {
@@ -53,7 +55,7 @@ func (r Authentication) registerHandler(w http.ResponseWriter, req *http.Request
 	}
 
 	// Create user
-	user, err := models.CreateUser(inp.Username, inp.Password, r.DB)
+	user, err := models.CreateUser(inp.Username, inp.Password, inp.Name, r.DB)
 	if err != nil {
 		log.Println(err)
 		response.ServerError.Write(w)

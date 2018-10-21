@@ -94,22 +94,27 @@ class StockViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Buy", style: .default, handler: { (action) in
             if let amountToBuy = Int(textField.text ?? "") {
                 // TODO: sell amount of this stock
-                let title: String
                 if Float(amountToBuy) * self.stock.currentPrice > APIManager.shared.user!.funds {
-                    title = "You do not have enough money to buy this many stocks."
+                    self.showAlert(title: "You do not have enough money to buy this many stocks.")
                 } else {
-                    title = "You have bought \(amountToBuy) stocks for \((self.stock.currentPrice * Float(amountToBuy)).moneyFormat)"
+                    APIManager.shared.buyStock(identifier: self.stock.ticker, shares: amountToBuy, onSuccess: { (transaction) in
+                        self.showAlert(title: "You have bought \(amountToBuy) stocks for \((self.stock.currentPrice * Float(amountToBuy)).moneyFormat)")
+                    }, onFailure: { (error) in
+                        self.showAlert(title: "An error occurred while trying to buy stock.")
+                    })
                 }
                 
-                let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
             }
-            
             
         }))
         
         
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

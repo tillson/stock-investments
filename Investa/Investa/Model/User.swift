@@ -29,6 +29,11 @@ class User: Profile {
         } else {
             self.username = ""
         }
+//        if let name = aDecoder.decodeObject(forKey: "name") as? String {
+//            self.name = name
+//        } else {
+//            self.name = ""
+//        }
         super.init(coder: aDecoder)
     }
     

@@ -13,13 +13,12 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     let allStocks = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
     
     let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewWillAppear(_ animated: Bool) {
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search"
+        
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.searchController = searchController
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
     }
@@ -40,6 +39,17 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.delegate = self
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     
@@ -54,7 +64,7 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching{
+        if isSearching {
             return filtered.count
         }
         

@@ -18,7 +18,7 @@ class TransactionCell: UITableViewCell {
     
     var transaction: Transaction! {
         didSet {
-            stockName.text = transaction.stock.name
+            stockName.text = transaction.stock.ticker
             stockPrice.text = "\(transaction.stock.currentPrice.moneyFormat)"
             shareCount.text = "\(transaction.shares) share\(transaction.shares > 1 ? "s" : "")"
             toalGain.text = "\((transaction.stock.currentPrice * Float(transaction.shares) - transaction.buyPrice * Float(transaction.shares)).moneyFormat)"
