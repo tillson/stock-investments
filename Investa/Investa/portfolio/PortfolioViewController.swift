@@ -30,7 +30,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
                     return
                 }
                 
-                stock.currentPrice = stock.history.first!.price
+                stock.currentPrice = stock.history.last!.price
                 self.user.ownedStocks.append(stock)
                 
                 DispatchQueue.main.async {
@@ -66,7 +66,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
                         return
                     }
                     
-                    loadedStock.currentPrice = loadedStock.history.first!.price
+                    loadedStock.currentPrice = loadedStock.history.last!.price
                     self.user.ownedStocks.append(loadedStock)
                     print(loadedStock)
                     self.collectionView.reloadData()

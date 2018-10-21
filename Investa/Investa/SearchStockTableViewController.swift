@@ -30,7 +30,7 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
                     
                     loaded = true
                     
-                    stock.currentPrice = stock.history.first!.price
+                    stock.currentPrice = stock.history.last!.price
                     self.allStocks.append(stock)
                     
                     if i % 2 == 0 {
