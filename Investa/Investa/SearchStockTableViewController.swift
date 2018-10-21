@@ -67,12 +67,12 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching{
+        if isSearching {
             return filtered.count
         }
-        if section == 0{
+        if section == 0 {
             return people.count
-        }else{
+        } else {
             return videos.count
         }
     }

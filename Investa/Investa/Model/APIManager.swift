@@ -68,11 +68,10 @@ class APIManager {
     
     // MARK: Profile
     func getCurrentUser(onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
-        guard let token = token else { onFailure(InvestaError.NoToken); return; }
+        if token == nil { onFailure(InvestaError.NoToken); return; }
         sManager.request(APIManager.baseURL + "/profile/" ,
                           method: .get,
-                          encoding: JSONEncoding.default,
-                          headers: ["Authentication": "Bearer: \(token)"])
+                          encoding: JSONEncoding.default)
             .responseJSON{ response in
                 print(response)
                 if let error = response.error {
@@ -85,21 +84,19 @@ class APIManager {
                 do {
                     let user = try JSONDecoder().decode(User.self, from: data)
                     onSuccess(user)
-                } catch let JSONError as Error {
-                    print("Error gettig user: \(JSONError)")
-                    APIManager.shared.token = nil
+                } catch let error {
+                    print("Error gettig transactions: \(error)")
                 }
         }
     }
 
     // MARK: Stocks
     func getStock(identifier: String, onSuccess: @escaping(Stock) -> Void, onFailure: @escaping(Error) -> Void) {
-        guard let token = token else { onFailure(InvestaError.NoToken); return; }
-        sManager.request(APIManager.baseURL + "/stocks/" ,
+        if token == nil { onFailure(InvestaError.NoToken); return; }
+        sManager.request(APIManager.baseURL + "/stocks/",
                          method: .post,
                          parameters: ["identifier": identifier],
-                         encoding: JSONEncoding.default,
-                         headers: ["Authentication": "Bearer: \(token)"])
+                         encoding: JSONEncoding.default)
             .responseJSON{ response in
                 if let error = response.error {
                     onFailure(error)
@@ -110,19 +107,18 @@ class APIManager {
                 do {
                     let stock = try JSONDecoder().decode(Stock.self, from: data)
                     onSuccess(stock)
-                } catch let JSONError as Error {
-                    print("Error gettig stock (\(identifier)): \(JSONError)")
+                } catch let error {
+                    print("Error gettig transactions: \(error)")
                 }
         }
     }
     
     func buyStock(identifier: String, shares: Int, onSuccess: @escaping(Transaction) -> Void, onFailure: @escaping(Error) -> Void) {
-        guard let token = token else { onFailure(InvestaError.NoToken); return; }
+        if token == nil { onFailure(InvestaError.NoToken); return; }
         sManager.request(APIManager.baseURL + "/stocks/buy" ,
                          method: .post,
                          parameters: ["identifier": identifier, "shares": shares],
-                         encoding: JSONEncoding.default,
-                         headers: ["Authentication": "Bearer: \(token)"])
+                         encoding: JSONEncoding.default)
             .responseJSON{ response in
                 if let error = response.error {
                     onFailure(error)
@@ -132,19 +128,18 @@ class APIManager {
                 do {
                     let transaction = try JSONDecoder().decode(Transaction.self, from: data)
                     onSuccess(transaction)
-                } catch let JSONError as Error {
-                    print("Error gettig stock (\(identifier)): \(JSONError)")
+                } catch let error {
+                    print("Error gettig transactions: \(error)")
                 }
         }
     }
 
     func sellStock(identifier: String, shares: Int, onSuccess: @escaping(Transaction) -> Void, onFailure: @escaping(Error) -> Void) {
-        guard let token = token else { onFailure(InvestaError.NoToken); return; }
+        if token == nil { onFailure(InvestaError.NoToken); return; }
         sManager.request(APIManager.baseURL + "/stocks/sell" ,
                          method: .post,
                          parameters: ["identifier": identifier, "shares": shares],
-                         encoding: JSONEncoding.default,
-                         headers: ["Authentication": "Bearer: \(token)"])
+                         encoding: JSONEncoding.default)
             .responseJSON{ response in
                 if let error = response.error {
                     onFailure(error)
@@ -154,8 +149,8 @@ class APIManager {
                 do {
                     let transaction = try JSONDecoder().decode(Transaction.self, from: data)
                     onSuccess(transaction)
-                } catch let JSONError as Error {
-                    print("Error gettig stock (\(identifier)): \(JSONError)")
+                } catch let error {
+                    print("Error gettig transactions: \(error)")
                 }
         }
     }
@@ -163,22 +158,22 @@ class APIManager {
     
     // MARK: Transactions
     func getUserTransactions(onSuccess: @escaping([Transaction]) -> Void, onFailure: @escaping(Error) -> Void) {
-        guard let token = token else { onFailure(InvestaError.NoToken); return; }
+        if token == nil { onFailure(InvestaError.NoToken); return; }
         sManager.request(APIManager.baseURL + "/stocks/transactions" ,
                          method: .post,
-                         encoding: JSONEncoding.default,
-                         headers: ["Authentication": "Bearer: \(token)"])
+                         encoding: JSONEncoding.default)
             .responseJSON{ response in
                 if let error = response.error {
                     onFailure(error)
                     return
                 }
+                print(response)
                 guard let data = response.data else { onFailure(InvestaError.NoToken); return; }
                 do {
                     let transactions = try JSONDecoder().decode([Transaction].self, from: data)
                     onSuccess(transactions)
-                } catch let JSONError as Error {
-                    print("Error gettig transactions: \(JSONError)")
+                } catch let error {
+                    print("Error gettig transactions: \(error)")
                 }
         }
     }

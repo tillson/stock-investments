@@ -16,6 +16,13 @@ class TransactionsViewController: UITableViewController {
         super.viewDidLoad()
         transactions.append(Transaction(stock: Stock(ticker: "AAPL", currentPrice: 400), buyPrice: 500, date: Date(), type: "buy", shares: 2))
         
+        APIManager.shared.getUserTransactions(onSuccess: { transactions in
+            self.transactions = transactions
+            self.tableView.reloadData()
+        }) { error in
+            print(error)
+        }
+        
         title = "Transactions"
     }
     
