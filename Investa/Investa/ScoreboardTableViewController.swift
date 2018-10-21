@@ -141,8 +141,8 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
         button.text = "Your Name"
         customView.addSubview(button)
         let image = UIImageView(frame: CGRect(x: 35, y: customView.frame.height/2-25, width: 70, height: 70))
-        image.image = UIImage(named: "sample")
-        image.layer.cornerRadius = 40
+        image.image = UIImage(named: "pic4")
+        image.layer.cornerRadius = 35
         image.layer.masksToBounds = true
         image.clipsToBounds = true
         customView.addSubview(image)
