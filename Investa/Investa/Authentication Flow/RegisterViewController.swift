@@ -22,7 +22,17 @@ class RegisterViewController: UIViewController {
     @IBAction func register(_ sender: Any) {
         if usernameField.text != "" && passwordField.text != "" {
             APIManager.shared.register(username: usernameField.text!, password: passwordField.text!, onSuccess: { (user) in
-                //
+                // eh it's a hackathon so why not
+                UserDefaults.standard.set(self.usernameField.text!, forKey: "username")
+                UserDefaults.standard.set(self.passwordField.text!, forKey: "password")
+                APIManager.shared.getCurrentUser(onSuccess: { (user) in
+                    APIManager.shared.user = user
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "Portfolio")
+                    self.present(controller, animated: true, completion: nil)
+                }, onFailure: { (error) in
+                    print(error)
+                })
             }) { (error) in
                 print(error)
             }

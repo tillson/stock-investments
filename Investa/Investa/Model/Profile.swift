@@ -8,25 +8,44 @@
 
 import Foundation
 
-class Profile: Codable {
+class Profile: Decodable {
 
     let name: String
 
-    var fundsToTrade: Float
-    var startingFunds: Float
+    var funds: Float
+    let startingFunds = 15000.0
 
-    var ownedStocks: [Stock]
-    var portfolioValue: Float
-    var scoreboardPlaceGlobal: Int
-
-    init(name: String, startingFunds: Float, portfolioValue: Float) {
+    let ownedStocks = [Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0), Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0), Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0), Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0)]
+    let portfolioValue: Float = 100.0
+    
+    init(name: String, portfolioValue: Float) {
         self.name = name
-        self.startingFunds = startingFunds
-        self.portfolioValue = portfolioValue
-        self.fundsToTrade = portfolioValue // todo: change
-        self.scoreboardPlaceGlobal = 1
-        self.ownedStocks = [Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0)]
+//        self.portfolioValue = portfolioValue
+        self.funds = portfolioValue
+//        self.ownedStocks = [Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0)]
     }
     
-    
+    required init?(coder aDecoder: NSCoder) {
+        if let name = aDecoder.decodeObject(forKey: "name") as? String {
+            self.name = name
+        } else {
+            self.name = ""
+        }
+        if let funds = aDecoder.decodeObject(forKey: "funds") as? Float {
+            self.funds = funds
+        } else {
+            self.funds = 0.0
+        }
+//        if let ownedStocks = aDecoder.decodeObject(forKey: "stocks") as? [Stock] {
+//            self.ownedStocks = ownedStocks
+//        } else {
+//            self.ownedStocks = [Stock]()
+//        }
+//        if let portfolioValue = aDecoder.decodeObject(forKey: "portfolioValue") as? Float {
+//            self.portfolioValue = portfolioValue
+//        } else {
+//            self.portfolioValue = 0.0
+//        }
+    }
+
 }

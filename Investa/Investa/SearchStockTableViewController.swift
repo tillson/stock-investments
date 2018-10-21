@@ -9,22 +9,19 @@
 import UIKit
 
 class SearchStockTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
     
-    
+    let allStocks = ["Stock1", "Stock2", "Stock3", "Blah"]
+    let searchController = UISearchController(searchResultsController: nil)
     override func viewWillAppear(_ animated: Bool) {
-        let searchController = UISearchController(searchResultsController: SearchResultsTableViewController())
+        searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search"
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
-        
         self.navigationItem.searchController = searchController
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
     }
-    
-    
     
     let people = ["Bucky Roberts","Lisa Tucker", "Emma Hotpocket"]
     
@@ -32,8 +29,6 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         "Android App Dev",
         "C++ for Begginers"
     ]
-    
-    
     
     var filtered = [String]()
     
@@ -53,14 +48,21 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
+        if isSearching{
+            return 1
+        }else{
+            return 2
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching{
+            return filtered.count
+        }
         if section == 0{
             return people.count
         }else{
@@ -73,7 +75,8 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         let cell = UITableViewCell()
         
         if isSearching {
-            
+            var personName = filtered[indexPath.row]
+            cell.textLabel?.text = personName
         }else{
             tableView.backgroundColor = UIColor.green
         if indexPath.section == 0{
@@ -89,11 +92,28 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0{
-            return "People"
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text == nil || searchController.searchBar.text == ""{
+            isSearching = false
+            view.endEditing(true)
+            tableView.reloadData()
         }else{
-            return "Videos"
+            isSearching = true
+            filtered = allStocks.filter { user in
+                return user.lowercased().contains(searchController.searchBar.text!.lowercased())
+            }
+            tableView.reloadData()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if isSearching{
+            return "Search Results"
+        }
+        if section == 0{
+            return "Hot Stocks"
+        }else{
+            return "Recommended"
         }
     }
     

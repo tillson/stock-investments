@@ -3,19 +3,20 @@ package profile
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gorilla/mux"
-	"github.com/tillson/stock-investments/http/response"
-	"github.com/tillson/stock-investments/stocks"
 	"io"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/tillson/stock-investments/http/response"
+	"github.com/tillson/stock-investments/stocks"
 )
 
 type GetStocksInput struct {
 	Identifier string `json:"identifier"`
 }
 
-func NewGetStocksInput(r io.Reader) (GetStocksInput, error){
+func NewGetStocksInput(r io.Reader) (GetStocksInput, error) {
 	var gsi GetStocksInput
 	if err := json.NewDecoder(r).Decode(&gsi); err != nil {
 		return gsi, err
@@ -24,12 +25,12 @@ func NewGetStocksInput(r io.Reader) (GetStocksInput, error){
 }
 
 type GetStocksOutput struct {
-	Ticker string `json:"ticker"`
-	Stocks []stocks.PriceHistory `json:"stocks"`
-	CurrentPrice float64 `json:"current_price"`
+	Ticker       string                `json:"ticker"`
+	Stocks       []stocks.PriceHistory `json:"stocks"`
+	CurrentPrice float64               `json:"current_price"`
 }
 
-func (g GetStocksOutput) JSON() (string, error)  {
+func (g GetStocksOutput) JSON() (string, error) {
 	data, err := json.Marshal(g)
 	if err != nil {
 		return "", err
