@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gorilla/context"
 	"github.com/tillson/stock-investments/http/response"
@@ -56,6 +57,7 @@ func (r Stocks) buyStocks(w http.ResponseWriter, req *http.Request) {
 		PriceAtTime float64 `json:"price_at_time"`
 		Type        string  `json:"type"`
 		Quantity    uint    `json:"quantity"`
+		CreatedAt string `json:"created_at"`
 	}
 
 	txx := transaction{
@@ -63,6 +65,7 @@ func (r Stocks) buyStocks(w http.ResponseWriter, req *http.Request) {
 		PriceAtTime: tx.PriceAtTime,
 		Type:        string(tx.Type),
 		Quantity:    tx.Quantity,
+		CreatedAt: tx.CreatedAt.Format(time.RFC3339),
 	}
 
 	out, err := json.Marshal(txx)
