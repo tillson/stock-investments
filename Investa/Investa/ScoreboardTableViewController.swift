@@ -104,7 +104,7 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserTableViewCell
             print(indexPath.row)
             cell.rank.text = "\(indexPath.row + 1)" + "."
-            cell.pic.image = UIImage(named: "sample")
+            cell.pic.image = UIImage(named: "pic" + "\(indexPath.row + 1)")
             cell.name.text = user.name
             cell.totalFunds.text = "\(user.funds)"
 //            cell.percentChange.text = "\(user.percentIncrease)"
