@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let password = UserDefaults.standard.string(forKey: "password")
         if username != nil && password != nil {
             APIManager.shared.login(username: username!, password: password!, onSuccess: { (success) in
+                if !success {
+                    return
+                }
                 APIManager.shared.getCurrentUser(onSuccess: { (user) in
+                    print("USER LOGGED IN")
                     APIManager.shared.user = user
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let controller = storyboard.instantiateViewController(withIdentifier: "Portfolio")

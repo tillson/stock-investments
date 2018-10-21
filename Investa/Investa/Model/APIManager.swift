@@ -12,7 +12,7 @@ import Alamofire
 class APIManager {
     
     static let shared = APIManager()
-    static let baseURL = "http://35.229.117.21:8080"
+    static let baseURL = "http://localhost:8080"
     var sManager = Alamofire.SessionManager.default
 
     var user: User?

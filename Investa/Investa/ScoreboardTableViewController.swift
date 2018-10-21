@@ -10,9 +10,9 @@ import UIKit
 
 class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,UISearchResultsUpdating,UISearchControllerDelegate {
 
-    var leaderboard: [User] = []
+    var leaderboard: [Profile] = []
     
-    var filtered = [User]()
+    var filtered = [Profile]()
     
     var isSearching = false
     
