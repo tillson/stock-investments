@@ -4,17 +4,18 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/tillson/stock-investments/http/response"
-	"github.com/tillson/stock-investments/models"
 	"io"
 	"log"
 	"net/http"
+
+	"github.com/tillson/stock-investments/http/response"
+	"github.com/tillson/stock-investments/models"
 )
 
 type RegisterInput struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
-	Name string `json:"name"`
+	Name     string `json:"name"`
 }
 
 func NewRegisterInput(b io.Reader) (RegisterInput, error) {

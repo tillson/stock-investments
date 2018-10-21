@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct Transaction {
+struct Transaction: Decodable {
     
     let stock: Stock
     let buyPrice: Float
     let date: Date
-    let type: TransactionType
+    let type: String
     let shares: Int
     
-    init(stock: Stock, buyPrice: Float, date: Date, type: TransactionType, shares: Int) {
+    init(stock: Stock, buyPrice: Float, date: Date, type: String, shares: Int) {
         self.stock = stock
         self.buyPrice = buyPrice
         self.date = date

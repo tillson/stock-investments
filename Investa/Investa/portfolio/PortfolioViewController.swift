@@ -95,7 +95,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
-            viewController.stock = Stock(name: "Apple Inc.", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 100.0)
+            viewController.stock = Stock(ticker: "AAPL", currentPrice: 400.0)
             navigationController?.pushViewController(viewController, animated: true)
         }
     }

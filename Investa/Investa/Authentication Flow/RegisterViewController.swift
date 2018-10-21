@@ -12,6 +12,7 @@ class RegisterViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var fullName: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,8 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
-        if usernameField.text != "" && passwordField.text != "" {
-            APIManager.shared.register(username: usernameField.text!, password: passwordField.text!, onSuccess: { (user) in
+        if usernameField.text != "" && passwordField.text != "" && fullName.text != "" {
+            APIManager.shared.register(username: usernameField.text!, password: passwordField.text!, name: fullName.text!, onSuccess: { (user) in
                 // eh it's a hackathon so why not
                 UserDefaults.standard.set(self.usernameField.text!, forKey: "username")
                 UserDefaults.standard.set(self.passwordField.text!, forKey: "password")
