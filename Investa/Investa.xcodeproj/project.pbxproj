@@ -27,11 +27,12 @@
 		43B6A4B8217BCA8900BBDF61 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6A4B7217BCA8900BBDF61 /* TransactionsViewController.swift */; };
 		43B6A4BA217BCACE00BBDF61 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6A4B9217BCACE00BBDF61 /* TransactionCell.swift */; };
 		43B6A543217BF7FC00BBDF61 /* SearchStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6A542217BF7FC00BBDF61 /* SearchStockTableViewController.swift */; };
+		43B6A545217BFD1C00BBDF61 /* SearchStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6A544217BFD1C00BBDF61 /* SearchStockCell.swift */; };
+		43B6A547217C006C00BBDF61 /* SearchStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B6A546217C006C00BBDF61 /* SearchStockCell.xib */; };
 		43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3EDEB217AFCE80088D963 /* SignInViewController.swift */; };
 		AF346942499AC247D07D5346 /* Pods_Investa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */; };
 		D8045110217BC229003BF857 /* ScoreboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D804510F217BC229003BF857 /* ScoreboardTableViewController.swift */; };
 		D8045116217BC243003BF857 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8045115217BC243003BF857 /* UserTableViewCell.swift */; };
-		D8045118217BC24F003BF857 /* 1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8045117217BC24F003BF857 /* 1.storyboard */; };
 		D86C1300217BA813004B53F6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C12FF217BA813004B53F6 /* Profile.swift */; };
 		D86C1302217BA9C7004B53F6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1301217BA9C7004B53F6 /* APIManager.swift */; };
 		D86C1305217BB029004B53F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1304217BB029004B53F6 /* LoginViewController.swift */; };
@@ -64,12 +65,13 @@
 		43B6A4B7217BCA8900BBDF61 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		43B6A4B9217BCACE00BBDF61 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		43B6A542217BF7FC00BBDF61 /* SearchStockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewController.swift; sourceTree = "<group>"; };
+		43B6A544217BFD1C00BBDF61 /* SearchStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockCell.swift; sourceTree = "<group>"; };
+		43B6A546217C006C00BBDF61 /* SearchStockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchStockCell.xib; sourceTree = "<group>"; };
 		43C3EDEB217AFCE80088D963 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6ABB6390F8EEBF5B68F45000 /* Pods_Investa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA782C133748369F8E92FDA /* Pods-Investa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investa/Pods-Investa.debug.xcconfig"; sourceTree = "<group>"; };
 		D804510F217BC229003BF857 /* ScoreboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardTableViewController.swift; sourceTree = "<group>"; };
 		D8045115217BC243003BF857 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		D8045117217BC24F003BF857 /* 1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = 1.storyboard; sourceTree = "<group>"; };
 		D86C12FF217BA813004B53F6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		D86C1301217BA9C7004B53F6 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D86C1304217BB029004B53F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -131,7 +133,6 @@
 				D86C1303217BB012004B53F6 /* Authentication Flow */,
 				434ED700217AC50200A8B197 /* AppDelegate.swift */,
 				434ED704217AC50200A8B197 /* Main.storyboard */,
-				D8045117217BC24F003BF857 /* 1.storyboard */,
 				434ED707217AC50300A8B197 /* Assets.xcassets */,
 				434ED709217AC50300A8B197 /* LaunchScreen.storyboard */,
 				434ED70C217AC50300A8B197 /* Info.plist */,
@@ -147,6 +148,8 @@
 				D804510F217BC229003BF857 /* ScoreboardTableViewController.swift */,
 				D8045115217BC243003BF857 /* UserTableViewCell.swift */,
 				439D045A217B8AA9002CB86C /* SearchTableViewController.swift */,
+				43B6A544217BFD1C00BBDF61 /* SearchStockCell.swift */,
+				43B6A546217C006C00BBDF61 /* SearchStockCell.xib */,
 			);
 			path = Investa;
 			sourceTree = "<group>";
@@ -258,8 +261,8 @@
 				434ED70B217AC50300A8B197 /* LaunchScreen.storyboard in Resources */,
 				434ED708217AC50300A8B197 /* Assets.xcassets in Resources */,
 				434ED706217AC50200A8B197 /* Main.storyboard in Resources */,
-				D8045118217BC24F003BF857 /* 1.storyboard in Resources */,
 				434D5E36217ACB5C00FF5FA3 /* PortfolioGraphCell.xib in Resources */,
+				43B6A547217C006C00BBDF61 /* SearchStockCell.xib in Resources */,
 				43622FF6217AE44200700164 /* GraphHeaderView.xib in Resources */,
 				434D5E38217ACB6F00FF5FA3 /* PortfolioStockCell.xib in Resources */,
 			);
@@ -315,6 +318,7 @@
 			files = (
 				D86C130B217BBD8A004B53F6 /* Transaction.swift in Sources */,
 				43B6A4B8217BCA8900BBDF61 /* TransactionsViewController.swift in Sources */,
+				43B6A545217BFD1C00BBDF61 /* SearchStockCell.swift in Sources */,
 				D8045116217BC243003BF857 /* UserTableViewCell.swift in Sources */,
 				43622FF8217AE66600700164 /* GraphHeaderView.swift in Sources */,
 				D86C1300217BA813004B53F6 /* Profile.swift in Sources */,
