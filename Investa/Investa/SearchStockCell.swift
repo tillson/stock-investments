@@ -15,7 +15,7 @@ class SearchStockCell: UITableViewCell {
     
     var stock: Stock! {
         didSet {
-            stockName.text = stock.name
+            stockName.text = stock.ticker
             stockPrice.text = stock.currentPrice.moneyFormat
         }
     }

@@ -3,17 +3,20 @@ package profile
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"log"
+	"net/http"
+
 	"github.com/gorilla/context"
 	"github.com/tillson/stock-investments/http/response"
 	"github.com/tillson/stock-investments/models"
-	"io"
-	"net/http"
 )
 
 type BuyStockInput struct {
-	Ticker string `json:"ticker"`
-	Quantity uint `json:"quantity"`
+	Ticker   string `json:"ticker"`
+	Quantity uint   `json:"quantity"`
 }
+
 func NewBuyStockInput(r io.Reader) (BuyStockInput, error) {
 	var b BuyStockInput
 	if err := json.NewDecoder(r).Decode(&b); err != nil {
@@ -33,6 +36,7 @@ func (r Stocks) buyStocks(w http.ResponseWriter, req *http.Request) {
 
 	stockReq, err := NewBuyStockInput(req.Body)
 	if err != nil {
+		log.Println(err)
 		response.ServerError.Write(w)
 		return
 	}
@@ -42,22 +46,23 @@ func (r Stocks) buyStocks(w http.ResponseWriter, req *http.Request) {
 		response.NewResponse(400, models.NotEnoughMoneyErr).Write(w)
 		return
 	} else if err != nil {
+		log.Println(err)
 		response.ServerError.Write(w)
 		return
 	}
 
 	type transaction struct {
-		Ticker string `json:"ticker"`
+		Ticker      string  `json:"ticker"`
 		PriceAtTime float64 `json:"price_at_time"`
-		Type string `json:"type"`
-		Quantity uint `json:"quantity"`
+		Type        string  `json:"type"`
+		Quantity    uint    `json:"quantity"`
 	}
 
 	txx := transaction{
-		Ticker: tx.Ticker,
+		Ticker:      tx.Ticker,
 		PriceAtTime: tx.PriceAtTime,
-		Type: string(tx.Type),
-		Quantity: tx.Quantity,
+		Type:        string(tx.Type),
+		Quantity:    tx.Quantity,
 	}
 
 	out, err := json.Marshal(txx)

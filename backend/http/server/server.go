@@ -36,7 +36,7 @@ func (s *Server) InitializeHandlers() {
 	profileHdlr.InitializeHandlers()
 
 	stocksRouter := s.router.PathPrefix("/stocks").Subrouter()
-	profileRouter.Use(m.GetUserMiddleware)
+	stocksRouter.Use(m.GetUserMiddleware)
 	stocksF := stockD.Stocks{Router: stocksRouter, DB: db}
 	stocksF.InitializeHandlers()
 
