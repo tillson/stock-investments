@@ -11,9 +11,23 @@ import UIKit
 class StockViewController: UIViewController {
     
     @IBOutlet weak var stockLineGraphView: StockLineGraphView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var funds: UILabel!
+    @IBOutlet weak var ownedSales: UILabel!
+    @IBOutlet weak var shareWorth: UILabel!
+    @IBOutlet weak var transactions: UILabel!
     
     var stock: Stock! {
         didSet {
+            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0 == stock }
+            
+            name.text = stock.ticker
+            price.text = stock.currentPrice.moneyFormat
+            funds.text = APIManager.shared.user!.funds.moneyFormat
+            ownedSales.text = "\(currentStocks.count)"
+            shareWorth.text = "\((Float(currentStocks.count) * stock.currentPrice).moneyFormat)"
+            transactions.text = "\(APIManager.shared.user!.transactions.filter { $0.stock == stock }.count)"
             
         }
     }
@@ -57,7 +71,7 @@ class StockViewController: UIViewController {
                 
                 
             }))
-            alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
             }))
             
@@ -73,7 +87,7 @@ class StockViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         
         }))
-        alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
         }))
         
@@ -89,7 +103,7 @@ class StockViewController: UIViewController {
             textField = field
         })
         
-        alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Buy", style: .default, handler: { (action) in
             if let amountToBuy = Int(textField.text ?? "") {
