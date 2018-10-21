@@ -1,6 +1,7 @@
 package stocks
 
 import (
+	"fmt"
 	"time"
 
 	alpha "github.com/cmckee-dev/go-alpha-vantage"
@@ -11,6 +12,7 @@ var Tickers = make(map[string]float64)
 
 func GetCurrentPrice(ticker string) (float64, time.Time, error) {
 	data, ok := Tickers[ticker]
+	fmt.Println("Debug:", data, ok)
 	if ok {
 		return data, time.Now(), nil
 	}
