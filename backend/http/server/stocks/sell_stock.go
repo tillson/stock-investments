@@ -8,6 +8,7 @@ import (
 	"github.com/tillson/stock-investments/models"
 	"io"
 	"net/http"
+	"time"
 )
 
 type SellStockInput struct {
@@ -51,6 +52,7 @@ func (r Stocks) sellStocks(w http.ResponseWriter, req *http.Request) {
 		PriceAtTime float64 `json:"price_at_time"`
 		Type string `json:"type"`
 		Quantity uint `json:"quantity"`
+		CreatedAt string `json:"created_at"`
 	}
 
 	txx := transaction{
@@ -58,6 +60,7 @@ func (r Stocks) sellStocks(w http.ResponseWriter, req *http.Request) {
 		PriceAtTime: tx.PriceAtTime,
 		Type: string(tx.Type),
 		Quantity: tx.Quantity,
+		CreatedAt: tx.CreatedAt.Format(time.RFC3339),
 	}
 
 	out, err := json.Marshal(txx)
