@@ -12,9 +12,9 @@ import Charts
 class StockLineGraphView: UIView {
     
     var lineChartView: LineChartView!
-    
+    var ticker = String()
     func setStock(stock: Stock) {
-        
+        ticker = stock.ticker
     }
     
     func setDataCount(_ count: Int, range: UInt32) {
@@ -27,6 +27,7 @@ class StockLineGraphView: UIView {
         let to = now + (Double(count) / 2) * hourSeconds
         
         let values = stride(from: from, to: to, by: hourSeconds).map { (x) -> ChartDataEntry in
+            print(APIManager.shared)
             let y = arc4random_uniform(range) + 50
             return ChartDataEntry(x: x, y: Double(y))
         }
