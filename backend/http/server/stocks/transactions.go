@@ -19,7 +19,7 @@ func (r Stocks) getTransactions(w http.ResponseWriter, req *http.Request) {
 		PriceAtTime float64 `json:"price_at_time"`
 		Type string `json:"type"`
 		Quantity uint `json:"quantity"`
-		CreatedAt time.Time `json:"created_at"`
+		CreatedAt string `json:"created_at"`
 	}
 
 	user, ok := context.Get(req, "user").(models.User)
@@ -42,7 +42,7 @@ func (r Stocks) getTransactions(w http.ResponseWriter, req *http.Request) {
 			PriceAtTime: tx.PriceAtTime,
 			Type: string(tx.Type),
 			Quantity: tx.Quantity,
-			CreatedAt: tx.CreatedAt,
+			CreatedAt: tx.CreatedAt.Format(time.RFC3339),
 		})
 	}
 
