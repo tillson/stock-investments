@@ -24,7 +24,6 @@
 		438918C1217B70D000F8AE54 /* StockOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438918C0217B70D000F8AE54 /* StockOptionButton.swift */; };
 		439D0454217B7E74002CB86C /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D0453217B7E74002CB86C /* StockViewController.swift */; };
 		439D0456217B7FCA002CB86C /* StockLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D0455217B7FCA002CB86C /* StockLineGraphView.swift */; };
-		439D045E217B8AA9002CB86C /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439D045A217B8AA9002CB86C /* SearchTableViewController.swift */; };
 		43B6A4B8217BCA8900BBDF61 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6A4B7217BCA8900BBDF61 /* TransactionsViewController.swift */; };
 		43B6A4BA217BCACE00BBDF61 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6A4B9217BCACE00BBDF61 /* TransactionCell.swift */; };
 		43B6A543217BF7FC00BBDF61 /* SearchStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B6A542217BF7FC00BBDF61 /* SearchStockTableViewController.swift */; };
@@ -74,7 +73,6 @@
 		438918C0217B70D000F8AE54 /* StockOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOptionButton.swift; sourceTree = "<group>"; };
 		439D0453217B7E74002CB86C /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		439D0455217B7FCA002CB86C /* StockLineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLineGraphView.swift; sourceTree = "<group>"; };
-		439D045A217B8AA9002CB86C /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		43B6A4B7217BCA8900BBDF61 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		43B6A4B9217BCACE00BBDF61 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		43B6A542217BF7FC00BBDF61 /* SearchStockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStockTableViewController.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				439D0455217B7FCA002CB86C /* StockLineGraphView.swift */,
 				D804510F217BC229003BF857 /* ScoreboardTableViewController.swift */,
 				D8045115217BC243003BF857 /* UserTableViewCell.swift */,
-				439D045A217B8AA9002CB86C /* SearchTableViewController.swift */,
 				43383425217C1C41008A3AAC /* SearchStockCell.xib */,
 				F2CB4822217C147300714F83 /* leaderboards.png */,
 				F2CB4820217C146100714F83 /* search.png */,
@@ -378,7 +375,6 @@
 				D86C1305217BB029004B53F6 /* LoginViewController.swift in Sources */,
 				D86C1307217BB031004B53F6 /* RegisterViewController.swift in Sources */,
 				43C3EDEC217AFCE80088D963 /* SignInViewController.swift in Sources */,
-				439D045E217B8AA9002CB86C /* SearchTableViewController.swift in Sources */,
 				43B6A4BA217BCACE00BBDF61 /* TransactionCell.swift in Sources */,
 				D8045110217BC229003BF857 /* ScoreboardTableViewController.swift in Sources */,
 				D86C1302217BA9C7004B53F6 /* APIManager.swift in Sources */,
