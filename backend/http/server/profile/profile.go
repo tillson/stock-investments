@@ -3,18 +3,20 @@ package profile
 import (
 	"encoding/json"
 	"fmt"
+	"log"
+	"net/http"
+
 	"github.com/gorilla/context"
 	"github.com/tillson/stock-investments/http/response"
 	"github.com/tillson/stock-investments/models"
-	"net/http"
 )
 
 type Return struct {
-	Name        string `json:"name"`
-	Username    string `json:"username"`
-	Email string `json:"email"`
-	Funds uint64 `json:"funds"`
-	Value float64  `json:"value"`
+	Name     string  `json:"name"`
+	Username string  `json:"username"`
+	Email    string  `json:"email"`
+	Funds    uint64  `json:"funds"`
+	Value    float64 `json:"value"`
 }
 
 func (r Return) JSON() (string, error) {
@@ -30,21 +32,23 @@ func (r Profile) profileHandler(w http.ResponseWriter, req *http.Request) {
 
 	user, ok := context.Get(req, "user").(models.User)
 	if !ok {
+		log.Println("1")
 		response.ServerError.Write(w)
 		return
 	}
 
 	val, err := user.GetPortfolioValue()
 	if err != nil {
+		log.Println(err)
 		response.ServerError.Write(w)
 		return
 	}
 
 	userData := Return{
-		Username:    user.Username,
-		Name:        user.Name,
-		Funds: user.Funds,
-		Value: val,
+		Username: user.Username,
+		Name:     user.Name,
+		Funds:    user.Funds,
+		Value:    val,
 	}
 
 	out, err := userData.JSON()

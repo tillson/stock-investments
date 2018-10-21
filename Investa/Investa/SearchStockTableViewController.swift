@@ -11,14 +11,16 @@ import UIKit
 class SearchStockTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     
     let allStocks = ["Stock1", "Stock2", "Stock3", "Blah"]
+    
+    var stock: Stock?
+    
     let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewWillAppear(_ animated: Bool) {
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search"
+        
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.searchController = searchController
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
     }
@@ -41,6 +43,11 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.delegate = self
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -60,12 +67,12 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching{
+        if isSearching {
             return filtered.count
         }
-        if section == 0{
+        if section == 0 {
             return people.count
-        }else{
+        } else {
             return videos.count
         }
     }
@@ -92,18 +99,32 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         return cell
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        if searchController.searchBar.text == nil || searchController.searchBar.text == ""{
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // somehow let them potentially buy the stock
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(1)
+        if searchController.searchBar.text == nil || searchController.searchBar.text == "" {
             isSearching = false
             view.endEditing(true)
             tableView.reloadData()
         }else{
             isSearching = true
-            filtered = allStocks.filter { user in
-                return user.lowercased().contains(searchController.searchBar.text!.lowercased())
+            
+            APIManager.shared.getStock(identifier: searchController.searchBar.text!.uppercased(), onSuccess: { (stock) in
+                print(stock)
+                self.stock = stock
+                self.filtered = [stock.ticker]
+                self.tableView.reloadData()
+            }) { (error) in
+                print(error)
             }
-            tableView.reloadData()
         }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

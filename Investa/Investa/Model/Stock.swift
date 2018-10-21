@@ -8,31 +8,52 @@
 
 import Foundation
 
-struct Stock: Codable, Equatable {
+struct Stock: Decodable, Equatable {
     
-    let name: String
-    let symbol: String
-    
-    let initialBuyPrice: Float
-    
-    var sharesOwned: Int
-    
-    let history: [Date: Float]
+    let ticker: String
     let currentPrice: Float
+    var initialPrice: Float = 0.0
+    var sharesOwned = 0
+    var history: [PastStockPoint]
     
-    init(name: String, symbol: String, currentPrice: Float, initialBuyPrice: Float) {
-        self.name = name
-        self.symbol = symbol
+    enum CodingKeys: String, CodingKey {
+        typealias RawValue = String
+        case currentPrice = "current_price"
+        case ticker
+        case history = "stocks"
+    }
+    
+//    let stocks: Any
+    
+//    var sharesOwned: Int
+    
+//    let history: [Date: Float]
+    
+    init(ticker: String, currentPrice: Float) {
+        self.ticker = ticker
+//        self.sharesOwned = 1
         self.currentPrice = currentPrice
-        self.initialBuyPrice = initialBuyPrice
-        self.sharesOwned = 1
-        self.history = [Date(): 4]
+        self.history = [PastStockPoint]()
     }
     
     // percent success or not success
     // pull from begining of today and compare to now 
-    var percent: Int {
-        return 570
+//    var percent: Int {
+//        return 570
+//    }
+    
+}
+
+
+struct PastStockPoint: Decodable, Equatable {
+    let price: Float
+    let time: String
+    
+    // 2018-10-19T15:00:00Z
+    func getDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-DD'T'hh:mm:ss'Z'"
+        return dateFormatter.date(from: time)
     }
     
 }

@@ -21,8 +21,8 @@ class PortfolioStockCell: UICollectionViewCell {
     
     var stock: Stock! {
         didSet {
-            stockName.text = stock.name
-            percent.text = String(stock.percent)
+            stockName.text = stock.ticker
+            percent.text = String(stock.currentPrice)
         }
     }
     
