@@ -18,15 +18,19 @@ class TransactionCell: UITableViewCell {
     
     var transaction: Transaction! {
         didSet {
-            stockName.text = transaction.stock.ticker
-            stockPrice.text = "\(transaction.stock.currentPrice.moneyFormat)"
-            shareCount.text = "\(transaction.shares) share\(transaction.shares > 1 ? "s" : "")"
-            toalGain.text = "\((transaction.stock.currentPrice * Float(transaction.shares) - transaction.buyPrice * Float(transaction.shares)).moneyFormat)"
-            
-            let dateFormatterGet = DateFormatter()
-            dateFormatterGet.dateFormat = "MM/dd/yy"
-            date.text = dateFormatterGet.string(from: transaction.date)
-            
+            APIManager.shared.getStock(identifier: transaction.ticker, onSuccess: { (stock) in
+                self.stockName.text = stock.ticker
+                self.stockPrice.text = "\(stock.currentPrice.moneyFormat)"
+                self.shareCount.text = "\(self.transaction.shares) share\(self.transaction.shares > 1 ? "s" : "")"
+                self.toalGain.text = "\((stock.currentPrice * Float(self.transaction.shares) - self.transaction.buyPrice * Float(self.transaction.shares)).moneyFormat)"
+                
+                let dateFormatterGet = DateFormatter()
+                dateFormatterGet.dateFormat = "MM/dd/yy"
+                self.date.text = dateFormatterGet.string(from: self.transaction.getDate()!)
+            }) { (error) in
+                print("ERROR! \(error)")
+            }
+
         }
     }
     

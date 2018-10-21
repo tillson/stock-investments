@@ -10,7 +10,7 @@ import UIKit
 
 class SearchStockTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     
-    let allStocks = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
+    let allStocks = [Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420)]
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -23,11 +23,11 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         searchController.dimsBackgroundDuringPresentation = false
     }
     
-    let trending = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
+    let trending = [Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420)]
     
-    let recommended = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
+    let recommended = [Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420)]
     
-    var filtered = [Stock(name: "Apple", symbol: "APPL", currentPrice: 1000, initialBuyPrice: 0), Stock(name: "Tesla", symbol: "TEZLA", currentPrice: 420, initialBuyPrice: 0), Stock(name: "Google", symbol: "GOOG", currentPrice: 200, initialBuyPrice: 10)]
+    var filtered = [Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420)]
     
     var isSearching = false
     
@@ -77,31 +77,31 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchStockCell", for: indexPath) as! SearchStockCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchStockCell", for: indexPath)
 
-        if isSearching {
-            cell.stock = filtered[indexPath.row]
-        } else {
-            if indexPath.section == 0   {
-                cell.stock = trending[indexPath.row]
-            } else {
-                cell.stock = recommended[indexPath.row]
-            }
-        }
+//        if isSearching {
+//            cell.stock = filtered[indexPath.row]
+//        } else {
+//            if indexPath.section == 0   {
+//                cell.stock = trending[indexPath.row]
+//            } else {
+//                cell.stock = recommended[indexPath.row]
+//            }
+//        }
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? SearchStockCell {
-            let stock: Stock = cell.stock
-
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
-                viewController.stock = stock
-                navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
+//        if let cell = tableView.cellForRow(at: indexPath) as? SearchStockCell {
+//            let stock: Stock = cell.stock
+//
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
+//                viewController.stock = stock
+//                navigationController?.pushViewController(viewController, animated: true)
+//            }
+//        }
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -111,9 +111,9 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
             tableView.reloadData()
         }else{
             isSearching = true
-            filtered = allStocks.filter { user in
-                return user.name.lowercased().contains(searchController.searchBar.text!.lowercased())
-            }
+//            filtered = allStocks.filter { user in
+////                return user.name.lowercased().contains(searchController.searchBar.text!.lowercased())
+//            }
             tableView.reloadData()
         }
     }

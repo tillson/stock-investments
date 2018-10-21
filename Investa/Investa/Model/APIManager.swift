@@ -12,10 +12,14 @@ import Alamofire
 class APIManager {
     
     static let shared = APIManager()
-    static let baseURL = "http://35.229.117.21:8080"
+    // http://35.229.117.21:8080
+    static let baseURL = "http://localhost:8080"
     var sManager = Alamofire.SessionManager.default
 
     var user: User?
+    
+    var stocks = [Stock]()
+    
     
     var token: String? {
         didSet {
@@ -93,6 +97,10 @@ class APIManager {
     // MARK: Stocks
     func getStock(identifier: String, onSuccess: @escaping(Stock) -> Void, onFailure: @escaping(Error) -> Void) {
         if token == nil { onFailure(InvestaError.NoToken); return; }
+        if stocks.filter({$0.ticker == identifier}).count > 0 {
+            onSuccess(stocks.filter({$0.ticker == identifier})[0])
+            return
+        }
         sManager.request(APIManager.baseURL + "/stocks/",
                          method: .post,
                          parameters: ["identifier": identifier],
@@ -189,7 +197,6 @@ class APIManager {
         configuration.httpAdditionalHeaders = headers
         sManager = Alamofire.SessionManager(configuration: configuration)
     }
-
     
 }
 

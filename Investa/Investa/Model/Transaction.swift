@@ -10,23 +10,34 @@ import Foundation
 
 struct Transaction: Decodable {
     
-    let stock: Stock
+    let ticker: String
     let buyPrice: Float
-    let date: Date
-    let type: String
+    let date: String
+    let type: String // BUY or SELL
     let shares: Int
     
-    init(stock: Stock, buyPrice: Float, date: Date, type: String, shares: Int) {
-        self.stock = stock
+    enum CodingKeys: String, CodingKey {
+        typealias RawValue = String
+        case buyPrice = "price_at_time"
+        case ticker
+        case type
+        case shares = "quantity"
+        case date = "created_at"
+    }
+    
+    init(ticker: String, buyPrice: Float, date: Date, type: String, shares: Int) {
+        self.ticker = ticker
         self.buyPrice = buyPrice
-        self.date = date
+        self.date = "\(date)"
         self.type = type
         self.shares = shares
     }
+
+    func getDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-DD'T'hh:mm:ss'Z'"
+        return dateFormatter.date(from: date)
+    }
+
     
-}
-
-
-enum TransactionType {
-    case buy, sell
 }

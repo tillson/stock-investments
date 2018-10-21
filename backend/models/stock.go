@@ -25,7 +25,7 @@ type Transaction struct {
 }
 
 func CreateTransaction(tx Transaction, db *gorm.DB) error {
-	if err := db.Create(tx).Error; err != nil {
+	if err := db.Create(&tx).Error; err != nil {
 		return err
 	}
 
