@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/tillson/stock-investments/db"
 	"github.com/tillson/stock-investments/http/server"
 )

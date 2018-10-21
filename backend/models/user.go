@@ -53,13 +53,14 @@ func NewUserFromUsername(username string, db *gorm.DB) (User, error) {
 	return user, nil
 }
 
-func CreateUser(username, password string, db *gorm.DB) (User, error) {
+func CreateUser(username, password, name string, db *gorm.DB) (User, error) {
 	passwordHash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		return User{}, err
 	}
 
 	user := User{
+		Name: name,
 		Username:     username,
 		PasswordHash: passwordHash,
 		Funds: config.GetStartMoney(),
@@ -155,6 +156,7 @@ func (user *User) BuyStock(ticker string, quantity uint) error {
 	return nil
 }
 
+var NotEnoughStocksErr = errors.New("you do not have enough stocks")
 func (user *User) SellStock(ticker string, quantity uint) error {
 	// Check current price of stock
 	price, _, err := stocks.GetCurrentPrice(ticker)
@@ -162,7 +164,16 @@ func (user *User) SellStock(ticker string, quantity uint) error {
 		return err
 	}
 
-	// TODO: Validate user has number of stocks
+	stockMap, err := StockMap(user.ID, user.db)
+	if err != nil {
+		return err
+	}
+	count := stockMap[ticker]
+
+	// Validate user has number of stocks
+	if count < quantity {
+		return NotEnoughStocksErr
+	}
 
 	tx := Transaction{
 		Ticker: ticker,
@@ -177,11 +188,23 @@ func (user *User) SellStock(ticker string, quantity uint) error {
 	return nil
 }
 
-func (user *User) GetBalance() error {
-	var txs []Transaction
-	if err := user.db.Related(&txs).Error; err != nil {
-		return err
+func (user *User) GetPortfolioValue() (float64, error) {
+	var value float64 = 0
+
+	stockMap, err := StockMap(user.ID, user.db)
+	if err != nil {
+		return 0, err
 	}
 
-	return nil
+	for ticker, quantity := range stockMap {
+		price, _, err := stocks.GetCurrentPrice(ticker)
+		if err != nil {
+			return 0, err
+		}
+		value += price * float64(quantity)
+	}
+
+	value += float64(user.Funds)
+
+	return value, nil
 }

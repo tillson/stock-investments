@@ -14,6 +14,7 @@ type Return struct {
 	Username    string `json:"username"`
 	Email string `json:"email"`
 	Funds uint64 `json:"funds"`
+	Value float64  `json:"value"`
 }
 
 func (r Return) JSON() (string, error) {
@@ -33,10 +34,17 @@ func (r Profile) profileHandler(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	val, err := user.GetPortfolioValue()
+	if err != nil {
+		response.ServerError.Write(w)
+		return
+	}
+
 	userData := Return{
 		Username:    user.Username,
 		Name:        user.Name,
 		Funds: user.Funds,
+		Value: val,
 	}
 
 	out, err := userData.JSON()
