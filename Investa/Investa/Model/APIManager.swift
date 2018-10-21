@@ -13,7 +13,7 @@ class APIManager {
     
     static let shared = APIManager()
     // http://35.229.117.21:8080
-    static let baseURL = "http://35.229.117.21:8080"
+    static let baseURL = "http://localhost:8080"
     var sManager = Alamofire.SessionManager.default
 
     var user: User?
@@ -96,7 +96,7 @@ class APIManager {
     // MARK: Stocks
     func getStock(identifier: String, onSuccess: @escaping(Stock) -> Void, onFailure: @escaping(Error) -> Void) {
         if token == nil { onFailure(InvestaError.NoToken); return; }
-        if stocks.filter({$0.ticker == identifier}).count > 0 {
+        if self.stocks.filter({$0.ticker == identifier}).count > 0 {
             onSuccess(stocks.filter({$0.ticker == identifier})[0])
             return
         }
@@ -114,6 +114,7 @@ class APIManager {
                 guard let data = response.data else { onFailure(InvestaError.NoToken); return; }
                 do {
                     let stock = try JSONDecoder().decode(Stock.self, from: data)
+                    self.stocks.append(stock)
                     onSuccess(stock)
                 } catch let error {
                     print("Error selling stock: \(error)")
@@ -217,6 +218,29 @@ class APIManager {
                 }
         }
     }
+    
+    // MARK: Leaderboard
+    func getLeaderboard(onSuccess: @escaping([Profile]) -> Void, onFailure: @escaping(Error) -> Void) {
+        if token == nil { onFailure(InvestaError.NoToken); return; }
+        sManager.request(APIManager.baseURL + "/leaderboard/" ,
+                         method: .post,
+                         encoding: JSONEncoding.default)
+            .responseJSON{ response in
+                if let error = response.error {
+                    onFailure(error)
+                    return
+                }
+                print(response)
+                guard let data = response.data else { onFailure(InvestaError.NoToken); return; }
+                do {
+                    let users = try JSONDecoder().decode([Profile].self, from: data)
+                    onSuccess(users)
+                } catch let error {
+                    print("Error gettig transactions: \(error)")
+                }
+        }
+    }
+
 
     // MARK: Util
     func updateTokenHeader() {
@@ -229,6 +253,7 @@ class APIManager {
         sManager = Alamofire.SessionManager(configuration: configuration)
     }
     
+
 }
 
 enum InvestaError: Error {

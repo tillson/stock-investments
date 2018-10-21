@@ -16,7 +16,6 @@ func (m Middleware) GetUserMiddleware(next http.Handler) http.Handler {
 		var bearer string
 		header := req.Header.Get("Authorization")
 		fmt.Sscanf(header, "Bearer: %s", &bearer)
-
 		type TokenAuth struct {
 			jwt.StandardClaims
 			ID  int    `json:"id"`

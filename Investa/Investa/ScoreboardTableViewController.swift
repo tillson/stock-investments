@@ -89,9 +89,9 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching{
+        if isSearching {
             return filtered.count
-        }else{
+        } else {
             return leaderboard.count
         }
     }
