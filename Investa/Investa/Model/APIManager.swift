@@ -66,7 +66,7 @@ class APIManager {
     
     // MARK: Profile
     func getCurrentUser(onSuccess: @escaping(User) -> Void, onFailure: @escaping(Error) -> Void) {
-        guard let token = token else { onFailure(NoTokenError()); return; }
+        guard let token = token else { onFailure(InvestaError.NoToken); return; }
         sManager.request(APIManager.baseURL + "/profile/" ,
                           method: .get,
                           encoding: JSONEncoding.default,
@@ -76,7 +76,7 @@ class APIManager {
                     onFailure(error)
                     return
                 }
-                guard let data = response.data else { onFailure(NoTokenError()); return; }
+                guard let data = response.data else { onFailure(InvestaError.NoToken); return; }
                 do {
                     let user = try JSONDecoder().decode(User.self, from: data)
                     onSuccess(user)
@@ -86,7 +86,28 @@ class APIManager {
         }
     }
 
-    
+    // MARK: Stocks
+    func getStocks(onSuccess: @escaping([Stock]) -> Void, onFailure: @escaping(Error) -> Void) {
+        guard let token = token else { onFailure(InvestaError.NoToken); return; }
+        sManager.request(APIManager.baseURL + "/stocks/" ,
+                         method: .get,
+                         encoding: JSONEncoding.default,
+                         headers: ["Authentication": "Bearer: \(token)"])
+            .responseJSON{ response in
+                if let error = response.error {
+                    onFailure(error)
+                    return
+                }
+                guard let data = response.data else { onFailure(InvestaError.NoToken); return; }
+                do {
+                    let stocks = try JSONDecoder().decode([Stock].self, from: data)
+                    onSuccess(stocks)
+                } catch let JSONError as Error {
+                    print(JSONError)
+                }
+        }
+    }
+
     // MARK: Util
     func updateTokenHeader() {
         guard let token = token else { return }
@@ -96,12 +117,11 @@ class APIManager {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = headers
         sManager = Alamofire.SessionManager(configuration: configuration)
-        print(headers)
     }
 
     
 }
 
-class NoTokenError: Error {
-    
+enum InvestaError: Error {
+    case NoToken
 }
