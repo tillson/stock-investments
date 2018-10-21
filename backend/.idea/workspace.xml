@@ -48,28 +48,37 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="go" value="101" />
+          <entry key="go" value="102" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="101" />
+          <entry key="Go" value="102" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="go" value="18513" />
+          <entry key="go" value="18764" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="18513" />
+          <entry key="Go" value="18764" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stocks/alpha_vantage.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/http/server/stocks/sell_stock.go">
           <provider selected="true" editor-type-id="text-editor">
@@ -79,7 +88,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/user.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
@@ -121,7 +130,6 @@
         <option value="$PROJECT_DIR$/http/server/authentication/login.go" />
         <option value="$PROJECT_DIR$/http/main.go" />
         <option value="$PROJECT_DIR$/http/server/profile/reset_password.go" />
-        <option value="$PROJECT_DIR$/stocks/alpha_vantage.go" />
         <option value="$PROJECT_DIR$/http/server/stocks/get_stocks.go" />
         <option value="$PROJECT_DIR$/http/server/authentication/register.go" />
         <option value="$PROJECT_DIR$/models/stockmap.go" />
@@ -137,6 +145,7 @@
         <option value="$PROJECT_DIR$/http/server/stocks/buy_stock.go" />
         <option value="$PROJECT_DIR$/http/server/stocks/sell_stock.go" />
         <option value="$PROJECT_DIR$/models/user.go" />
+        <option value="$PROJECT_DIR$/stocks/alpha_vantage.go" />
       </list>
     </option>
   </component>
@@ -432,13 +441,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stocks/alpha_vantage.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/http/server/stocks/buy_stock.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
@@ -457,6 +459,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="194" column="81" selection-start-line="194" selection-start-column="81" selection-end-line="194" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stocks/alpha_vantage.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
