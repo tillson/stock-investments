@@ -1,13 +1,22 @@
 package stocks
 
 import (
+	"fmt"
 	"time"
 
 	alpha "github.com/cmckee-dev/go-alpha-vantage"
 	"github.com/tillson/stock-investments/config"
 )
 
+var Tickers = make(map[string]float64)
+
 func GetCurrentPrice(ticker string) (float64, time.Time, error) {
+	data, ok := Tickers[ticker]
+	fmt.Println("Debug:", ticker, data, ok)
+	if ok {
+		return data, time.Now(), nil
+	}
+
 	api := config.GetAlphaToken()
 	c := alpha.NewClient(api)
 	series, err := c.StockTimeSeriesIntraday(alpha.TimeIntervalFifteenMinute, ticker)
@@ -16,6 +25,8 @@ func GetCurrentPrice(ticker string) (float64, time.Time, error) {
 	}
 
 	last := series[0]
+
+	Tickers[ticker] = last.Close
 
 	return last.Close, last.Time, nil
 }

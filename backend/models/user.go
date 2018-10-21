@@ -144,7 +144,9 @@ func (user *User) BuyStock(ticker string, quantity uint) (Transaction, error) {
 		return Transaction{}, NotEnoughMoneyErr
 	}
 
-	user.db.Model(&user).Update("funds", user.Funds - totalPrice)
+	if err := user.db.Model(&user).Update("funds", user.Funds - totalPrice).Error; err != nil {
+		return Transaction{}, err
+	}
 
 	tx := Transaction{
 		Ticker: ticker,
@@ -188,6 +190,10 @@ func (user *User) SellStock(ticker string, quantity uint) (Transaction, error) {
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
 		return tx, err
+	}
+
+	if err := user.db.Model(&user).Update("funds", user.Funds + (float64(quantity) * price)).Error; err != nil {
+		return Transaction{}, err
 	}
 
 	return tx, nil

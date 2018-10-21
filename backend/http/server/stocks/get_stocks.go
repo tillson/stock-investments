@@ -48,7 +48,7 @@ func (r Stocks) getStocks(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	prices, err := stocks.GetWeeklyHistory(data.Identifier)
+	price, time, err := stocks.GetCurrentPrice(data.Identifier)
 	if err != nil {
 		log.Println(err)
 		response.ServerError.Write(w)
@@ -56,7 +56,7 @@ func (r Stocks) getStocks(w http.ResponseWriter, req *http.Request) {
 	}
 	output := GetStocksOutput{
 		Ticker: data.Identifier,
-		Stocks: prices,
+		Stocks: []stocks.PriceHistory{{Price: price, Time: time}},
 	}
 	out, err := output.JSON()
 	if err != nil {
