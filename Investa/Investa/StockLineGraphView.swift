@@ -31,7 +31,7 @@ class StockLineGraphView: UIView {
         let values = stride(from: from, to: to, by: hourSeconds).map { (x) -> ChartDataEntry in
             var y = Double()
             APIManager.shared.getStock(identifier: ticker, onSuccess: { (stock) in
-                y = Double(stock.history[0].price)
+                print(stock.history[0].price)
             }) { (error) in
                 
             }
