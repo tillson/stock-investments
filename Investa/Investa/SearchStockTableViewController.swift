@@ -93,15 +93,15 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let cell = tableView.cellForRow(at: indexPath) as? SearchStockCell {
-//            let stock: Stock = cell.stock
-//
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
-//                viewController.stock = stock
-//                navigationController?.pushViewController(viewController, animated: true)
-//            }
-//        }
+        if let cell = tableView.cellForRow(at: indexPath) as? SearchStockCell {
+            let stock: Stock = cell.stock
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
+                navigationController?.pushViewController(viewController, animated: true)
+                viewController.stock = stock
+            }
+        }
     }
     
     func updateSearchResults(for searchController: UISearchController) {
