@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let password = UserDefaults.standard.string(forKey: "password")
         if username != nil && password != nil {
             APIManager.shared.login(username: username!, password: password!, onSuccess: { (success) in
+                print(1)
                 if !success {
                     APIManager.shared.token = nil
                     return

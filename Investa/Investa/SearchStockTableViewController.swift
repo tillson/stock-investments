@@ -15,13 +15,12 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     var stock: Stock?
     
     let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewWillAppear(_ animated: Bool) {
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search"
+        
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.searchController = searchController
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
     }
@@ -43,6 +42,11 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.delegate = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -95,28 +99,33 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         return cell
     }
     
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        if searchController.searchBar.text == nil || searchController.searchBar.text == ""{
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // somehow let them potentially buy the stock
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(1)
+        if searchController.searchBar.text == nil || searchController.searchBar.text == "" {
             isSearching = false
             view.endEditing(true)
             tableView.reloadData()
         }else{
             isSearching = true
             
-            APIManager.shared.getStock(identifier: searchController.searchBar.text!, onSuccess: { (stock) in
+            APIManager.shared.getStock(identifier: searchController.searchBar.text!.uppercased(), onSuccess: { (stock) in
+                print(stock)
                 self.stock = stock
                 self.filtered = [stock.ticker]
                 self.tableView.reloadData()
             }) { (error) in
                 print(error)
             }
-            
-            
         }
     }
     
-//    func updateSearchResults(for searchController: UISearchController) {
-//    }
+    func updateSearchResults(for searchController: UISearchController) {
+    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if isSearching{

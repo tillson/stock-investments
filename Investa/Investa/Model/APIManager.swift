@@ -12,7 +12,7 @@ import Alamofire
 class APIManager {
     
     static let shared = APIManager()
-    static let baseURL = "http://35.229.117.21:8080"
+    static let baseURL = "http://localhost:8080"
     var sManager = Alamofire.SessionManager.default
 
     var user: User?
@@ -59,7 +59,9 @@ class APIManager {
                     onFailure(error)
                     return
                 }
-
+                if let value = response.result.value! as? [String: String] {
+                    self.token = value["access_token"]
+                }
                 onSuccess(true)
         }
     }
@@ -103,6 +105,7 @@ class APIManager {
                     onFailure(error)
                     return
                 }
+                print(response)
                 guard let data = response.data else { onFailure(InvestaError.NoToken); return; }
                 do {
                     let stock = try JSONDecoder().decode(Stock.self, from: data)

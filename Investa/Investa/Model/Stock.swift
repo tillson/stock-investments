@@ -14,11 +14,13 @@ struct Stock: Decodable, Equatable {
     let currentPrice: Float
     var initialPrice: Float = 0.0
     var sharesOwned = 0
+    var history: [PastStockPoint]
     
     enum CodingKeys: String, CodingKey {
         typealias RawValue = String
         case currentPrice = "current_price"
         case ticker
+        case history = "stocks"
     }
     
 //    let stocks: Any
@@ -31,7 +33,7 @@ struct Stock: Decodable, Equatable {
         self.ticker = ticker
 //        self.sharesOwned = 1
         self.currentPrice = currentPrice
-//        self.history = [Date(): 4]
+        self.history = [PastStockPoint]()
     }
     
     // percent success or not success
@@ -43,3 +45,15 @@ struct Stock: Decodable, Equatable {
 }
 
 
+struct PastStockPoint: Decodable, Equatable {
+    let price: Float
+    let time: String
+    
+    // 2018-10-19T15:00:00Z
+    func getDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-DD'T'hh:mm:ss'Z'"
+        return dateFormatter.date(from: time)
+    }
+    
+}
