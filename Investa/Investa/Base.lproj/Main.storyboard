@@ -135,6 +135,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="tintColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TransactionCell" rowHeight="58" id="XxN-YT-OMV" customClass="TransactionCell" customModule="Investa" customModuleProvider="target">
@@ -401,6 +402,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="tintColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -420,18 +422,18 @@
             </objects>
             <point key="canvasLocation" x="2424.8000000000002" y="209.14542728635683"/>
         </scene>
-        <!--Scoreboard-->
+        <!--Leaderboard-->
         <scene sceneID="y1T-o1-EeU">
             <objects>
                 <tableViewController id="bVv-cd-sjW" customClass="ScoreboardTableViewController" customModule="Investa" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" id="wPA-Hq-rNY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1452265814" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="SMu-kS-hCg" customClass="UserTableViewCell" customModule="Investa" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="SMu-kS-hCg" customClass="UserTableViewCell" customModule="Investa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SMu-kS-hCg" id="d38-YN-5Jz">
@@ -483,7 +485,7 @@
                                         <constraint firstItem="HDR-p1-C1n" firstAttribute="trailing" secondItem="Ae5-9j-scW" secondAttribute="trailing" id="sfC-ff-n7s"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.1452265814" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -500,7 +502,7 @@
                             <outlet property="delegate" destination="bVv-cd-sjW" id="KfY-is-guz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scoreboard" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="pJI-7T-f3F">
+                    <navigationItem key="navigationItem" title="Leaderboard" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="pJI-7T-f3F">
                         <barButtonItem key="backBarButtonItem" title="Back" id="yik-Vd-aFX"/>
                     </navigationItem>
                 </tableViewController>
@@ -513,10 +515,10 @@
             <objects>
                 <navigationController id="MlY-3y-KH2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Leaderboards" image="leaderboards" selectedImage="leaderboards.png" id="sXZ-F3-9df"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h6y-2f-8TW">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="h6y-2f-8TW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="bVv-cd-sjW" kind="relationship" relationship="rootViewController" id="u66-0x-eGB"/>
@@ -534,6 +536,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="mcb-vP-rka">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PSp-6L-q3p">
                         <autoresizingMask key="autoresizingMask"/>
@@ -546,7 +549,7 @@
             </objects>
             <point key="canvasLocation" x="-2076" y="1026"/>
         </scene>
-        <!--Search-->
+        <!--Stocks-->
         <scene sceneID="q2M-9A-ajO">
             <objects>
                 <tableViewController id="qyl-ju-UIJ" customClass="SearchStockTableViewController" customModule="Investa" customModuleProvider="target" sceneMemberID="viewController">
@@ -554,6 +557,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="tintColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="733-Oq-3bT">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -569,7 +573,7 @@
                             <outlet property="delegate" destination="qyl-ju-UIJ" id="bv5-je-RJg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="ZUQ-fY-J3O"/>
+                    <navigationItem key="navigationItem" title="Stocks" id="ZUQ-fY-J3O"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="017-Ap-hAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -708,6 +712,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="vPb-qH-EjA">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.20000000000000001" green="0.70980392160000005" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

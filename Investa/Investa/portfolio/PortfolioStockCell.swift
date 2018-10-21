@@ -22,15 +22,16 @@ class PortfolioStockCell: UICollectionViewCell {
     var stock: Stock! {
         didSet {
             stockName.text = stock.ticker
+            ownedStockCount.text = "\(stock.sharesOwned) stock\(stock.sharesOwned != 1 ? "s" : "")"
             percent.text = String(stock.currentPrice)
         }
     }
     
-    var profile: Profile! {
-        didSet {
-            let sameStocks = profile.ownedStocks.filter { $0 == stock }
-            ownedStockCount.text = "\(sameStocks.count) stock\(sameStocks.count > 1 ? "s" : "")"
-        }
-    }
+    var profile: Profile!// {
+//        didSet {
+//            let sameStocks = profile.ownedStocks.filter { $0 == stock }
+//            ownedStockCount.text = "\(sameStocks.count) stock\(sameStocks.count > 1 ? "s" : "")"
+//        }
+//    }
     
 }

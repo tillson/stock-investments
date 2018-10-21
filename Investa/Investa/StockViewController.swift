@@ -13,7 +13,6 @@ class StockViewController: UIViewController {
     @IBOutlet weak var stockLineGraphView: StockLineGraphView!
     @IBOutlet weak var name: UILabel! {
         didSet {
-            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0.ticker == stock.ticker }
             name.text = stock.ticker
         }
     }
@@ -79,6 +78,10 @@ class StockViewController: UIViewController {
                 textField = field
             })
             
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            
             alert.addAction(UIAlertAction(title: "Sell", style: .default, handler: { (action) in
                 if let amountToSell = Int(textField.text ?? "") {
                     let title: String
@@ -100,9 +103,6 @@ class StockViewController: UIViewController {
                 }
                 
                 
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
             }))
             
             self.present(alert, animated: true, completion: nil)

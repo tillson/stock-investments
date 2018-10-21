@@ -21,12 +21,12 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.placeholder = "Search leaderboard"
         searchController.delegate = self
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self 
         definesPresentationContext = true
-        navigationItem.hidesSearchBarWhenScrolling = true
         self.navigationItem.searchController = searchController
         
         addToLeaderboard()
@@ -104,7 +104,7 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserTableViewCell
             print(indexPath.row)
             cell.rank.text = "\(indexPath.row + 1)" + "."
-            cell.pic.image = UIImage(named: "sample")
+            cell.pic.image = UIImage(named: "pic" + "\(indexPath.row + 1)")
             cell.name.text = user.name
             cell.totalFunds.text = "\(user.funds)"
 //            cell.percentChange.text = "\(user.percentIncrease)"
@@ -132,7 +132,6 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         tableView.tableFooterView = customView
-        customView.backgroundColor = UIColor.green
         let rank = UILabel(frame: CGRect(x: 5, y: customView.frame.height/2-15, width: 50, height: 50))
         rank.font = UIFont(name: "Helvetica Neue", size: 30)
         rank.text = "1."
@@ -142,8 +141,8 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
         button.text = "Your Name"
         customView.addSubview(button)
         let image = UIImageView(frame: CGRect(x: 35, y: customView.frame.height/2-25, width: 70, height: 70))
-        image.image = UIImage(named: "sample")
-        image.layer.cornerRadius = 40
+        image.image = UIImage(named: "pic4")
+        image.layer.cornerRadius = 35
         image.layer.masksToBounds = true
         image.clipsToBounds = true
         customView.addSubview(image)
