@@ -11,11 +11,50 @@ import UIKit
 class StockViewController: UIViewController {
     
     @IBOutlet weak var stockLineGraphView: StockLineGraphView!
-    
-    var stock: Stock! {
+    @IBOutlet weak var name: UILabel! {
         didSet {
-            
+            name.text = stock.ticker
         }
+    }
+    @IBOutlet weak var price: UILabel! {
+        didSet {
+            price.text = stock.currentPrice.moneyFormat
+        }
+    }
+    @IBOutlet weak var funds: UILabel! {
+        didSet {
+            funds.text = APIManager.shared.user!.funds.moneyFormat
+        }
+    }
+    @IBOutlet weak var ownedSales: UILabel! {
+        didSet {
+            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0 == stock }
+            ownedSales.text = "\(currentStocks.count)"
+        }
+    }
+    @IBOutlet weak var shareWorth: UILabel! {
+        didSet {
+            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0 == stock }
+            shareWorth.text = "\((Float(currentStocks.count) * stock.currentPrice).moneyFormat)"
+        }
+    }
+    @IBOutlet weak var transactions: UILabel! {
+        didSet {
+            transactions.text = "\(APIManager.shared.user!.transactions.filter { $0.stock == stock }.count)"
+        }
+    }
+    
+    var stock: Stock! 
+    
+    func reload() {
+        
+        let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0 == stock }
+        name.text = stock.ticker
+        funds.text = APIManager.shared.user!.funds.moneyFormat
+        price.text = stock.currentPrice.moneyFormat
+        ownedSales.text = "\(currentStocks.count)"
+        shareWorth.text = "\((Float(currentStocks.count) * stock.currentPrice).moneyFormat)"
+        transactions.text = "\(APIManager.shared.user!.transactions.filter { $0.stock == stock }.count)"
     }
     
     override func viewDidLoad() {
@@ -41,12 +80,18 @@ class StockViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "Sell", style: .default, handler: { (action) in
                 if let amountToSell = Int(textField.text ?? "") {
-                    // TODO: sell amount of this stock
+                    
+                    
                     let title: String
                     if amountToSell > self.stock.sharesOwned {
                         title = "You do not have enough of this stock to sell."
                         
                     } else {
+                        APIManager.shared.sellStock(identifier: self.stock.ticker, shares: amountToSell, onSuccess: { (transaction) in
+                            APIManager.shared.user!.transactions.append(transaction)
+                        }, onFailure: { (error) in
+                            
+                        })
                         title = "You have sold \(amountToSell) stocks earning \((self.stock.currentPrice * Float(amountToSell)).moneyFormat)"
                     }
                     
@@ -57,23 +102,29 @@ class StockViewController: UIViewController {
                 
                 
             }))
-            alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
             }))
             
             self.present(alert, animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Sell All", style: .destructive, handler: { (action) in
-            // TODO: sell all stocks
+            
             let amount = APIManager.shared.user!.ownedStocks.filter { $0 == self.stock }.count
+            
+            APIManager.shared.sellStock(identifier: self.stock.ticker, shares: amount, onSuccess: { (transaction) in
+                APIManager.shared.user!.transactions.append(transaction)
+            }, onFailure: { (error) in
+                
+            })
             
             let title = "You have sold \(amount) stocks earning \((self.stock.currentPrice * Float(amount)).moneyFormat)"
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-        
+            self.reload()
         }))
-        alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
         }))
         
@@ -89,16 +140,24 @@ class StockViewController: UIViewController {
             textField = field
         })
         
-        alert.addAction(UIAlertAction(title: "Canel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Buy", style: .default, handler: { (action) in
             if let amountToBuy = Int(textField.text ?? "") {
-                // TODO: sell amount of this stock
+
                 if Float(amountToBuy) * self.stock.currentPrice > APIManager.shared.user!.funds {
                     self.showAlert(title: "You do not have enough money to buy this many stocks.")
                 } else {
+                    self.showAlert(title: "You have bought \(amountToBuy) stocks for \((self.stock.currentPrice * Float(amountToBuy)).moneyFormat)")
+                    
                     APIManager.shared.buyStock(identifier: self.stock.ticker, shares: amountToBuy, onSuccess: { (transaction) in
-                        self.showAlert(title: "You have bought \(amountToBuy) stocks for \((self.stock.currentPrice * Float(amountToBuy)).moneyFormat)")
+                        APIManager.shared.buyStock(identifier: self.stock.ticker, shares: amountToBuy, onSuccess: { (transaction) in
+                            APIManager.shared.user!.transactions.append(transaction)
+                        }, onFailure: { (error) in
+                            
+                        })
+                        
+                        self.reload()
                     }, onFailure: { (error) in
                         self.showAlert(title: "An error occurred while trying to buy stock.")
                     })

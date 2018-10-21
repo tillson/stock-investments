@@ -98,8 +98,8 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
 
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
-                viewController.stock = stock
                 navigationController?.pushViewController(viewController, animated: true)
+                viewController.stock = stock
             }
         }
     }
