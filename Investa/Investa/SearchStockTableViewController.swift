@@ -8,6 +8,8 @@
 
 import UIKit
 
+var loaded = false
+
 class SearchStockTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     
     var allStocks = [Stock]()
@@ -18,27 +20,36 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         
         var i = 0
         
-        let _ = ["MU", "AMD", "TSLA", "AAPL", "GOOG", "ROPE", "AMZN", "MSFT"].map {
-            APIManager.shared.getStock(identifier: $0, onSuccess: { (stock) in
-                stock.currentPrice = stock.history.first!.price
-                self.allStocks.append(stock)
+        if loaded == false {
+            let _ = ["MU", "AMD", "TSLA", "AAPL", "GOOG", "ROPE", "AMZN", "MSFT"].map {
                 
-                if i % 2 == 0 {
-                    self.trending.append(stock)
-                } else {
-                    self.recommended.append(stock)
-                }
-                
-                i += 1
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-            }, onFailure: { (error) in
-                
-            })
+                APIManager.shared.getStock(identifier: $0, onSuccess: { (stock) in
+                    if stock.history.isEmpty {
+                        return
+                    }
+                    
+                    loaded = true
+                    
+                    stock.currentPrice = stock.history.first!.price
+                    self.allStocks.append(stock)
+                    
+                    if i % 2 == 0 {
+                        self.trending.append(stock)
+                    } else {
+                        self.recommended.append(stock)
+                    }
+                    
+                    i += 1
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }, onFailure: { (error) in
+                    
+                })
+            }
         }
+       
         
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -50,6 +61,7 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
     var trending = [Stock]()
     
     var recommended = [Stock]()
+
     
     var filtered = [Stock]()
     

@@ -20,7 +20,6 @@ class APIManager {
     
     var stocks = [Stock]()
     
-    
     var token: String? {
         didSet {
             if token != nil {
@@ -101,6 +100,7 @@ class APIManager {
             onSuccess(stocks.filter({$0.ticker == identifier})[0])
             return
         }
+        
         sManager.request(APIManager.baseURL + "/stocks/",
                          method: .post,
                          parameters: ["identifier": identifier],
