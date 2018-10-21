@@ -15,37 +15,21 @@ class Profile: Decodable {
     var funds: Float
     let startingFunds = 15000.0
 
-    let ownedStocks = [Stock(ticker: "AAPL", currentPrice: 400), Stock(ticker: "AAPL", currentPrice: 500)]
-    let portfolioValue: Float = 100.0
+    var ownedStocks = [Stock]()
+    let portfolioValue: Float
+    
+    enum CodingKeys: String, CodingKey {
+        typealias RawValue = String
+        case name
+        case funds
+        case portfolioValue = "value"
+    }
     
     init(name: String, portfolioValue: Float) {
         self.name = name
-//        self.portfolioValue = portfolioValue
+        self.portfolioValue = portfolioValue
         self.funds = portfolioValue
-//        self.ownedStocks = [Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0)]
+        self.ownedStocks = [Stock]()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        if let name = aDecoder.decodeObject(forKey: "name") as? String {
-            self.name = name
-        } else {
-            self.name = ""
-        }
-        if let funds = aDecoder.decodeObject(forKey: "funds") as? Float {
-            self.funds = funds
-        } else {
-            self.funds = 0.0
-        }
-//        if let ownedStocks = aDecoder.decodeObject(forKey: "stocks") as? [Stock] {
-//            self.ownedStocks = ownedStocks
-//        } else {
-//            self.ownedStocks = [Stock]()
-//        }
-//        if let portfolioValue = aDecoder.decodeObject(forKey: "portfolioValue") as? Float {
-//            self.portfolioValue = portfolioValue
-//        } else {
-//            self.portfolioValue = 0.0
-//        }
-    }
-
 }

@@ -77,17 +77,17 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchStockCell", for: indexPath) as! SearchStockCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchStockCell", for: indexPath)
 
-        if isSearching {
-            cell.stock = filtered[indexPath.row]
-        } else {
-            if indexPath.section == 0   {
-                cell.stock = trending[indexPath.row]
-            } else {
-                cell.stock = recommended[indexPath.row]
-            }
-        }
+//        if isSearching {
+//            cell.stock = filtered[indexPath.row]
+//        } else {
+//            if indexPath.section == 0   {
+//                cell.stock = trending[indexPath.row]
+//            } else {
+//                cell.stock = recommended[indexPath.row]
+//            }
+//        }
 
         return cell
     }

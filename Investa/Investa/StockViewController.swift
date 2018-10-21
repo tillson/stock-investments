@@ -13,6 +13,7 @@ class StockViewController: UIViewController {
     @IBOutlet weak var stockLineGraphView: StockLineGraphView!
     @IBOutlet weak var name: UILabel! {
         didSet {
+            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0.ticker == stock.ticker }
             name.text = stock.ticker
         }
     }
@@ -40,7 +41,7 @@ class StockViewController: UIViewController {
     }
     @IBOutlet weak var transactions: UILabel! {
         didSet {
-            transactions.text = "\(APIManager.shared.user!.transactions.filter { $0.stock == stock }.count)"
+            transactions.text = "\(APIManager.shared.user!.transactions.filter { $0.ticker == stock.ticker }.count)"
         }
     }
     
@@ -54,7 +55,7 @@ class StockViewController: UIViewController {
         price.text = stock.currentPrice.moneyFormat
         ownedSales.text = "\(currentStocks.count)"
         shareWorth.text = "\((Float(currentStocks.count) * stock.currentPrice).moneyFormat)"
-        transactions.text = "\(APIManager.shared.user!.transactions.filter { $0.stock == stock }.count)"
+        transactions.text = "\(APIManager.shared.user!.transactions.filter { $0.ticker == stock.ticker }.count)"
     }
     
     override func viewDidLoad() {
@@ -80,8 +81,6 @@ class StockViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "Sell", style: .default, handler: { (action) in
                 if let amountToSell = Int(textField.text ?? "") {
-                    
-                    
                     let title: String
                     if amountToSell > self.stock.sharesOwned {
                         title = "You do not have enough of this stock to sell."
