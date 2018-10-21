@@ -38,9 +38,9 @@
 		D86C1307217BB031004B53F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1306217BB031004B53F6 /* RegisterViewController.swift */; };
 		D86C1309217BB0CB004B53F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C1308217BB0CB004B53F6 /* User.swift */; };
 		D86C130B217BBD8A004B53F6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86C130A217BBD8A004B53F6 /* Transaction.swift */; };
-		F2CB4817217C016C00714F83 /* leaderboards.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB4816217C016B00714F83 /* leaderboards.png */; };
-		F2CB4819217C056500714F83 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB4818217C056200714F83 /* search.png */; };
-		F2CB481B217C073E00714F83 /* chart.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB481A217C073D00714F83 /* chart.png */; };
+		F2CB481F217C145D00714F83 /* chart.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB481E217C145C00714F83 /* chart.png */; };
+		F2CB4821217C146200714F83 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB4820217C146100714F83 /* search.png */; };
+		F2CB4823217C147300714F83 /* leaderboards.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB4822217C147300714F83 /* leaderboards.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,9 +79,9 @@
 		D86C1306217BB031004B53F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D86C1308217BB0CB004B53F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D86C130A217BBD8A004B53F6 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		F2CB4816217C016B00714F83 /* leaderboards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaderboards.png; path = ../../../../Downloads/leaderboards.png; sourceTree = "<group>"; };
-		F2CB4818217C056200714F83 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = ../../../../Downloads/search.png; sourceTree = "<group>"; };
-		F2CB481A217C073D00714F83 /* chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chart.png; path = ../../../../Downloads/chart.png; sourceTree = "<group>"; };
+		F2CB481E217C145C00714F83 /* chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chart.png; path = ../../../../Downloads/chart.png; sourceTree = "<group>"; };
+		F2CB4820217C146100714F83 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		F2CB4822217C147300714F83 /* leaderboards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboards.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,9 +153,9 @@
 				D804510F217BC229003BF857 /* ScoreboardTableViewController.swift */,
 				D8045115217BC243003BF857 /* UserTableViewCell.swift */,
 				439D045A217B8AA9002CB86C /* SearchTableViewController.swift */,
-				F2CB4816217C016B00714F83 /* leaderboards.png */,
-				F2CB4818217C056200714F83 /* search.png */,
-				F2CB481A217C073D00714F83 /* chart.png */,
+				F2CB4822217C147300714F83 /* leaderboards.png */,
+				F2CB4820217C146100714F83 /* search.png */,
+				F2CB481E217C145C00714F83 /* chart.png */,
 			);
 			path = Investa;
 			sourceTree = "<group>";
@@ -264,15 +264,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2CB481B217C073E00714F83 /* chart.png in Resources */,
 				434ED70B217AC50300A8B197 /* LaunchScreen.storyboard in Resources */,
-				F2CB4819217C056500714F83 /* search.png in Resources */,
+				F2CB4821217C146200714F83 /* search.png in Resources */,
 				434ED708217AC50300A8B197 /* Assets.xcassets in Resources */,
-				F2CB4817217C016C00714F83 /* leaderboards.png in Resources */,
 				434ED706217AC50200A8B197 /* Main.storyboard in Resources */,
 				D8045118217BC24F003BF857 /* 1.storyboard in Resources */,
 				434D5E36217ACB5C00FF5FA3 /* PortfolioGraphCell.xib in Resources */,
 				43622FF6217AE44200700164 /* GraphHeaderView.xib in Resources */,
+				F2CB4823217C147300714F83 /* leaderboards.png in Resources */,
+				F2CB481F217C145D00714F83 /* chart.png in Resources */,
 				434D5E38217ACB6F00FF5FA3 /* PortfolioStockCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
