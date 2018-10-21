@@ -108,7 +108,7 @@ class APIManager {
                     let stock = try JSONDecoder().decode(Stock.self, from: data)
                     onSuccess(stock)
                 } catch let error {
-                    print("Error gettig transactions: \(error)")
+                    print("Error selling stock: \(error)")
                 }
         }
     }
@@ -117,19 +117,20 @@ class APIManager {
         if token == nil { onFailure(InvestaError.NoToken); return; }
         sManager.request(APIManager.baseURL + "/stocks/buy" ,
                          method: .post,
-                         parameters: ["identifier": identifier, "shares": shares],
+                         parameters: ["ticker": identifier, "quantity": shares],
                          encoding: JSONEncoding.default)
             .responseJSON{ response in
                 if let error = response.error {
                     onFailure(error)
                     return
                 }
+                print(response)
                 guard let data = response.data else { onFailure(InvestaError.NoToken); return; }
                 do {
                     let transaction = try JSONDecoder().decode(Transaction.self, from: data)
                     onSuccess(transaction)
                 } catch let error {
-                    print("Error gettig transactions: \(error)")
+                    print("Error buying stock: \(error)")
                 }
         }
     }
@@ -138,7 +139,7 @@ class APIManager {
         if token == nil { onFailure(InvestaError.NoToken); return; }
         sManager.request(APIManager.baseURL + "/stocks/sell" ,
                          method: .post,
-                         parameters: ["identifier": identifier, "shares": shares],
+                         parameters: ["ticket": identifier, "quantity": shares],
                          encoding: JSONEncoding.default)
             .responseJSON{ response in
                 if let error = response.error {
