@@ -13,6 +13,10 @@ class StockLineGraphView: UIView {
     
     var lineChartView: LineChartView!
     
+    func setStock() {
+        
+    }
+    
     func setDataCount(_ count: Int, range: UInt32) {
         if lineChartView == nil {
             lineChartView = LineChartView(frame: self.frame)

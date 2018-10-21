@@ -34,7 +34,7 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
         tableView.dataSource = self
         self.edgesForExtendedLayout = UIRectEdge.bottom
         self.extendedLayoutIncludesOpaqueBars = false
-        self.automaticallyAdjustsScrollViewInsets = false
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
