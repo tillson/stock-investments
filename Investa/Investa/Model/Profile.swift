@@ -10,6 +10,10 @@ import Foundation
 
 class Profile: Decodable {
 
+    var name = String()
+    var totalFunds = Int()
+    var percentIncrease = float()
+    
     let name: String
 
     var funds: Float
