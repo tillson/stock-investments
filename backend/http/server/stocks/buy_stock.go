@@ -12,8 +12,8 @@ import (
 )
 
 type BuyStockInput struct {
-	Ticker string
-	Quantity uint
+	Ticker string `json:"ticker"`
+	Quantity uint `json:"quantity"`
 }
 func NewBuyStockInput(r io.Reader) (BuyStockInput, error) {
 	var b BuyStockInput
