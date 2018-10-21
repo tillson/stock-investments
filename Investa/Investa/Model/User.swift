@@ -22,19 +22,5 @@ class User: Profile {
         self.username = ""
         try super.init(from: decoder)
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        if let username = aDecoder.decodeObject(forKey: "username") as? String {
-            self.username = username
-        } else {
-            self.username = ""
-        }
-//        if let name = aDecoder.decodeObject(forKey: "name") as? String {
-//            self.name = name
-//        } else {
-//            self.name = ""
-//        }
-        super.init(coder: aDecoder)
-    }
     
 }

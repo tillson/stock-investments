@@ -35,7 +35,8 @@ struct Transaction: Decodable {
 
     func getDate() -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD'T'hh:mm:ss'Z'"
+        print(date)
+        dateFormatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss'Z'"
         return dateFormatter.date(from: date)
     }
 

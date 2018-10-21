@@ -11,6 +11,8 @@ import Charts
 
 class PortfolioViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var transactions = [Transaction]()
+    
     var user: User! {
         return APIManager.shared.user!
     }
@@ -21,6 +23,24 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         collectionView.register(UINib(nibName: "GraphHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "GraphHeaderView")
         collectionView.register(UINib(nibName: "PortfolioGraphCell", bundle: nil), forCellWithReuseIdentifier: "PortfolioGraphCell")
         collectionView.register(UINib(nibName: "PortfolioStockCell", bundle: nil), forCellWithReuseIdentifier: "PortfolioStockCell")
+        
+        user.ownedStocks.append(Stock(ticker: "AAPL", currentPrice: 420.0))
+        
+//        APIManager.shared.getUserTransactions(onSuccess: { transactions in
+//            APIManager.shared.user?.transactions = transactions
+//            var stockInfo = [String: Int]()
+//            var sortedTransactions = transactions.sorted(by: { $0.getDate()! > $1.getDate()! })
+//            for transaction in transactions.reversed() {
+//                if transaction.type == "BUY" {
+//
+//                } else {
+//
+//                }
+//            }
+//        }) { error in
+//            print("Error while loading transactions: \(error)")
+//        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

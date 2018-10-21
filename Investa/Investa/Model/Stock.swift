@@ -52,7 +52,7 @@ struct PastStockPoint: Decodable, Equatable {
     // 2018-10-19T15:00:00Z
     func getDate() -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-DD'T'hh:mm:ss'Z'"
+        dateFormatter.dateFormat = "YYYY-MM-DD'T'HH:mm:ss'Z'"
         return dateFormatter.date(from: time)
     }
     

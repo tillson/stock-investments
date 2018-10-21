@@ -10,7 +10,7 @@ import UIKit
 
 class SearchStockTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     
-    let allStocks = [Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420)]
+    let allStocks = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -23,11 +23,11 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         searchController.dimsBackgroundDuringPresentation = false
     }
     
-    let trending = [Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420)]
+    let trending = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
     
-    let recommended = [Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420)]
+    let recommended = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
     
-    var filtered = [Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420), Stock(ticker: "AAPL", currentPrice: 420)]
+    var filtered = [Stock(ticker: "APPL", currentPrice: 500), Stock(ticker: "TEZ", currentPrice: 500), Stock(ticker: "GOOG", currentPrice: 500)]
     
     var isSearching = false
     
@@ -111,9 +111,9 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
             tableView.reloadData()
         }else{
             isSearching = true
-//            filtered = allStocks.filter { user in
-////                return user.name.lowercased().contains(searchController.searchBar.text!.lowercased())
-//            }
+            filtered = allStocks.filter { user in
+                return user.ticker.lowercased().contains(searchController.searchBar.text!.lowercased())
+            }
             tableView.reloadData()
         }
     }
