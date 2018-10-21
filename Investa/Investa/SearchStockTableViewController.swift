@@ -11,6 +11,9 @@ import UIKit
 class SearchStockTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
     
     let allStocks = ["Stock1", "Stock2", "Stock3", "Blah"]
+    
+    var stock: Stock?
+    
     let searchController = UISearchController(searchResultsController: nil)
     override func viewWillAppear(_ animated: Bool) {
         searchController.searchResultsUpdater = self
@@ -92,19 +95,28 @@ class SearchStockTableViewController: UITableViewController, UISearchResultsUpda
         return cell
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         if searchController.searchBar.text == nil || searchController.searchBar.text == ""{
             isSearching = false
             view.endEditing(true)
             tableView.reloadData()
         }else{
             isSearching = true
-            filtered = allStocks.filter { user in
-                return user.lowercased().contains(searchController.searchBar.text!.lowercased())
+            
+            APIManager.shared.getStock(identifier: searchController.searchBar.text!, onSuccess: { (stock) in
+                self.stock = stock
+                self.filtered = [stock.ticker]
+                self.tableView.reloadData()
+            }) { (error) in
+                print(error)
             }
-            tableView.reloadData()
+            
+            
         }
     }
+    
+//    func updateSearchResults(for searchController: UISearchController) {
+//    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if isSearching{

@@ -15,7 +15,7 @@ class Profile: Decodable {
     var funds: Float
     let startingFunds = 15000.0
 
-    let ownedStocks = [Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0), Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0), Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0), Stock(name: "Apple", symbol: "AAPL", currentPrice: 100.0, initialBuyPrice: 150.0)]
+    let ownedStocks = [Stock(ticker: "AAPL", currentPrice: 400), Stock(ticker: "AAPL", currentPrice: 500)]
     let portfolioValue: Float = 100.0
     
     init(name: String, portfolioValue: Float) {

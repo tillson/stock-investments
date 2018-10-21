@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if username != nil && password != nil {
             APIManager.shared.login(username: username!, password: password!, onSuccess: { (success) in
                 if !success {
+                    APIManager.shared.token = nil
                     return
                 }
                 APIManager.shared.getCurrentUser(onSuccess: { (user) in
@@ -30,9 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window!.rootViewController = controller
                 }, onFailure: { (error) in
                     print(error)
+                    APIManager.shared.token = nil
                 })
             }) { (error) in
                 print(error)
+                APIManager.shared.token = nil
             }
         }
         

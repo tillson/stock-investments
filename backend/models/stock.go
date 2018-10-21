@@ -16,10 +16,10 @@ type Transaction struct {
 	Ticker string
 
 	UserID uint
-	User User
+	User   User
 
 	PriceAtTime float64
-	Type TxType
+	Type        TxType
 
 	Quantity uint
 }
