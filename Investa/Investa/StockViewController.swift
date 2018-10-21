@@ -153,15 +153,11 @@ class StockViewController: UIViewController {
                 if Float(amountToBuy) * self.stock.currentPrice > APIManager.shared.user!.funds {
                     self.showAlert(title: "You do not have enough money to buy this many stocks.")
                 } else {
-                    self.showAlert(title: "You have bought \(amountToBuy) stocks for \((self.stock.currentPrice * Float(amountToBuy)).moneyFormat)")
+                    self.showAlert(title: "You have bought \(amountToBuy) shares of \(self.stock.ticker) for \((self.stock.currentPrice * Float(amountToBuy)).moneyFormat)")
                     
                     APIManager.shared.buyStock(identifier: self.stock.ticker, shares: amountToBuy, onSuccess: { (transaction) in
-                        APIManager.shared.buyStock(identifier: self.stock.ticker, shares: amountToBuy, onSuccess: { (transaction) in
-                            APIManager.shared.user!.transactions.append(transaction)
-                        }, onFailure: { (error) in
-                            
-                        })
-                        
+                        APIManager.shared.user!.transactions.append(transaction)
+                        self.stock.sharesOwned += transaction.shares
                         self.reload()
                     }, onFailure: { (error) in
                         self.showAlert(title: "An error occurred while trying to buy stock.")

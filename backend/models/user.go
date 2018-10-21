@@ -3,9 +3,10 @@ package models
 import (
 	"encoding/json"
 	"errors"
+	"time"
+
 	"github.com/tillson/stock-investments/config"
 	"github.com/tillson/stock-investments/stocks"
-	"time"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/jinzhu/gorm"
@@ -60,10 +61,10 @@ func CreateUser(username, password, name string, db *gorm.DB) (User, error) {
 	}
 
 	user := User{
-		Name: name,
+		Name:         name,
 		Username:     username,
 		PasswordHash: passwordHash,
-		Funds: config.GetStartMoney(),
+		Funds:        config.GetStartMoney(),
 	}
 
 	if err := db.Create(&user).Error; err != nil {
@@ -143,17 +144,16 @@ func (user *User) BuyStock(ticker string, quantity uint) (Transaction, error) {
 	if totalPrice > float64(user.Funds) {
 		return Transaction{}, NotEnoughMoneyErr
 	}
-
-	if err := user.db.Model(&user).Update("funds", user.Funds - totalPrice).Error; err != nil {
+	if err := user.db.Model(&user).Update("funds", (user.Funds - totalPrice)).Error; err != nil {
 		return Transaction{}, err
 	}
 
 	tx := Transaction{
-		Ticker: ticker,
+		Ticker:      ticker,
 		PriceAtTime: price,
-		UserID: user.ID,
-		Type: Buy,
-		Quantity: quantity,
+		UserID:      user.ID,
+		Type:        Buy,
+		Quantity:    quantity,
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
 		return tx, err
@@ -163,6 +163,7 @@ func (user *User) BuyStock(ticker string, quantity uint) (Transaction, error) {
 }
 
 var NotEnoughStocksErr = errors.New("you do not have enough stocks")
+
 func (user *User) SellStock(ticker string, quantity uint) (Transaction, error) {
 	// Check current price of stock
 	price, _, err := stocks.GetCurrentPrice(ticker)
@@ -182,17 +183,17 @@ func (user *User) SellStock(ticker string, quantity uint) (Transaction, error) {
 	}
 
 	tx := Transaction{
-		Ticker: ticker,
+		Ticker:      ticker,
 		PriceAtTime: price,
-		UserID: user.ID,
-		Type: Sell,
-		Quantity: quantity,
+		UserID:      user.ID,
+		Type:        Sell,
+		Quantity:    quantity,
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
 		return tx, err
 	}
 
-	if err := user.db.Model(&user).Update("funds", user.Funds + (float64(quantity) * price)).Error; err != nil {
+	if err := user.db.Model(&user).Update("funds", user.Funds+(float64(quantity)*price)).Error; err != nil {
 		return Transaction{}, err
 	}
 
