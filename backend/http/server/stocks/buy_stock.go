@@ -2,7 +2,6 @@ package profile
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -44,8 +43,7 @@ func (r Stocks) buyStocks(w http.ResponseWriter, req *http.Request) {
 
 	tx, err := user.BuyStock(stockReq.Ticker, stockReq.Quantity)
 	if err == models.NotEnoughMoneyErr {
-		log.Println("fuck you, you don't have enough money")
-		response.NewResponse(400, errors.New("not enough money"))
+		response.NewResponse(400, models.NotEnoughMoneyErr).Write(w)
 		return
 	} else if err != nil {
 		log.Println(err)
