@@ -14,9 +14,9 @@ class TransactionsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        transactions.append(Transaction(stock: Stock(ticker: "AAPL", currentPrice: 400), buyPrice: 500, date: Date(), type: "buy", shares: 2))
         
         APIManager.shared.getUserTransactions(onSuccess: { transactions in
+            APIManager.shared.user!.transactions = transactions
             self.transactions = transactions
             self.tableView.reloadData()
         }) { error in
