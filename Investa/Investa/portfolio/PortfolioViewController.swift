@@ -26,20 +26,37 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         
         user.ownedStocks.append(Stock(ticker: "AAPL", currentPrice: 420.0))
         
-//        APIManager.shared.getUserTransactions(onSuccess: { transactions in
-//            APIManager.shared.user?.transactions = transactions
-//            var stockInfo = [String: Int]()
-//            var sortedTransactions = transactions.sorted(by: { $0.getDate()! > $1.getDate()! })
-//            for transaction in transactions.reversed() {
-//                if transaction.type == "BUY" {
-//
-//                } else {
-//
-//                }
-//            }
-//        }) { error in
-//            print("Error while loading transactions: \(error)")
-//        }
+        APIManager.shared.getUserTransactions(onSuccess: { transactions in
+            var stockInfo = [String: Int]()
+            let sortedTransactions = transactions.sorted(by: { $0.getDate()! < $1.getDate()! })
+            self.user.transactions = sortedTransactions
+            for transaction in sortedTransactions {
+                if transaction.type == "BUY" {
+                    if stockInfo[transaction.ticker] != nil {
+                        stockInfo[transaction.ticker] = transaction.shares + stockInfo[transaction.ticker]!
+                    } else {
+                        stockInfo[transaction.ticker] = transaction.shares
+                    }
+                } else {
+                    if stockInfo[transaction.ticker] != nil {
+                        stockInfo[transaction.ticker] = transaction.shares + stockInfo[transaction.ticker]!
+                    } else {
+                        stockInfo[transaction.ticker] = transaction.shares
+                    }
+                }
+            }
+            for (stock, shares) in stockInfo {
+                APIManager.shared.getStock(identifier: stock, shares: shares, onSuccess: { (loadedStock) in
+                    self.user.ownedStocks.append(loadedStock)
+                    print(loadedStock)
+                    self.collectionView.reloadData()
+                }, onFailure: { (error) in
+                    print("Error while loading stocks: \(error)")
+                })
+            }
+        }) { error in
+            print("Error while loading transactions: \(error)")
+        }
         
     }
     
@@ -116,7 +133,7 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: "Stock") as? StockViewController {
             navigationController?.pushViewController(viewController, animated: true)
-            viewController.stock = Stock(ticker: "AAPL", currentPrice: 400.0)
+            viewController.stock = self.user.ownedStocks[indexPath.row]
         }
     }
     
