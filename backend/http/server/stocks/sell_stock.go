@@ -2,7 +2,7 @@ package profile
 
 import (
 	"encoding/json"
-	"errors"
+	"fmt"
 	"github.com/gorilla/context"
 	"github.com/tillson/stock-investments/http/response"
 	"github.com/tillson/stock-investments/models"
@@ -31,20 +31,42 @@ func (r Stocks) sellStocks(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	stockReq, err := NewBuyStockInput(req.Body)
+	stockReq, err := NewSellStockInput(req.Body)
 	if err != nil {
 		response.ServerError.Write(w)
 		return
 	}
 
-	err = user.BuyStock(stockReq.Ticker, stockReq.Quantity)
-	if err == models.NotEnoughMoneyErr {
-		response.NewResponse(400, errors.New("not enough money"))
+	tx, err := user.SellStock(stockReq.Ticker, stockReq.Quantity)
+	if err == models.NotEnoughStocksErr{
+		response.NewResponse(400, models.NotEnoughStocksErr).Write(w)
 		return
 	} else if err != nil {
 		response.ServerError.Write(w)
 		return
 	}
+
+	type transaction struct {
+		Ticker string `json:"ticker"`
+		PriceAtTime float64 `json:"price_at_time"`
+		Type string `json:"type"`
+		Quantity uint `json:"quantity"`
+	}
+
+	txx := transaction{
+		Ticker: tx.Ticker,
+		PriceAtTime: tx.PriceAtTime,
+		Type: string(tx.Type),
+		Quantity: tx.Quantity,
+	}
+
+	out, err := json.Marshal(txx)
+	if err != nil {
+		response.ServerError.Write(w)
+		return
+	}
+
+	fmt.Fprint(w, string(out))
 
 	response.Nil.Write(w)
 }

@@ -132,15 +132,15 @@ func (user *User) UpdatePassword(password string) error {
 
 var NotEnoughMoneyErr = errors.New("not enough money")
 
-func (user *User) BuyStock(ticker string, quantity uint) error {
+func (user *User) BuyStock(ticker string, quantity uint) (Transaction, error) {
 	// Check current price of stock
 	price, _, err := stocks.GetCurrentPrice(ticker)
 	if err != nil {
-		return err
+		return Transaction{}, err
 	}
 	// Validate current_price * quantity <= user.Money
 	if price * float64(quantity) > float64(user.Funds) {
-		return NotEnoughMoneyErr
+		return Transaction{}, NotEnoughMoneyErr
 	}
 
 	tx := Transaction{
@@ -150,29 +150,29 @@ func (user *User) BuyStock(ticker string, quantity uint) error {
 		Type: Buy,
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
-		return err
+		return tx, err
 	}
 
-	return nil
+	return tx, nil
 }
 
 var NotEnoughStocksErr = errors.New("you do not have enough stocks")
-func (user *User) SellStock(ticker string, quantity uint) error {
+func (user *User) SellStock(ticker string, quantity uint) (Transaction, error) {
 	// Check current price of stock
 	price, _, err := stocks.GetCurrentPrice(ticker)
 	if err != nil {
-		return err
+		return Transaction{}, err
 	}
 
 	stockMap, err := StockMap(user.ID, user.db)
 	if err != nil {
-		return err
+		return Transaction{}, err
 	}
 	count := stockMap[ticker]
 
 	// Validate user has number of stocks
 	if count < quantity {
-		return NotEnoughStocksErr
+		return Transaction{}, NotEnoughStocksErr
 	}
 
 	tx := Transaction{
@@ -182,10 +182,10 @@ func (user *User) SellStock(ticker string, quantity uint) error {
 		Type: Sell,
 	}
 	if err := CreateTransaction(tx, user.db); err != nil {
-		return err
+		return tx, err
 	}
 
-	return nil
+	return tx, nil
 }
 
 func (user *User) GetPortfolioValue() (float64, error) {
