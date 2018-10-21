@@ -48,33 +48,42 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="go" value="98" />
+          <entry key="go" value="101" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="98" />
+          <entry key="Go" value="101" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="go" value="18262" />
+          <entry key="go" value="18513" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="18262" />
+          <entry key="Go" value="18513" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/http/server/stocks/sell_stock.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-166">
-              <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+            <state relative-caret-position="546">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/user.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="194" column="81" selection-start-line="194" selection-start-column="81" selection-end-line="194" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -121,13 +130,13 @@
         <option value="$PROJECT_DIR$/db/initialize.go" />
         <option value="$PROJECT_DIR$/http/server/leaderboard/leaderboard.go" />
         <option value="$PROJECT_DIR$/http/server/server.go" />
-        <option value="$PROJECT_DIR$/http/server/stocks/sell_stock.go" />
         <option value="$PROJECT_DIR$/models/stock.go" />
         <option value="$PROJECT_DIR$/http/server/stocks/transactions.go" />
         <option value="$PROJECT_DIR$/config/config.go" />
         <option value="$PROJECT_DIR$/http/server/profile/profile.go" />
-        <option value="$PROJECT_DIR$/models/user.go" />
         <option value="$PROJECT_DIR$/http/server/stocks/buy_stock.go" />
+        <option value="$PROJECT_DIR$/http/server/stocks/sell_stock.go" />
+        <option value="$PROJECT_DIR$/models/user.go" />
       </list>
     </option>
   </component>
@@ -416,13 +425,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/http/server/stocks/buy_stock.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/stock.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -437,17 +439,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.go">
+    <entry file="file://$PROJECT_DIR$/http/server/stocks/buy_stock.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
-          <caret line="165" column="25" lean-forward="true" selection-start-line="165" selection-start-column="25" selection-end-line="165" selection-end-column="25" />
+        <state relative-caret-position="558">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/http/server/stocks/sell_stock.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-166">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        <state relative-caret-position="546">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="194" column="81" selection-start-line="194" selection-start-column="81" selection-end-line="194" selection-end-column="81" />
         </state>
       </provider>
     </entry>
