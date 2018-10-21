@@ -8,10 +8,14 @@
 
 import Foundation
 
-struct Stock: Decodable, Equatable {
+class Stock: Decodable, Equatable {
+    static func == (lhs: Stock, rhs: Stock) -> Bool {
+        return lhs.ticker == rhs.ticker
+    }
+    
     
     let ticker: String
-    let currentPrice: Float
+    var currentPrice: Float
     var initialPrice: Float = 0.0
     var sharesOwned = 0
     var history: [PastStockPoint]
@@ -45,7 +49,11 @@ struct Stock: Decodable, Equatable {
 }
 
 
-struct PastStockPoint: Decodable, Equatable {
+class PastStockPoint: Decodable, Equatable {
+    static func == (lhs: PastStockPoint, rhs: PastStockPoint) -> Bool {
+        return lhs.time == rhs.time 
+    }
+    
     let price: Float
     let time: String
     

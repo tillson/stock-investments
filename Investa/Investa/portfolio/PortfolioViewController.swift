@@ -24,7 +24,22 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
         collectionView.register(UINib(nibName: "PortfolioGraphCell", bundle: nil), forCellWithReuseIdentifier: "PortfolioGraphCell")
         collectionView.register(UINib(nibName: "PortfolioStockCell", bundle: nil), forCellWithReuseIdentifier: "PortfolioStockCell")
         
-        user.ownedStocks.append(Stock(ticker: "AAPL", currentPrice: 420.0))
+        let _ = ["MU", "AMD", "TSLA", "AAPL", "GOOG", "ROPE", "AMZN", "MSFT"].map {
+            APIManager.shared.getStock(identifier: $0, onSuccess: { (stock) in
+                if stock.history.isEmpty {
+                    return
+                }
+                
+                stock.currentPrice = stock.history.last!.price
+                self.user.ownedStocks.append(stock)
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }, onFailure: { (error) in
+                
+            })
+        }
         
         APIManager.shared.getUserTransactions(onSuccess: { transactions in
             var stockInfo = [String: Int]()
@@ -47,6 +62,11 @@ class PortfolioViewController: UICollectionViewController, UICollectionViewDeleg
             }
             for (stock, shares) in stockInfo {
                 APIManager.shared.getStock(identifier: stock, shares: shares, onSuccess: { (loadedStock) in
+                    if loadedStock.history.isEmpty {
+                        return
+                    }
+                    
+                    loadedStock.currentPrice = loadedStock.history.last!.price
                     self.user.ownedStocks.append(loadedStock)
                     print(loadedStock)
                     self.collectionView.reloadData()

@@ -134,11 +134,13 @@ class ScoreboardTableViewController: UITableViewController,UISearchBarDelegate,U
         tableView.tableFooterView = customView
         let rank = UILabel(frame: CGRect(x: 5, y: customView.frame.height/2-15, width: 50, height: 50))
         rank.font = UIFont(name: "Helvetica Neue", size: 30)
+        rank.textColor = .white
         rank.text = "1."
         customView.addSubview(rank)
         let button = UILabel(frame: CGRect(x: customView.frame.width/2-75, y: customView.frame.height/2-25, width: 150, height: 75))
         button.font = UIFont(name: "Helvetica Neue", size: 30)
-        button.text = "Your Name"
+        button.text = APIManager.shared.user!.name
+        button.textColor = .white
         customView.addSubview(button)
         let image = UIImageView(frame: CGRect(x: 35, y: customView.frame.height/2-25, width: 70, height: 70))
         image.image = UIImage(named: "pic4")

@@ -28,13 +28,13 @@ class StockViewController: UIViewController {
     }
     @IBOutlet weak var ownedSales: UILabel! {
         didSet {
-            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0 == stock }
+            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0 == stock && stock.sharesOwned != 0 }
             ownedSales.text = "\(currentStocks.count)"
         }
     }
     @IBOutlet weak var shareWorth: UILabel! {
         didSet {
-            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0 == stock }
+            let currentStocks = APIManager.shared.user!.ownedStocks.filter { $0 == stock && stock.sharesOwned != 0 }
             shareWorth.text = "\((Float(currentStocks.count) * stock.currentPrice).moneyFormat)"
         }
     }
@@ -69,6 +69,12 @@ class StockViewController: UIViewController {
     }
     
     @IBAction func clickSell(_ sender: StockOptionButton) {
+        
+        if stock.sharesOwned == 0 {
+            self.showAlert(title: "You do not have any stocks to sell.")
+            return
+        }
+        
         let alert = UIAlertController(title: "Sell Up to \(stock.sharesOwned) stock\(stock.sharesOwned > 1 ? "s" : "")", message: "Either sell all stocks or enter amount.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Choose Amount", style: .default, handler: { (action) in
             let alert = UIAlertController(title: "Enter amount of stocks to sell", message: "", preferredStyle: .alert)
