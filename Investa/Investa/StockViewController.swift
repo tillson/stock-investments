@@ -80,8 +80,6 @@ class StockViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "Sell", style: .default, handler: { (action) in
                 if let amountToSell = Int(textField.text ?? "") {
-                    
-                    
                     let title: String
                     if amountToSell > self.stock.sharesOwned {
                         title = "You do not have enough of this stock to sell."
