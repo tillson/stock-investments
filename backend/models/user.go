@@ -22,7 +22,7 @@ type User struct {
 
 	Transactions []Transaction
 
-	Funds uint64
+	Funds float64
 
 	Name string
 }
@@ -138,10 +138,13 @@ func (user *User) BuyStock(ticker string, quantity uint) (Transaction, error) {
 	if err != nil {
 		return Transaction{}, err
 	}
+	totalPrice := price * float64(quantity)
 	// Validate current_price * quantity <= user.Money
-	if price * float64(quantity) > float64(user.Funds) {
+	if totalPrice > float64(user.Funds) {
 		return Transaction{}, NotEnoughMoneyErr
 	}
+
+	user.db.Model(&user).Update("funds", user.Funds - totalPrice)
 
 	tx := Transaction{
 		Ticker: ticker,

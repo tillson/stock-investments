@@ -15,7 +15,7 @@ type Return struct {
 	Name     string  `json:"name"`
 	Username string  `json:"username"`
 	Email    string  `json:"email"`
-	Funds    uint64  `json:"funds"`
+	Funds    float64 `json:"funds"`
 	Value    float64 `json:"value"`
 }
 
